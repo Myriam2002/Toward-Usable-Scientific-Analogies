@@ -1,0 +1,74 @@
+id,unfamiliar_concept,familiar_concept,model,success,error,duration_seconds,timestamp,reasoning,ground_truth_properties_unfamiliar,ground_truth_properties_familiar,ground_truth_mappings,predicted_mappings,system_accuracy,correct_mappings,total_mappings,concept_mapping_accuracy
+1,biological clock,clock,gpt-oss-20b,True,,0.50638747215271,2025-10-21T16:12:22.933681,"The unfamiliar concept is a biological clock, and its key properties are “changes”, “state”, and “adjust”.  
+The familiar concept is a mechanical clock, whose key properties are “pointer”, “time”, and “maintain”.  
+To build a useful analogy, each property of the biological clock must be matched to a property of the mechanical clock that plays a similar role:
+
+* **“changes”** – In a biological clock, the internal state changes over time (e.g., the rhythm shifts).  
+  In a mechanical clock, the **pointer** moves to indicate these changes in time.  
+  Therefore, “changes” maps to “pointer”.
+
+* **“state”** – The biological clock’s state represents the current circadian phase or internal time.  
+  The mechanical clock’s **time** is the obvious counterpart of this state.  
+  Hence, “state” maps to “time”.
+
+* **“adjust”** – Biological clocks often adjust or entrain themselves to external cues.  
+  A mechanical clock must be **maintained** (tuned, wound, or set) to keep accurate time.  
+  Thus, “adjust” maps to “maintain”.
+
+These mappings preserve the functional relationships of each property in their respective contexts, making the analogy clear and logically consistent.","[""changes"", ""state"", ""adjust""]","[""pointer"", ""time"", ""maintain""]","{""changes"": ""pointer"", ""state"": ""time"", ""adjust"": ""maintain""}","{""changes"": ""pointer"", ""state"": ""time"", ""adjust"": ""maintain""}",True,3,3,1.0
+2,Biosphere,Library,gpt-oss-20b,True,,0.4634835720062256,2025-10-21T16:12:23.399716,"- **biology** represents the science and study of living organisms. In a library, each **book** can be seen as an informational “organism” containing knowledge, similar to how biology studies individual organisms.
+- **biodiversity** refers to the variety and variety of life forms. The **Book Type** (e.g., fiction, science, history) denotes the diversity of books available in a library.
+- **ecosystem** denotes the interacting community of organisms and their physical environment. A **library room** serves as the physical setting where books interact with patrons, analogous to an ecosystem’s environment supporting life.
+
+These parallels give a natural mapping between the unfamiliar concept properties (biosphere) and the familiar concept properties (library).","[""biology"", ""biodiversity"", ""ecosystem""]","[""books"", ""Book Type"", ""library room""]","{""biology"": ""books"", ""biodiversity"": ""Book Type"", ""ecosystem"": ""library room""}","{""biology"": ""books"", ""biodiversity"": ""Book Type"", ""ecosystem"": ""library room""}",True,3,3,1.0
+3,Respiratory system,engine,gpt-oss-20b,True,,0.5141592025756836,2025-10-21T16:12:23.915874,"The respiratory system functions by taking in oxygen and expelling carbon dioxide, much like an engine consumes fuel to produce work.  
+* **Oxygen** is the essential input that the lungs process, analogous to **fuel** that an engine burns in its combustion chamber.  
+* **The lungs** serve as the main site where gas exchange occurs; this role mirrors the **combustion chamber** where fuel reacts with air in an engine.  
+* **Breathing muscles** (diaphragm and intercostals) drive the movement of air into and out of the lungs, comparable to the **piston** that moves within the engine cylinder to carry out the mechanical work of combustion.
+
+Thus each property of the respiratory system maps naturally onto a property of an engine based on functional similarity.","[""oxygen"", ""the lungs"", ""breathing muscles""]","[""fuel"", ""combustion chamber"", ""piston""]","{""oxygen"": ""fuel"", ""the lungs"": ""combustion chamber"", ""breathing muscles"": ""piston""}","{""oxygen"": ""fuel"", ""the lungs"": ""combustion chamber"", ""breathing muscles"": ""piston""}",True,3,3,1.0
+4,Spread of Pathogens,Spread of Fire,gpt-oss-20b,True,,0.5127711296081543,2025-10-21T16:12:24.431230,"The analogy compares two systems of spread: pathogens in a crowd versus fire through combustible materials.  
+- **""pathogen""** in the context of disease is the agent that initiates the infectious process. Its familiar counterpart in fire terminology is **""fire""**, which is the initiating agent that spreads.  
+- **""crowd""** reflects a collection of many individuals that can aid transmission; similarly, **""combustibles""** are many combustible items that facilitate fire spread.  
+- **""Prevention and control measures""** are tactics employed to halt or limit infection spread, directly mirroring **""Fire fighting methods""**, the tactics used to control or extinguish a blaze.
+
+Thus each unfamiliar property maps naturally to its familiar counterpart.","[""pathogen"", ""crowd"", ""Prevention and control measures""]","[""fire"", ""combustibles"", ""Fire fighting methods""]","{""pathogen"": ""fire"", ""crowd"": ""combustibles"", ""Prevention and control measures"": ""Fire fighting methods""}","{""pathogen"": ""fire"", ""crowd"": ""combustibles"", ""Prevention and control measures"": ""Fire fighting methods""}",True,3,3,1.0
+5,Gene editing,kirigami,gpt-oss-20b,True,,0.4778327941894531,2025-10-21T16:12:24.912463,"Gene editing can be thought of as a carefully guided removal and replacement of pieces within a biological sheet. The three key elements of this process are:
+
+1. **Gene** – an entire segment of DNA that provides the “raw material” upon which any editing is performed.  
+2. **CRISPR‑Cas9 Technology** – the precise molecular tool that acts like a pair of scissors, recognizing a specific DNA sequence and cutting it cleanly.  
+3. **Edited gene** – the final product after the cut, analogous to a finished paper‑cut design produced from the original sheet.
+
+By comparing these to kirigami, we see a natural correspondence:
+
+- The base genetic material maps to the raw paper sheet used in kirigami.  
+- The CRISPR‑Cas9 system’s cutting action orbits the scissors that perform the cuts in kirigami.  
+- The result of editing – the altered gene sequence – matches the paper‑cut work finished by the scissors.
+
+Thus each unfamiliar concept property has a clear counterpart in the familiar kirigami context.","[""Gene"", ""CRISPR-Cas9 Technology"", ""edited gene""]","[""raw material"", ""Scissors"", ""Paper-cut works""]","{""Gene"": ""raw material"", ""CRISPR-Cas9 Technology"": ""Scissors"", ""edited gene"": ""Paper-cut works""}","{""Gene"": ""raw material"", ""CRISPR-Cas9 Technology"": ""Scissors"", ""edited gene"": ""Paper-cut works""}",True,3,3,1.0
+1,biological clock,clock,gpt-oss-120b,True,,0.44403553009033203,2025-10-21T16:12:25.366484,"The biological clock is a metaphorical device that governs physiological processes. Its three key aspects are:
+
+* **changes** – it drives cyclical variations (e.g., hormone levels, sleep‑wake cycles). In a mechanical clock the aspect that *changes* most obviously is **time**, which constantly progresses.
+* **state** – the internal condition of the organism at any moment (e.g., “early‑morning” vs. “late‑night”). A clock indicates its current **pointer** (the hands) to show the present moment, mirroring the idea of a specific state.
+* **adjust** – the biological clock can be reset or fine‑tuned (e.g., by light exposure). Likewise, a clock is **maintained** (calibrated, wound, or synchronized) to keep it accurate, reflecting the adjustment process.
+
+Thus each unfamiliar‑concept property finds a natural counterpart in the familiar‑concept property.","[""changes"", ""state"", ""adjust""]","[""pointer"", ""time"", ""maintain""]","{""changes"": ""pointer"", ""state"": ""time"", ""adjust"": ""maintain""}","{""changes"": ""time"", ""state"": ""pointer"", ""adjust"": ""maintain""}",False,1,3,0.3333333333333333
+2,Biosphere,Library,gpt-oss-120b,True,,0.43427228927612305,2025-10-21T16:12:25.800756,"The biosphere is the global collection of all living organisms and their interactions, much like a library gathers a vast collection of written works and organizes them.  
+- **Biology** represents the study of life and the information contained in living organisms; in a library this parallels **books**, which contain the knowledge and stories about life.  
+- **Biodiversity** reflects the variety of species and genetic differences within the biosphere; similarly, a library’s **Book Type** (genres, formats, subjects) showcases the diversity of material it offers.  
+- **Ecosystem** denotes the network of habitats and functional zones where organisms interact. A library’s **library room** (different sections such as reading rooms, stacks, special collections) functions as distinct zones where different “interactions” (reading, studying, browsing) occur.  
+
+Thus each property of the biosphere can be analogously linked to a corresponding property of a library.","[""biology"", ""biodiversity"", ""ecosystem""]","[""books"", ""Book Type"", ""library room""]","{""biology"": ""books"", ""biodiversity"": ""Book Type"", ""ecosystem"": ""library room""}","{""biology"": ""books"", ""biodiversity"": ""Book Type"", ""ecosystem"": ""library room""}",True,3,3,1.0
+3,Respiratory system,engine,gpt-oss-120b,True,,0.44338035583496094,2025-10-21T16:12:26.244137,"The respiratory system can be likened to an engine in how it takes in a substance, processes it in a chamber, and uses mechanical components to move it.  
+- **Oxygen** is the essential input that powers cellular processes, just as **fuel** powers an engine.  
+- **The lungs** serve as the site where gas exchange occurs, analogous to the **combustion chamber** where fuel is combusted.  
+- **Breathing muscles** (diaphragm and intercostal muscles) create the pressure changes that move air in and out, similar to how a **piston** creates pressure changes to move gases within an engine.
+
+These parallels allow each property of the respiratory system to be mapped to a corresponding property of an engine.","[""oxygen"", ""the lungs"", ""breathing muscles""]","[""fuel"", ""combustion chamber"", ""piston""]","{""oxygen"": ""fuel"", ""the lungs"": ""combustion chamber"", ""breathing muscles"": ""piston""}","{""oxygen"": ""fuel"", ""the lungs"": ""combustion chamber"", ""breathing muscles"": ""piston""}",True,3,3,1.0
+4,Spread of Pathogens,Spread of Fire,gpt-oss-120b,True,,0.478318452835083,2025-10-21T16:12:26.725233,"The analogy compares how a disease spreads in a population to how fire spreads in an environment.  
+- **Pathogen** is the active agent that initiates the spread, just as **fire** is the active element that initiates a blaze.  
+- **Crowd** provides the dense medium that the pathogen can move through; similarly, **combustibles** supply the dense material that fire can consume and travel across.  
+- **Prevention and control measures** are the strategies used to halt or slow the spread of disease, which correspond to **fire‑fighting methods** – the techniques employed to suppress or extinguish a fire.
+
+Thus each property of the unfamiliar concept maps directly onto the analogous property of the familiar concept.","[""pathogen"", ""crowd"", ""Prevention and control measures""]","[""fire"", ""combustibles"", ""Fire fighting methods""]","{""pathogen"": ""fire"", ""crowd"": ""combustibles"", ""Prevention and control measures"": ""Fire fighting methods""}","{""pathogen"": ""fire"", ""crowd"": ""combustibles"", ""Prevention and control measures"": ""Fire fighting methods""}",True,3,3,1.0
+5,Gene editing,kirigami,gpt-oss-120b,True,,0.4708864688873291,2025-10-21T16:12:27.197949,"The analogy treats the DNA sequence (Gene) as the starting material, just like a sheet of paper is the raw material for kirigami. The CRISPR-Cas9 system functions as a precise cutting tool, analogous to the scissors used to cut the paper. Finally, the result of the editing process – an edited gene – corresponds to the finished kirigami piece, which is the paper-cut work.","[""Gene"", ""CRISPR-Cas9 Technology"", ""edited gene""]","[""raw material"", ""Scissors"", ""Paper-cut works""]","{""Gene"": ""raw material"", ""CRISPR-Cas9 Technology"": ""Scissors"", ""edited gene"": ""Paper-cut works""}","{""Gene"": ""raw material"", ""CRISPR-Cas9 Technology"": ""Scissors"", ""edited gene"": ""Paper-cut works""}",True,3,3,1.0

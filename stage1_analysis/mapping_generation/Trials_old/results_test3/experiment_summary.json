@@ -1,0 +1,104 @@
+{
+  "start_time": "2025-10-21T16:10:52.202370",
+  "total_experiments": 12,
+  "dataset_size": 5,
+  "results": [
+    {
+      "function": "property_extraction_no_desc",
+      "model": "gpt-oss-20b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 0.8563279628753662
+    },
+    {
+      "function": "property_extraction_no_desc",
+      "model": "gpt-oss-120b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 0.5946978092193603
+    },
+    {
+      "function": "property_extraction_with_desc",
+      "model": "gpt-oss-20b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 0.547283411026001
+    },
+    {
+      "function": "property_extraction_with_desc",
+      "model": "gpt-oss-120b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 0.46329751014709475
+    },
+    {
+      "function": "property_matching_no_desc",
+      "model": "gpt-oss-20b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 0.49492683410644533
+    },
+    {
+      "function": "property_matching_no_desc",
+      "model": "gpt-oss-120b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 0.4541786193847656
+    },
+    {
+      "function": "property_matching_with_desc",
+      "model": "gpt-oss-20b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 0.49050006866455076
+    },
+    {
+      "function": "property_matching_with_desc",
+      "model": "gpt-oss-120b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 0.45697579383850095
+    },
+    {
+      "function": "source_mapping_no_desc",
+      "model": "gpt-oss-20b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 0.5068886756896973
+    },
+    {
+      "function": "source_mapping_no_desc",
+      "model": "gpt-oss-120b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 0.48237061500549316
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "gpt-oss-20b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 80.0,
+      "avg_duration": 0.487638521194458
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "gpt-oss-120b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 0.472316837310791
+    }
+  ],
+  "end_time": "2025-10-21T16:12:46.702714"
+}

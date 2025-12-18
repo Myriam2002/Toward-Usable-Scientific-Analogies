@@ -1,0 +1,15 @@
+# Core dependencies for Easy LLM Importer
+openai>=1.12.0
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Optional: DSPy for advanced prompt engineering
+dspy-ai>=2.4.0
+
+# Data processing (already used in your project)
+pandas>=2.0.0
+
+# For Jupyter notebooks
+jupyter>=1.0.0
+notebook>=7.0.0
+

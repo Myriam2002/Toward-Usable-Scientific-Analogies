@@ -1,0 +1,104 @@
+{
+  "start_time": "2025-10-24T14:26:55.293417",
+  "total_experiments": 12,
+  "dataset_size": 400,
+  "results": [
+    {
+      "function": "source_mapping_with_desc",
+      "model": "gpt-oss-20b",
+      "status": "success",
+      "rows_processed": 400,
+      "success_rate": 99.75,
+      "avg_duration": 0.4052374178171158
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "gpt-oss-120b",
+      "status": "success",
+      "rows_processed": 400,
+      "success_rate": 100.0,
+      "avg_duration": 0.43721929252147673
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "gpt-4.1-mini",
+      "status": "success",
+      "rows_processed": 400,
+      "success_rate": 100.0,
+      "avg_duration": 0.4204348450899124
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "gpt-4.1-nano",
+      "status": "success",
+      "rows_processed": 400,
+      "success_rate": 100.0,
+      "avg_duration": 0.3757996702194214
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "grok-4-fast",
+      "status": "success",
+      "rows_processed": 400,
+      "success_rate": 100.0,
+      "avg_duration": 1.6001417386531829
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "gemini-2.5-flash-lite",
+      "status": "success",
+      "rows_processed": 400,
+      "success_rate": 100.0,
+      "avg_duration": 2.1245030468702315
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "llama-3.1-405b-instruct",
+      "status": "success",
+      "rows_processed": 400,
+      "success_rate": 100.0,
+      "avg_duration": 10.10948068380356
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "meta-llama-3-1-70b-instruct",
+      "status": "success",
+      "rows_processed": 400,
+      "success_rate": 100.0,
+      "avg_duration": 12.68130158185959
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "meta-llama-3-1-8b-instruct",
+      "status": "success",
+      "rows_processed": 400,
+      "success_rate": 100.0,
+      "avg_duration": 6.368917703032493
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "deepseek-r1",
+      "status": "success",
+      "rows_processed": 400,
+      "success_rate": 99.75,
+      "avg_duration": 16.714894605875017
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "qwen3-14b",
+      "status": "success",
+      "rows_processed": 400,
+      "success_rate": 100.0,
+      "avg_duration": 11.122103404402733
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "qwen3-32b",
+      "status": "success",
+      "rows_processed": 400,
+      "success_rate": 97.0,
+      "avg_duration": 11.596399321556092
+    }
+  ],
+  "end_time": "2025-10-24T23:15:32.870792"
+}

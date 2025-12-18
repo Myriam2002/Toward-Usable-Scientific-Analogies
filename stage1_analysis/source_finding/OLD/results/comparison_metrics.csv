@@ -1,0 +1,4 @@
+method,model,exact_match_acc,top_1_acc,top_3_acc,top_5_acc,top_10_acc,mrr,avg_rank,num_samples
+RAG,,0.0,0.0,0.2,0.3,0.3,0.08666666666666667,3.6666666666666665,10
+Tournament,gpt-4.1-mini,0.1,0.1,0.1,0.1,0.1,0.1,-1.0,10
+Tournament,meta-llama-3-1-70b-instruct,0.1,0.1,0.1,0.1,0.1,0.1,-1.0,10

@@ -1,0 +1,584 @@
+{
+  "start_time": "2025-10-20T18:46:28.906559",
+  "total_experiments": 72,
+  "dataset_size": 5,
+  "results": [
+    {
+      "function": "property_extraction_no_desc",
+      "model": "gpt-oss-20b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 17.49897313117981
+    },
+    {
+      "function": "property_extraction_no_desc",
+      "model": "gpt-oss-120b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 4.7392936706542965
+    },
+    {
+      "function": "property_extraction_no_desc",
+      "model": "gpt-4.1-mini",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 3.7838833332061768
+    },
+    {
+      "function": "property_extraction_no_desc",
+      "model": "gpt-4.1-nano",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 1.8779774188995362
+    },
+    {
+      "function": "property_extraction_no_desc",
+      "model": "grok-4-fast",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 3.764458656311035
+    },
+    {
+      "function": "property_extraction_no_desc",
+      "model": "gemini-2.5-flash-lite",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 2.0577712059020996
+    },
+    {
+      "function": "property_extraction_no_desc",
+      "model": "llama-3.1-405b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 14.41006326675415
+    },
+    {
+      "function": "property_extraction_no_desc",
+      "model": "meta-llama-3-1-70b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 8.404005813598634
+    },
+    {
+      "function": "property_extraction_no_desc",
+      "model": "meta-llama-3-1-8b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 4.362202119827271
+    },
+    {
+      "function": "property_extraction_no_desc",
+      "model": "deepseek-r1",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 5.7860743522644045
+    },
+    {
+      "function": "property_extraction_no_desc",
+      "model": "qwen3-14b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 10.547799015045166
+    },
+    {
+      "function": "property_extraction_no_desc",
+      "model": "qwen3-32b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 17.685577917099
+    },
+    {
+      "function": "property_extraction_with_desc",
+      "model": "gpt-oss-20b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 7.0639965534210205
+    },
+    {
+      "function": "property_extraction_with_desc",
+      "model": "gpt-oss-120b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 7.0249309062957765
+    },
+    {
+      "function": "property_extraction_with_desc",
+      "model": "gpt-4.1-mini",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 4.263280773162842
+    },
+    {
+      "function": "property_extraction_with_desc",
+      "model": "gpt-4.1-nano",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 2.7102879524230956
+    },
+    {
+      "function": "property_extraction_with_desc",
+      "model": "grok-4-fast",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 3.862178421020508
+    },
+    {
+      "function": "property_extraction_with_desc",
+      "model": "gemini-2.5-flash-lite",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 2.2622420310974123
+    },
+    {
+      "function": "property_extraction_with_desc",
+      "model": "llama-3.1-405b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 11.686356592178345
+    },
+    {
+      "function": "property_extraction_with_desc",
+      "model": "meta-llama-3-1-70b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 11.008537912368775
+    },
+    {
+      "function": "property_extraction_with_desc",
+      "model": "meta-llama-3-1-8b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 5.3279424667358395
+    },
+    {
+      "function": "property_extraction_with_desc",
+      "model": "deepseek-r1",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 14.458825063705444
+    },
+    {
+      "function": "property_extraction_with_desc",
+      "model": "qwen3-14b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 13.36141676902771
+    },
+    {
+      "function": "property_extraction_with_desc",
+      "model": "qwen3-32b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 13.21690583229065
+    },
+    {
+      "function": "property_matching_no_desc",
+      "model": "gpt-oss-20b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 7.133597564697266
+    },
+    {
+      "function": "property_matching_no_desc",
+      "model": "gpt-oss-120b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 10.728698921203613
+    },
+    {
+      "function": "property_matching_no_desc",
+      "model": "gpt-4.1-mini",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 4.478981924057007
+    },
+    {
+      "function": "property_matching_no_desc",
+      "model": "gpt-4.1-nano",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 2.6381336212158204
+    },
+    {
+      "function": "property_matching_no_desc",
+      "model": "grok-4-fast",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 3.138722467422485
+    },
+    {
+      "function": "property_matching_no_desc",
+      "model": "gemini-2.5-flash-lite",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 2.7819607734680174
+    },
+    {
+      "function": "property_matching_no_desc",
+      "model": "llama-3.1-405b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 13.914679098129273
+    },
+    {
+      "function": "property_matching_no_desc",
+      "model": "meta-llama-3-1-70b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 9.827015781402588
+    },
+    {
+      "function": "property_matching_no_desc",
+      "model": "meta-llama-3-1-8b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 8.372093963623048
+    },
+    {
+      "function": "property_matching_no_desc",
+      "model": "deepseek-r1",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 8.086114406585693
+    },
+    {
+      "function": "property_matching_no_desc",
+      "model": "qwen3-14b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 9.837626075744629
+    },
+    {
+      "function": "property_matching_no_desc",
+      "model": "qwen3-32b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 5.885366296768188
+    },
+    {
+      "function": "property_matching_with_desc",
+      "model": "gpt-oss-20b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 16.639264488220213
+    },
+    {
+      "function": "property_matching_with_desc",
+      "model": "gpt-oss-120b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 17.670104932785033
+    },
+    {
+      "function": "property_matching_with_desc",
+      "model": "gpt-4.1-mini",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 3.601682662963867
+    },
+    {
+      "function": "property_matching_with_desc",
+      "model": "gpt-4.1-nano",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 3.2523555755615234
+    },
+    {
+      "function": "property_matching_with_desc",
+      "model": "grok-4-fast",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 3.4868791103363037
+    },
+    {
+      "function": "property_matching_with_desc",
+      "model": "gemini-2.5-flash-lite",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 3.201205825805664
+    },
+    {
+      "function": "property_matching_with_desc",
+      "model": "llama-3.1-405b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 13.101090002059937
+    },
+    {
+      "function": "property_matching_with_desc",
+      "model": "meta-llama-3-1-70b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 10.850574016571045
+    },
+    {
+      "function": "property_matching_with_desc",
+      "model": "meta-llama-3-1-8b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 10.789215135574342
+    },
+    {
+      "function": "property_matching_with_desc",
+      "model": "deepseek-r1",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 7.367382001876831
+    },
+    {
+      "function": "property_matching_with_desc",
+      "model": "qwen3-14b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 11.421858930587769
+    },
+    {
+      "function": "property_matching_with_desc",
+      "model": "qwen3-32b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 6.088688039779663
+    },
+    {
+      "function": "source_mapping_no_desc",
+      "model": "gpt-oss-20b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 7.982228755950928
+    },
+    {
+      "function": "source_mapping_no_desc",
+      "model": "gpt-oss-120b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 8.55918354988098
+    },
+    {
+      "function": "source_mapping_no_desc",
+      "model": "gpt-4.1-mini",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 3.2215097427368162
+    },
+    {
+      "function": "source_mapping_no_desc",
+      "model": "gpt-4.1-nano",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 2.6215771675109862
+    },
+    {
+      "function": "source_mapping_no_desc",
+      "model": "grok-4-fast",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 4.9134105205535885
+    },
+    {
+      "function": "source_mapping_no_desc",
+      "model": "gemini-2.5-flash-lite",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 2.5559099197387694
+    },
+    {
+      "function": "source_mapping_no_desc",
+      "model": "llama-3.1-405b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 11.69687294960022
+    },
+    {
+      "function": "source_mapping_no_desc",
+      "model": "meta-llama-3-1-70b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 6.698559045791626
+    },
+    {
+      "function": "source_mapping_no_desc",
+      "model": "meta-llama-3-1-8b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 4.178919649124145
+    },
+    {
+      "function": "source_mapping_no_desc",
+      "model": "deepseek-r1",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 6.380127239227295
+    },
+    {
+      "function": "source_mapping_no_desc",
+      "model": "qwen3-14b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 8.799149656295777
+    },
+    {
+      "function": "source_mapping_no_desc",
+      "model": "qwen3-32b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 7.3967174053192135
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "gpt-oss-20b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 80.0,
+      "avg_duration": 9.789179563522339
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "gpt-oss-120b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 27.513690757751466
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "gpt-4.1-mini",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 4.091375112533569
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "gpt-4.1-nano",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 2.905492401123047
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "grok-4-fast",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 4.64793553352356
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "gemini-2.5-flash-lite",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 2.2795154094696044
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "llama-3.1-405b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 14.725796556472778
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "meta-llama-3-1-70b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 7.7896874904632565
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "meta-llama-3-1-8b-instruct",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 7.786676025390625
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "deepseek-r1",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 9.834758043289185
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "qwen3-14b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 12.825461530685425
+    },
+    {
+      "function": "source_mapping_with_desc",
+      "model": "qwen3-32b",
+      "status": "success",
+      "rows_processed": 5,
+      "success_rate": 100.0,
+      "avg_duration": 10.847502088546753
+    }
+  ],
+  "end_time": "2025-10-20T19:37:30.290085"
+}

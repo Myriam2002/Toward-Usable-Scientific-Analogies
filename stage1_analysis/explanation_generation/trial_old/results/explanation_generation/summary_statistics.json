@@ -1,0 +1,171 @@
+{
+  "overall": {
+    "total_experiments": 360,
+    "total_models": 12,
+    "total_settings": 6,
+    "mean_sbert_similarity": 0.8265765554375119,
+    "median_sbert_similarity": 0.8399893939495087,
+    "std_sbert_similarity": 0.06723220635340386,
+    "error_rate": 0.0
+  },
+  "model_rankings": {
+    "gpt-4.1-mini": {
+      "mean": 0.8525,
+      "std": 0.0619,
+      "min": 0.6724,
+      "max": 0.9448,
+      "count": 30,
+      "error_rate": 0.0
+    },
+    "qwen3-14b": {
+      "mean": 0.8424,
+      "std": 0.0728,
+      "min": 0.6746,
+      "max": 0.9246,
+      "count": 30,
+      "error_rate": 0.0
+    },
+    "gpt-oss-120b": {
+      "mean": 0.8414,
+      "std": 0.071,
+      "min": 0.6545,
+      "max": 0.9239,
+      "count": 30,
+      "error_rate": 0.0
+    },
+    "qwen3-32b": {
+      "mean": 0.8347,
+      "std": 0.0661,
+      "min": 0.6964,
+      "max": 0.9311,
+      "count": 30,
+      "error_rate": 0.0
+    },
+    "gpt-oss-20b": {
+      "mean": 0.8328,
+      "std": 0.0703,
+      "min": 0.6837,
+      "max": 0.9327,
+      "count": 30,
+      "error_rate": 0.0
+    },
+    "grok-4-fast": {
+      "mean": 0.8322,
+      "std": 0.0592,
+      "min": 0.7288,
+      "max": 0.953,
+      "count": 30,
+      "error_rate": 0.0
+    },
+    "deepseek-r1": {
+      "mean": 0.8239,
+      "std": 0.0804,
+      "min": 0.6192,
+      "max": 0.9347,
+      "count": 30,
+      "error_rate": 0.0
+    },
+    "gemini-2.5-flash-lite": {
+      "mean": 0.8187,
+      "std": 0.0571,
+      "min": 0.7265,
+      "max": 0.9181,
+      "count": 30,
+      "error_rate": 0.0
+    },
+    "gpt-4.1-nano": {
+      "mean": 0.8177,
+      "std": 0.0555,
+      "min": 0.6515,
+      "max": 0.9032,
+      "count": 30,
+      "error_rate": 0.0
+    },
+    "llama-3.1-405b-instruct": {
+      "mean": 0.8086,
+      "std": 0.0657,
+      "min": 0.6665,
+      "max": 0.9105,
+      "count": 30,
+      "error_rate": 0.0
+    },
+    "meta-llama-3-1-8b-instruct": {
+      "mean": 0.8073,
+      "std": 0.0801,
+      "min": 0.639,
+      "max": 0.9406,
+      "count": 30,
+      "error_rate": 0.0
+    },
+    "meta-llama-3-1-70b-instruct": {
+      "mean": 0.8067,
+      "std": 0.053,
+      "min": 0.7161,
+      "max": 0.8992,
+      "count": 30,
+      "error_rate": 0.0
+    }
+  },
+  "setting_rankings": {
+    "Concepts + Properties + Descriptions": {
+      "mean": 0.8617,
+      "std": 0.0518,
+      "min": 0.7248,
+      "max": 0.9448,
+      "count": 60,
+      "error_rate": 0.0
+    },
+    "Concepts + Properties": {
+      "mean": 0.8487,
+      "std": 0.0563,
+      "min": 0.6797,
+      "max": 0.9327,
+      "count": 60,
+      "error_rate": 0.0
+    },
+    "Concepts + Paired Mappings + Descriptions": {
+      "mean": 0.8405,
+      "std": 0.0575,
+      "min": 0.7242,
+      "max": 0.9246,
+      "count": 60,
+      "error_rate": 0.0
+    },
+    "Concepts + Paired Mappings": {
+      "mean": 0.8337,
+      "std": 0.0613,
+      "min": 0.6797,
+      "max": 0.953,
+      "count": 60,
+      "error_rate": 0.0
+    },
+    "Concepts + Descriptions": {
+      "mean": 0.7905,
+      "std": 0.0658,
+      "min": 0.6679,
+      "max": 0.9079,
+      "count": 60,
+      "error_rate": 0.0
+    },
+    "Concepts Only": {
+      "mean": 0.7843,
+      "std": 0.0715,
+      "min": 0.6192,
+      "max": 0.9049,
+      "count": 60,
+      "error_rate": 0.0
+    }
+  },
+  "top_10_combinations": {
+    "gpt-4.1-mini - Concepts + Properties + Descriptions": 0.9027647137641907,
+    "gpt-4.1-mini - Concepts + Paired Mappings + Descriptions": 0.8930907249450684,
+    "gpt-oss-120b - Concepts + Properties + Descriptions": 0.8916040778160095,
+    "qwen3-32b - Concepts + Properties + Descriptions": 0.8849005460739136,
+    "gpt-oss-20b - Concepts + Properties": 0.8788026213645935,
+    "qwen3-14b - Concepts + Properties": 0.8777627110481262,
+    "grok-4-fast - Concepts + Properties + Descriptions": 0.8765903115272522,
+    "qwen3-14b - Concepts + Paired Mappings + Descriptions": 0.8751457571983338,
+    "gpt-4.1-mini - Concepts + Properties": 0.8741989850997924,
+    "qwen3-14b - Concepts + Properties + Descriptions": 0.8707394361495971
+  }
+}

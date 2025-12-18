@@ -1,0 +1,15 @@
+{
+  "sampling_date": "2025-12-15T14:57:07.477304",
+  "total_records": 20,
+  "models_tested": [
+    "gpt-5.1",
+    "gpt-4.1-mini",
+    "llama-3.1-405b-instruct"
+  ],
+  "model_name_mapping": {
+    "prediction_gpt_5_1": "gpt-5.1",
+    "prediction_gpt_4_1_mini": "gpt-4.1-mini",
+    "prediction_llama_3_1_405b_instruct": "llama-3.1-405b-instruct"
+  },
+  "domains_represented": 13
+}

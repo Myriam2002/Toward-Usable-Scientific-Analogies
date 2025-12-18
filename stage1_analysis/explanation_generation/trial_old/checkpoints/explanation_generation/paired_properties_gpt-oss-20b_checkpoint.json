@@ -1,0 +1,147 @@
+[
+  {
+    "model": "gpt-oss-20b",
+    "setting": "paired_properties",
+    "row_index": 0,
+    "error": null,
+    "unfamiliar_concept": "biological clock",
+    "familiar_concept": "clock",
+    "description_unfamiliar": "The biological clock is a fundamental aspect of human physiology that governs the body's internal rhythms and processes. It refers to a range of mechanisms that enable the body to adjust to different states and changes in the environment. These mechanisms include the ageing process, menstrual cycle, circadian rhythm, vernalisation, and molecular and epigenetic clocks. The biological clock is responsible for regulating several essential processes, such as sleep-wake cycles, hormone release, and metabolism. This delicate balance can be disrupted when the body is subjected to different circumstances, such as changes in light exposure, temperature, or hormonal imbalances. Understanding the mechanisms of the biological clock is critical for maintaining good health and quality of life. It provides invaluable information for developing effective strategies to mitigate the effects of ageing, improve reproductive health, and combat sleep disorders. By studying the mechanisms of the biological clock, researchers are continually uncovering new ways to treat and prevent a range of health conditions. In short, the biological clock is a remarkable biological mechanism that plays a vital role in our lives, allowing us to adjust to changing circumstances and maintain a healthy state of being.",
+    "description_familiar": "A clock, also known as a timepiece, is a device used to measure and indicate time. From sun dials to water clocks, clocks have evolved over millennia. The invention of the verge escapement led to the development of mechanical clocks, and the pendulum clock improved their accuracy during the 17th century. The importance of precise timekeeping for navigation further stimulated clock innovation. Today, clocks come in many forms including analog clocks with moving hands, digital clocks with electronic mechanisms and numeric displays, and speaking clocks for the visually impaired. Despite the many forms that clocks can take, they all have a harmonic oscillator that serves as the timekeeping element, and they all require maintenance to continue functioning properly.",
+    "properties_unfamiliar": [
+      "changes",
+      "state",
+      "adjust"
+    ],
+    "properties_familiar": [
+      "pointer",
+      "time",
+      "maintain"
+    ],
+    "explanation_list": [
+      "Changes correspond to pointers: In the biological clock, physiological changes are biological processes that occur over time, such as hormone secretion and changes in body temperature. In a clock, the pointer is the physical component used to indicate changes in time. Both represent changes that occur over time.",
+      "Physiological state corresponds to time points: The physiological state in the biological clock can represent the state of a living organism at a specific time, such as morning, daytime, or nighttime. The time points in a clock directly represent specific moments, such as 10:00 AM or 3:00 PM. Here, physiological state and time points are both used to describe the situation at a particular moment.",
+      "Adjustment corresponds to maintenance: The biological clock needs adjustment to maintain the normal physiological function of a living organism, such as adjusting the response to environmental factors like light and temperature. Similarly, a clock needs maintenance to ensure its normal operation, such as adjusting the pointer or replacing batteries. In this mapping, adjustment and maintenance both represent optimization and maintenance of the operating system to ensure normal operation."
+    ],
+    "result": "Biological clocks change\u2014e.g., circadian rhythms shift throughout the day\u2014just as a clock\u2019s pointer moves, indicating the progression of time. The state of a biological clock, which reflects an organism\u2019s internal timing (sleep\u2011wake cycles, hormone levels), corresponds to the clock\u2019s representation of time. Biological clocks adjust by regulating themselves to maintain consistent rhythms, analogous to how a clock is continuously maintained to keep accurate time.",
+    "reasoning": "The reasoning step explains that we are mapping the dynamic properties of a biological clock to the equivalent properties of a conventional clock. For each pair, we interpret how the biological feature corresponds to the familiar feature, focusing on change (pointer movement), state (time indication), and adjustment (maintenance of accuracy).",
+    "sbert_similarity": 0.8202706575393677,
+    "evaluation_type": "string_to_string"
+  },
+  {
+    "model": "gpt-oss-20b",
+    "setting": "paired_properties",
+    "row_index": 1,
+    "error": null,
+    "unfamiliar_concept": "Biosphere",
+    "familiar_concept": "Library",
+    "description_unfamiliar": "The biosphere refers to the sum of all ecosystems on Earth, including the interactions between living organisms and their environment, such as the lithosphere, cryosphere, hydrosphere, and atmosphere. This spherical shell system is closed with regards to matter, with minimal inputs and outputs, yet open with regards to energy, as it captures solar energy through photosynthesis. The biosphere is postulated to have evolved through biopoiesis or biogenesis, and it encompasses all living beings and their relationships, including biodiversity. Biospheres can be both natural and artificial, including ones on other planets or moons. In essence, the biosphere is a global ecological system that integrates all living organisms and their various ecosystems.",
+    "description_familiar": "A library is much more than a building full of books. It is a collection of physical and digital resources accessible to the public for use and not just display. The materials found in a library can come in many forms, including books, DVDs, CDs and cassettes, and even bibliographic databases. Libraries can be organized and maintained by a variety of entities such as a government, school, museum, corporation or private individual. Libraries provide access to materials and information as well as the services of trained librarians who assist with finding, selecting, circulating and organizing information. They also offer a variety of spaces for studying, collaborating and accessing electronic resources like computers and the Internet. Libraries serve various types of communities, offering tailored services to fit their needs. Additionally, libraries are more than just buildings, they provide material that is accessible electronically, extending their services beyond the physical walls.",
+    "properties_unfamiliar": [
+      "biology",
+      "biodiversity",
+      "ecosystem"
+    ],
+    "properties_familiar": [
+      "books",
+      "Book Type",
+      "library room"
+    ],
+    "explanation_list": [
+      "Biology corresponds to books: In the biosphere, organisms are the basic units that make up the ecosystem, and various organisms together form a complex biological network. Similarly, in a library, books are carriers of knowledge and collectively form the library's knowledge system. In this analogy, both biology and books are basic components of their respective systems.",
+      "Biodiversity corresponds to book types: Biodiversity refers to the richness of the variety of species in the biosphere, which helps maintain the balance and stability of the ecosystem. In a library, book types represent the various fields of knowledge collected in the library, which helps to meet the needs of different readers. In this analogy, biodiversity and book types both represent the richness and diversity of their respective systems.",
+      "Ecosystem corresponds to library rooms: The ecosystem in the biosphere is formed by the interaction of different organisms, and these ecosystems are interconnected, interdependent, and together maintain the balance of the biosphere. In a library, rooms are laid out according to different classifications and themes, which helps readers to better find and use relevant resources. In this analogy, the ecosystem and library rooms both represent interrelated subsystems in their respective fields."
+    ],
+    "result": "In biology, living organisms and their interactions constitute the core; similarly, books are the essential elements that carry the informational content of a library, serving as the library\u2019s biological equivalent. Biodiversity in the biosphere refers to the wide range of species and genetic variation; in a library, the diversity of book types (fiction, science, history, etc.) mirrors this variation, creating a rich repository of knowledge. An ecosystem is a self\u2011contained, interacting community of organisms within a larger biosphere; a library room is a self\u2011contained, thematically organized space within a larger library, where books interact with readers and each other in a focused manner.",
+    "reasoning": "The library analogy is chosen because it mirrors the organization, diversity, and functional zones of the biosphere in terms that are familiar and concrete.  \n- In the biosphere, living organisms perform \u201cbiological\u201d roles; in a library, books serve as the fundamental objects that hold information, so \u201cbiochemistry\u201d maps neatly to \u201cbooks\u201d.  \n- The biosphere is renowned for its biodiversity\u2014an immense variety of species, niches, and genetic diversity. The equivalent in a library is the variety of book types (fiction, non\u2011fiction, scientific journals, etc.), which represents the breadth and richness of knowledge.  \n- Ecosystems are self\u2011contained, interlocking units within the larger biosphere, each with its own community of organisms and interactions. Library rooms (e.g., reference, children\u2019s, archives) are distinct \u201cecosystems\u201d of books grouped by purpose and style, each sustaining a particular informational community.  \n\nBy aligning these three property pairs, a student can mentally translate the abstract ecological principles of the biosphere into the more concrete, everyday structure of a library.",
+    "sbert_similarity": 0.8779606223106384,
+    "evaluation_type": "string_to_string"
+  },
+  {
+    "model": "gpt-oss-20b",
+    "setting": "paired_properties",
+    "row_index": 2,
+    "error": null,
+    "unfamiliar_concept": "Respiratory system",
+    "familiar_concept": "engine",
+    "description_unfamiliar": "The respiratory system is a critical biological system used for gas exchange in both animals and plants. In land animals, the lungs play the central role in gas exchange, with millions of air sacs called alveoli serving as the respiratory surface. Oxygen from the environment is brought to the alveoli by breathing muscles, which pump air through a system of hollow tubes, such as the trachea and bronchi, and bronchioles. Birds have similar air sacs called atria, and their bronchioles are termed parabronchi. Fish have gills, while insects have simpler respiratory systems, and amphibians rely on their skin for gas exchange. Plants also have respiratory systems, with stomata serving as one such feature. Understanding how the respiratory system works is critical to comprehending the overall workings of both animals and plants.",
+    "description_familiar": "An engine or motor is a machine that transforms energy into mechanical energy for various applications. It can convert different energy sources, including potential energy, heat energy, chemical energy, electric potential, and nuclear energy, to generate motion.  Heat engines that convert heat into work are commonly used in transportation and industrial processes. One common example is the internal combustion engine, which rapidly pressurizes the gaseous combustion products in the combustion chamber to produce motion. Other types of engines include reaction engines, electric motors, pneumatic motors, and biological systems. Chemical heat engines, also known as airbreathing engines, use ambient atmospheric gas as a part of the fuel reaction to generate motion. These engines can operate outside of the Earth's atmosphere but may require additional fuel components such as oxidizers. The engine comprises a fuel source, a combustion chamber, and a piston, among other components.",
+    "properties_unfamiliar": [
+      "oxygen",
+      "the lungs",
+      "breathing muscles"
+    ],
+    "properties_familiar": [
+      "fuel",
+      "combustion chamber",
+      "piston"
+    ],
+    "explanation_list": [
+      "Oxygen corresponds to fuel: In the respiratory system, oxygen is an essential element for sustaining life and participates in the energy-generating process within the organism. In an engine, fuel (such as gasoline, diesel, etc.) is the energy source required for its operation. In this mapping, both oxygen and fuel are critical factors in energy generation within their respective systems.",
+      "Lungs correspond to the combustion chamber: In the respiratory system, the lungs are responsible for the exchange of oxygen and carbon dioxide, providing oxygen to the organism and expelling waste gases. In an engine, the combustion chamber is where fuel and oxygen mix and burn, releasing energy to drive the engine. In this mapping, the lungs and combustion chamber are the places where gas exchange and energy release occur within their respective systems.",
+      "Breathing muscles correspond to the piston: In the respiratory system, breathing muscles (such as the diaphragm and intercostal muscles) control the flow of gas into and out of the lungs through contraction and relaxation, enabling the process of breathing. In an engine, the piston converts the energy produced within the combustion chamber into mechanical energy, driving other parts of the engine. In this mapping, both breathing muscles and the piston are crucial components for gas flow and energy conversion within their respective systems."
+    ],
+    "result": "Oxygen in the respiratory system corresponds to fuel in an engine; both provide the necessary energy source that is later converted into useful work. The lungs act like the combustion chamber in an engine, where oxygen and exhaled gases are processed and exchanged with the body\u2019s tissues. Breathing muscles function as pistons: they contract and relax to draw air in and expel it from the lungs, analogous to how pistons move within an engine cylinder.",
+    "reasoning": "The analogy maps key functional elements of the respiratory system to equivalent parts of an internal\u2011combustion engine. For each pair we highlight how a component that performs a particular role in breathing corresponds to a component that performs the same role in an engine. This demonstrates that both systems convert a raw input (oxygen or fuel) into usable work or energy through a chamber (lungs or combustion chamber) and a mechanical driver (breathing muscles or piston).",
+    "sbert_similarity": 0.8866622447967529,
+    "evaluation_type": "string_to_string"
+  },
+  {
+    "model": "gpt-oss-20b",
+    "setting": "paired_properties",
+    "row_index": 3,
+    "error": null,
+    "unfamiliar_concept": "Spread of Pathogens",
+    "familiar_concept": "Spread of Fire",
+    "description_unfamiliar": "The spread of pathogens is a serious concern, especially in crowded environments where individuals are in close proximity to each other. The incident aboard the Japan Air Lines Boeing 747 serves as a harsh reminder of the potential impacts of pathogen contamination. The incident involved the consumption of a contaminated in-flight meal that contained Staphylococci bacteria, resulting in the illness of 197 individuals. The incident highlights the need for effective prevention and control measures to minimize the spread of pathogens in crowded settings. These measures may include proper hygiene practices, regular sanitization, and the use of protective equipment to limit the transmission of pathogens. By taking proactive measures, the risk of contamination and illness can be reduced, ensuring the safety and health of individuals in crowded environments.",
+    "description_familiar": "Fire is a natural process that is essential for maintaining ecological systems, but when it becomes out of control, it can cause significant damage. Fire occurs when a material undergoes rapid oxidation during combustion, releasing heat, light, and reaction products. Flames are produced at a certain point in the combustion reaction, which is known as ignition point. The color and intensity of the flame will vary depending on the substances alight and any impurities outside. In its most common form, fire can result in conflagration, which can cause damage to life and property. Fire can also cause atmospheric pollution and water contamination. However, fire also has some positive effects, such as stimulating growth and maintaining ecological systems. Fire has been used by humans for various purposes such as rituals, in agriculture for clearing land, cooking, generating heat and light, propulsion purposes, smelting, forging, incineration of waste, cremation, and as a weapon or mode of destruction. Fire fighting methods are crucial to control the spread of fire, especially in hazardous situations.",
+    "properties_unfamiliar": [
+      "pathogen",
+      "crowd",
+      "Prevention and control measures"
+    ],
+    "properties_familiar": [
+      "fire",
+      "combustibles",
+      "Fire fighting methods"
+    ],
+    "explanation_list": [
+      "Pathogens correspond to fire: in the transmission of pathogens, pathogens (such as viruses and bacteria) are the causes of diseases that spread and cause health problems among people. In the spread of fires, fire is the element that ignites fires, spreading among combustibles and causing property damage and endangering lives. In this mapping, both pathogens and fire are the core factors of transmission and propagation in their respective systems.",
+      "Crowds correspond to combustibles: in the transmission of pathogens, crowds are the main channel for the spread of pathogens, which spread through contact and airborne droplets among people. In the spread of fires, combustibles (such as wood, paper, chemicals, etc.) are the key factors that allow fire to spread, as fire ignites combustibles to expand the blaze. In this mapping, both crowds and combustibles are the main channels and carriers of transmission and propagation in their respective systems.",
+      "Prevention and control measures correspond to fire fighting methods: in the transmission of pathogens, prevention and control measures (such as wearing masks, keeping social distance, vaccination, etc.) aim to slow down the speed and scope of pathogen transmission and reduce the impact of epidemics. In the spread of fires, fire fighting methods (such as fire extinguishers, firefighting equipment, fire brigades, etc.) are used to control the spread of fire, reducing the damage caused by fires. In this mapping, both prevention and control measures and fire fighting methods are means used in their respective systems to control and respond to transmission and propagation."
+    ],
+    "result": "Pathogens act like fire: they rapidly propagate when conditions allow, each infected individual serving as a new ignition point. Crowds serve like combustibles: dense gatherings provide abundant 'fuel'\u2014contact and shared spaces\u2014that enable pathogens to spread more easily, just as more combustibles accelerate fire. Prevention and control measures correspond to firefighting methods: isolation, vaccination, and hygiene are akin to extinguishing flames, building firebreaks, and protecting structures to halt the epidemic's spread.",
+    "reasoning": "Both the spread of pathogens and the spread of fire involve a source, a medium, and a propagation mechanism that can be amplified by nearby conditions. A pathogen, like fire, can exploit openings (e.g., coughing, touching surfaces) to jump from one host to another, much as a spark can ignite adjacent combustible material. Densely packed populations act as fuels for pathogens, mirroring how a pile of dry, combustible material can intensify a fire. Prevention and control strategies\u2014quarantine, vaccination, hygiene, and sanitation\u2014serve the same role as fire\u2011fighting methods such as putting out flames, building firebreaks, and using fire\u2011resistant barriers, by interrupting the chain of transmission and limiting the spread.",
+    "sbert_similarity": 0.8695628046989441,
+    "evaluation_type": "string_to_string"
+  },
+  {
+    "model": "gpt-oss-20b",
+    "setting": "paired_properties",
+    "row_index": 4,
+    "error": null,
+    "unfamiliar_concept": "Gene editing",
+    "familiar_concept": "kirigami",
+    "description_unfamiliar": "Gene editing is a revolutionary technique in molecular biology that allows for specific targeted changes to an organism's DNA. Using tools such as CRISPR-Cas9 technology, zinc finger nucleases, and transcription activator-like effector nucleases, scientists can insert, delete, or substitute genetic material to achieve desired results. This technique holds great promise in developing new treatments for diseases through gene therapy. With the ability to edit genes, there is potential to correct genetic mutations that cause diseases, hereditary conditions, and even cancer. The CRISPR-Cas9 system, in particular, has opened up a new era of gene editing due to its efficiency and specificity, allowing scientists to create targeted mutations at precise locations in the genome. As gene editing technology continues to evolve, it holds the promise of revolutionizing the fields of medicine, agriculture, and environmental science.",
+    "description_familiar": "Kirigami is a fascinating art form that originated from Japan, derived from the traditional origami. Unlike origami, kirigami involves the use of scissors in addition to folding paper to create intricate 3D designs that rise from the page. The art form involves cutting and folding paper into various shapes and sizes to create beautiful and intricate paper-cut works. The raw material used in kirigami is simply paper, which can then be transformed into stunning pieces of art with just a few simple cuts and folds. From animals to buildings and even plants, kirigami can be used to create almost anything. Using just a pair of scissors and some paper, you can unleash your artistic side and create beautiful and intricate works of art through the fascinating art form of kirigami.",
+    "properties_unfamiliar": [
+      "Gene",
+      "CRISPR-Cas9 Technology",
+      "edited gene"
+    ],
+    "properties_familiar": [
+      "raw material",
+      "Scissors",
+      "Paper-cut works"
+    ],
+    "explanation_list": [
+      "Gene corresponds to raw materials: in gene editing, genes are the objects being edited and modified , and they contain the genetic information of organisms. In paper-cut works, raw materials (such as paper) are the substances being cut and shaped to make paper-cut works. In this analogy, genes and raw materials are both the core objects being manipulated and changed in their respective systems.",
+      "CRISPR-Cas9 technology corresponds to scissors: in gene editing, CRISPR-Cas9 technology is a tool used for precise editing of genes, which can achieve the addition, deletion or modification of specific gene fragments. In paper-cut works, scissors are used to cut paper and shape the form of paper-cut works. In this analogy, CRISPR-Cas9 technology and scissors are both the key tools used for implementation and change in their respective systems.",
+      "Edited genes correspond to paper-cut works: in gene editing process, edited genes are the products that have been changed, and they have new characteristics and functions that may affect the traits of organisms. While in paper-cut process, paper-cut works are the results of cutting and shaping, having unique shapes and beauty. In this analogy, edited genes and paper-cut works are both the final products after implementation and change in their respective systems."
+    ],
+    "result": "The gene serves as the raw material, just as paper is the base in kirigami. CRISPR\u2011Cas9 acts like scissors, cutting the DNA at specific locations. The edited gene, after cutting and rejoining, produces new biological functions, analogous to the paper\u2011cut works that display novel shapes and patterns.",
+    "reasoning": "Gene editing can be effectively understood through the familiar process of kirigami\u2014cutting and shaping paper to create new forms. Both processes start with an unaltered material (the genome or paper), employ a precise cutting tool (CRISPR\u2011Cas9 or scissors), and culminate in a transformed, functional pattern (edited gene or paper\u2011cut artwork). This analogy highlights the intentional, targeted modification and the resulting new structure in both domains.",
+    "sbert_similarity": 0.731555163860321,
+    "evaluation_type": "string_to_string"
+  }
+]

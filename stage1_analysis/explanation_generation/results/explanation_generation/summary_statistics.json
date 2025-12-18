@@ -1,0 +1,171 @@
+{
+  "overall": {
+    "total_experiments": 33600,
+    "total_models": 12,
+    "total_settings": 6,
+    "mean_sbert_similarity": 0.8102974647409947,
+    "median_sbert_similarity": 0.8301599621772766,
+    "std_sbert_similarity": 0.09714257249379048,
+    "error_rate": 0.0
+  },
+  "model_rankings": {
+    "gpt-4.1-mini": {
+      "mean": 0.835,
+      "std": 0.0974,
+      "min": 0.1846,
+      "max": 0.9668,
+      "count": 2800,
+      "error_rate": 0.0
+    },
+    "qwen3-14b": {
+      "mean": 0.8268,
+      "std": 0.0944,
+      "min": 0.2303,
+      "max": 0.9604,
+      "count": 2800,
+      "error_rate": 0.0
+    },
+    "deepseek-r1": {
+      "mean": 0.8227,
+      "std": 0.0894,
+      "min": 0.1301,
+      "max": 0.9582,
+      "count": 2800,
+      "error_rate": 0.0
+    },
+    "qwen3-32b": {
+      "mean": 0.82,
+      "std": 0.1,
+      "min": -0.0423,
+      "max": 0.9583,
+      "count": 2800,
+      "error_rate": 0.0
+    },
+    "gpt-oss-120b": {
+      "mean": 0.8175,
+      "std": 0.1022,
+      "min": -0.1284,
+      "max": 0.9589,
+      "count": 2800,
+      "error_rate": 0.0
+    },
+    "gpt-4.1-nano": {
+      "mean": 0.8095,
+      "std": 0.0912,
+      "min": 0.2188,
+      "max": 0.9572,
+      "count": 2800,
+      "error_rate": 0.0
+    },
+    "gemini-2.5-flash-lite": {
+      "mean": 0.809,
+      "std": 0.1057,
+      "min": -0.0423,
+      "max": 0.9631,
+      "count": 2800,
+      "error_rate": 0.0
+    },
+    "grok-4-fast": {
+      "mean": 0.8019,
+      "std": 0.0957,
+      "min": 0.1487,
+      "max": 0.9655,
+      "count": 2800,
+      "error_rate": 0.0
+    },
+    "gpt-oss-20b": {
+      "mean": 0.8017,
+      "std": 0.1039,
+      "min": -0.1411,
+      "max": 0.9599,
+      "count": 2800,
+      "error_rate": 0.0
+    },
+    "llama-3.1-405b-instruct": {
+      "mean": 0.8011,
+      "std": 0.0913,
+      "min": 0.1845,
+      "max": 0.9559,
+      "count": 2800,
+      "error_rate": 0.0
+    },
+    "meta-llama-3-1-70b-instruct": {
+      "mean": 0.7908,
+      "std": 0.0914,
+      "min": 0.2217,
+      "max": 0.9504,
+      "count": 2800,
+      "error_rate": 0.0
+    },
+    "meta-llama-3-1-8b-instruct": {
+      "mean": 0.7877,
+      "std": 0.0894,
+      "min": 0.2246,
+      "max": 0.9483,
+      "count": 2800,
+      "error_rate": 0.0
+    }
+  },
+  "setting_rankings": {
+    "Concepts + Properties": {
+      "mean": 0.855,
+      "std": 0.0684,
+      "min": -0.1411,
+      "max": 0.9655,
+      "count": 9600,
+      "error_rate": 0.0
+    },
+    "Concepts + Properties + Descriptions": {
+      "mean": 0.8535,
+      "std": 0.0718,
+      "min": -0.0423,
+      "max": 0.9655,
+      "count": 4800,
+      "error_rate": 0.0
+    },
+    "Concepts + Paired Mappings": {
+      "mean": 0.8321,
+      "std": 0.0734,
+      "min": -0.1284,
+      "max": 0.9668,
+      "count": 4800,
+      "error_rate": 0.0
+    },
+    "Concepts + Paired Mappings + Descriptions": {
+      "mean": 0.8276,
+      "std": 0.0775,
+      "min": -0.1053,
+      "max": 0.9603,
+      "count": 4800,
+      "error_rate": 0.0
+    },
+    "Concepts + Descriptions": {
+      "mean": 0.7273,
+      "std": 0.0964,
+      "min": -0.0973,
+      "max": 0.9219,
+      "count": 4800,
+      "error_rate": 0.0
+    },
+    "Concepts Only": {
+      "mean": 0.7216,
+      "std": 0.0973,
+      "min": -0.1003,
+      "max": 0.9276,
+      "count": 4800,
+      "error_rate": 0.0
+    }
+  },
+  "top_10_combinations": {
+    "gpt-4.1-mini - Concepts + Properties + Descriptions": 0.884503208398819,
+    "gpt-4.1-mini - Concepts + Properties": 0.8823941771686077,
+    "qwen3-32b - Concepts + Properties": 0.8801024233549833,
+    "qwen3-32b - Concepts + Properties + Descriptions": 0.8796704068779946,
+    "qwen3-14b - Concepts + Properties + Descriptions": 0.8759118328988552,
+    "gpt-4.1-mini - Concepts + Paired Mappings": 0.8757134431600571,
+    "qwen3-14b - Concepts + Properties": 0.8752241823077201,
+    "gpt-4.1-mini - Concepts + Paired Mappings + Descriptions": 0.8728459399938583,
+    "deepseek-r1 - Concepts + Properties + Descriptions": 0.8719076085090637,
+    "deepseek-r1 - Concepts + Properties": 0.8708091045916081
+  }
+}

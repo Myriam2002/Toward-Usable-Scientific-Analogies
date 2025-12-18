@@ -1,0 +1,5 @@
+,total_examples,found_in_top_k,found_at_rank_1,top_k_accuracy,rank_1_accuracy,avg_gold_rank
+name_only,400.0,230.0,53.0,0.575,0.1325,5.713
+name_background,400.0,210.0,34.0,0.525,0.085,6.6381
+name_properties,400.0,230.0,53.0,0.575,0.1325,5.7174
+name_properties_background,400.0,210.0,34.0,0.525,0.085,6.6286

@@ -1,0 +1,13 @@
+model,metric,n_pairs,mean_no_desc,mean_with_desc,delta_mean,wilcoxon_stat,p_value,significant_0.05
+deepseek-r1,fuzzy_match_accuracy,5,0.13333333333333333,0.13333333333333333,0.0,3.0,1.0,False
+gemini-2.5-flash-lite,fuzzy_match_accuracy,5,0.06666666666666667,0.06666666666666667,0.0,,,False
+gpt-4.1-mini,fuzzy_match_accuracy,5,0.0,0.06666666666666667,0.06666666666666667,0.0,0.31731050786291415,False
+gpt-4.1-nano,fuzzy_match_accuracy,5,0.26666666666666666,0.2,-0.06666666666666665,0.0,0.31731050786291415,False
+gpt-oss-120b,fuzzy_match_accuracy,5,0.0,0.0,0.0,,,False
+gpt-oss-20b,fuzzy_match_accuracy,5,0.06666666666666667,0.06666666666666667,0.0,,,False
+grok-4-fast,fuzzy_match_accuracy,5,0.06666666666666667,0.06666666666666667,0.0,1.5,1.0,False
+llama-3.1-405b-instruct,fuzzy_match_accuracy,5,0.0,0.2,0.2,0.0,0.0832645166635504,False
+meta-llama-3-1-70b-instruct,fuzzy_match_accuracy,5,0.06666666666666667,0.06666666666666667,0.0,1.5,1.0,False
+meta-llama-3-1-8b-instruct,fuzzy_match_accuracy,5,0.2,0.2,0.0,,,False
+qwen3-14b,fuzzy_match_accuracy,5,0.06666666666666667,0.2,0.13333333333333336,0.0,0.15729920705028502,False
+qwen3-32b,fuzzy_match_accuracy,5,0.2,0.06666666666666667,-0.13333333333333336,0.0,0.15729920705028502,False

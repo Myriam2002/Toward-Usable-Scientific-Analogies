@@ -1,0 +1,7 @@
+setting_name,mean,std,min,max,count,error_rate
+Concepts + Properties,0.855,0.0684,-0.1411,0.9655,9600,0.0
+Concepts + Properties + Descriptions,0.8535,0.0718,-0.0423,0.9655,4800,0.0
+Concepts + Paired Mappings,0.8321,0.0734,-0.1284,0.9668,4800,0.0
+Concepts + Paired Mappings + Descriptions,0.8276,0.0775,-0.1053,0.9603,4800,0.0
+Concepts + Descriptions,0.7273,0.0964,-0.0973,0.9219,4800,0.0
+Concepts Only,0.7216,0.0973,-0.1003,0.9276,4800,0.0
