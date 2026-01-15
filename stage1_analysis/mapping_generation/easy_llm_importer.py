@@ -307,9 +307,13 @@ class DSPyAdapter:
         self.llm_client = llm_client
         self.model_name = model_name
     
-    def get_dspy_lm(self):
+    def get_dspy_lm(self, max_tokens: int = 8000, temperature: float = 0.1):
         """
         Get a DSPy-compatible LM object
+        
+        Args:
+            max_tokens: Maximum tokens for generation (default 8000 to avoid truncation)
+            temperature: Sampling temperature (default 0.1 to prevent repetition loops while staying focused)
         
         Returns:
             A DSPy LM that uses the unified client
@@ -325,12 +329,17 @@ class DSPyAdapter:
         # Check if this is a reasoning model (GPT-5 or GPT-OSS)
         is_reasoning_model = "gpt-5" in model_config.api_name.lower() or "gpt-oss" in model_config.api_name.lower()
         
-        # Base parameters for reasoning models
-        reasoning_params = {}
+        # Set LM parameters - use higher limits for reasoning models
         if is_reasoning_model:
-            reasoning_params = {
+            lm_params = {
                 "temperature": 1.0,
                 "max_tokens": 16000
+            }
+        else:
+            # Default params for all other models to prevent truncation and repetition
+            lm_params = {
+                "temperature": temperature,
+                "max_tokens": max_tokens
             }
         
         # Create appropriate DSPy LM based on provider
@@ -339,21 +348,21 @@ class DSPyAdapter:
             return dspy.LM(
                 model=f"openai/{model_config.api_name}",
                 api_key=self.llm_client.openai_api_key,
-                **reasoning_params
+                **lm_params
             )
         elif model_config.provider == Provider.OPENROUTER:
             return dspy.LM(
                 model=f"openai/{model_config.api_name}",
                 api_key=self.llm_client.openrouter_api_key,
                 api_base="https://openrouter.ai/api/v1",
-                **reasoning_params
+                **lm_params
             )
         elif model_config.provider == Provider.DEEPINFRA:
             return dspy.LM(
                 model=f"openai/{model_config.api_name}",
                 api_key=self.llm_client.deepinfra_api_key,
                 api_base="https://api.deepinfra.com/v1/openai",
-                **reasoning_params
+                **lm_params
             )
 
 

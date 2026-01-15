@@ -1,0 +1,7 @@
+method,Coherence,Mapping,Explanatory,Avg Score,Gold Rate,Gold Matches,N
+LLM + Gen-SC + Bg,2.842,2.67,2.562,2.691,18.2%,73,400
+LLM + SC,2.845,2.575,2.52,2.646,24.5%,98,400
+LLM Name Only,2.808,2.492,2.448,2.582,17.5%,70,400
+LLM + SC + Bg,2.75,2.478,2.438,2.554,20.8%,83,400
+LLM + Bg,2.748,2.452,2.392,2.53,22.2%,89,400
+Embedding Only,2.055,1.832,1.71,1.865,16.2%,65,400
