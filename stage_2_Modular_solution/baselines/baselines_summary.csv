@@ -1,6 +1,0 @@
-baseline,total,successful,errors,found,hit_rate,mean_rank
-Embedding Top 3,400,400,0,160,40.0,1.75
-LLM + Properties,400,400,0,143,35.75,1.4265734265734267
-LLM + Name Only,400,399,1,133,33.333333333333336,1.586466165413534
-LLM: Name + Props + Desc,400,400,0,135,33.75,1.5037037037037038
-LLM: Name + Desc,400,400,0,140,35.0,1.5142857142857142

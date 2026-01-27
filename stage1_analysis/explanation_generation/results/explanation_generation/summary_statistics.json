@@ -9,7 +9,7 @@
     "error_rate": 0.0
   },
   "model_rankings": {
-    "gpt-4.1-mini": {
+    "GPT-4.1-Mini": {
       "mean": 0.835,
       "std": 0.0974,
       "min": 0.1846,
@@ -17,7 +17,7 @@
       "count": 2800,
       "error_rate": 0.0
     },
-    "qwen3-14b": {
+    "Qwen3-14B": {
       "mean": 0.8268,
       "std": 0.0944,
       "min": 0.2303,
@@ -25,7 +25,7 @@
       "count": 2800,
       "error_rate": 0.0
     },
-    "deepseek-r1": {
+    "DeepSeek-R1": {
       "mean": 0.8227,
       "std": 0.0894,
       "min": 0.1301,
@@ -33,7 +33,7 @@
       "count": 2800,
       "error_rate": 0.0
     },
-    "qwen3-32b": {
+    "Qwen3-32B": {
       "mean": 0.82,
       "std": 0.1,
       "min": -0.0423,
@@ -41,7 +41,7 @@
       "count": 2800,
       "error_rate": 0.0
     },
-    "gpt-oss-120b": {
+    "GPT-OSS-120B": {
       "mean": 0.8175,
       "std": 0.1022,
       "min": -0.1284,
@@ -49,7 +49,7 @@
       "count": 2800,
       "error_rate": 0.0
     },
-    "gpt-4.1-nano": {
+    "GPT-4.1-Nano": {
       "mean": 0.8095,
       "std": 0.0912,
       "min": 0.2188,
@@ -57,7 +57,7 @@
       "count": 2800,
       "error_rate": 0.0
     },
-    "gemini-2.5-flash-lite": {
+    "Gemini-2.5": {
       "mean": 0.809,
       "std": 0.1057,
       "min": -0.0423,
@@ -65,7 +65,7 @@
       "count": 2800,
       "error_rate": 0.0
     },
-    "grok-4-fast": {
+    "Grok-4": {
       "mean": 0.8019,
       "std": 0.0957,
       "min": 0.1487,
@@ -73,7 +73,7 @@
       "count": 2800,
       "error_rate": 0.0
     },
-    "gpt-oss-20b": {
+    "GPT-OSS-20B": {
       "mean": 0.8017,
       "std": 0.1039,
       "min": -0.1411,
@@ -81,7 +81,7 @@
       "count": 2800,
       "error_rate": 0.0
     },
-    "llama-3.1-405b-instruct": {
+    "Llama-405B": {
       "mean": 0.8011,
       "std": 0.0913,
       "min": 0.1845,
@@ -89,7 +89,7 @@
       "count": 2800,
       "error_rate": 0.0
     },
-    "meta-llama-3-1-70b-instruct": {
+    "Llama-70B": {
       "mean": 0.7908,
       "std": 0.0914,
       "min": 0.2217,
@@ -97,7 +97,7 @@
       "count": 2800,
       "error_rate": 0.0
     },
-    "meta-llama-3-1-8b-instruct": {
+    "Llama-8B": {
       "mean": 0.7877,
       "std": 0.0894,
       "min": 0.2246,
@@ -107,7 +107,7 @@
     }
   },
   "setting_rankings": {
-    "Concepts + Properties": {
+    "S3: Systems+Unpaired": {
       "mean": 0.855,
       "std": 0.0684,
       "min": -0.1411,
@@ -115,7 +115,7 @@
       "count": 9600,
       "error_rate": 0.0
     },
-    "Concepts + Properties + Descriptions": {
+    "S4: Systems+Unpaired+BG": {
       "mean": 0.8535,
       "std": 0.0718,
       "min": -0.0423,
@@ -123,7 +123,7 @@
       "count": 4800,
       "error_rate": 0.0
     },
-    "Concepts + Paired Mappings": {
+    "S5: Systems+Paired": {
       "mean": 0.8321,
       "std": 0.0734,
       "min": -0.1284,
@@ -131,7 +131,7 @@
       "count": 4800,
       "error_rate": 0.0
     },
-    "Concepts + Paired Mappings + Descriptions": {
+    "S6: Systems+Paired+BG": {
       "mean": 0.8276,
       "std": 0.0775,
       "min": -0.1053,
@@ -139,7 +139,7 @@
       "count": 4800,
       "error_rate": 0.0
     },
-    "Concepts + Descriptions": {
+    "S2: Systems+BG": {
       "mean": 0.7273,
       "std": 0.0964,
       "min": -0.0973,
@@ -147,7 +147,7 @@
       "count": 4800,
       "error_rate": 0.0
     },
-    "Concepts Only": {
+    "S1: Systems": {
       "mean": 0.7216,
       "std": 0.0973,
       "min": -0.1003,
@@ -157,15 +157,15 @@
     }
   },
   "top_10_combinations": {
-    "gpt-4.1-mini - Concepts + Properties + Descriptions": 0.884503208398819,
-    "gpt-4.1-mini - Concepts + Properties": 0.8823941771686077,
-    "qwen3-32b - Concepts + Properties": 0.8801024233549833,
-    "qwen3-32b - Concepts + Properties + Descriptions": 0.8796704068779946,
-    "qwen3-14b - Concepts + Properties + Descriptions": 0.8759118328988552,
-    "gpt-4.1-mini - Concepts + Paired Mappings": 0.8757134431600571,
-    "qwen3-14b - Concepts + Properties": 0.8752241823077201,
-    "gpt-4.1-mini - Concepts + Paired Mappings + Descriptions": 0.8728459399938583,
-    "deepseek-r1 - Concepts + Properties + Descriptions": 0.8719076085090637,
-    "deepseek-r1 - Concepts + Properties": 0.8708091045916081
+    "GPT-4.1-Mini - S4: Systems+Unpaired+BG": 0.884503208398819,
+    "GPT-4.1-Mini - S3: Systems+Unpaired": 0.8823941771686077,
+    "Qwen3-32B - S3: Systems+Unpaired": 0.8801024233549833,
+    "Qwen3-32B - S4: Systems+Unpaired+BG": 0.8796704068779946,
+    "Qwen3-14B - S4: Systems+Unpaired+BG": 0.8759118328988552,
+    "GPT-4.1-Mini - S5: Systems+Paired": 0.8757134431600571,
+    "Qwen3-14B - S3: Systems+Unpaired": 0.8752241823077201,
+    "GPT-4.1-Mini - S6: Systems+Paired+BG": 0.8728459399938583,
+    "DeepSeek-R1 - S4: Systems+Unpaired+BG": 0.8719076085090637,
+    "DeepSeek-R1 - S3: Systems+Unpaired": 0.8708091045916081
   }
 }

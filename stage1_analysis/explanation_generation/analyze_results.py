@@ -33,12 +33,27 @@ RESULTS_DIR = 'checkpoints/explanation_generation'
 OUTPUT_DIR = 'results/explanation_generation'
 
 SETTING_NAMES = {
-    'none': 'Concepts Only',
-    'none_description': 'Concepts + Descriptions',
-    'unpaired_properties': 'Concepts + Properties',
-    'unpaired_properties_description': 'Concepts + Properties + Descriptions',
-    'paired_properties': 'Concepts + Paired Mappings',
-    'paired_properties_description': 'Concepts + Paired Mappings + Descriptions'
+    'none': 'S1: Systems',
+    'none_description': 'S2: Systems+BG',
+    'unpaired_properties': 'S3: Systems+Unpaired',
+    'unpaired_properties_description': 'S4: Systems+Unpaired+BG',
+    'paired_properties': 'S5: Systems+Paired',
+    'paired_properties_description': 'S6: Systems+Paired+BG'
+}
+
+MODEL_NAMES = {
+    'gpt-oss-20b': 'GPT-OSS-20B',
+    'gpt-oss-120b': 'GPT-OSS-120B',
+    'gpt-4.1-mini': 'GPT-4.1-Mini',
+    'gpt-4.1-nano': 'GPT-4.1-Nano',
+    'grok-4-fast': 'Grok-4',
+    'gemini-2.5-flash-lite': 'Gemini-2.5',
+    'llama-3.1-405b-instruct': 'Llama-405B',
+    'meta-llama-3-1-70b-instruct': 'Llama-70B',
+    'meta-llama-3-1-8b-instruct': 'Llama-8B',
+    'deepseek-r1': 'DeepSeek-R1',
+    'qwen3-14b': 'Qwen3-14B',
+    'qwen3-32b': 'Qwen3-32B',
 }
 
 # ============================================================================
@@ -84,6 +99,9 @@ def load_all_results(results_dir):
     # Add setting display names
     combined_df['setting_name'] = combined_df['setting'].map(SETTING_NAMES)
     
+    # Add model display names
+    combined_df['model_name'] = combined_df['model'].map(MODEL_NAMES).fillna(combined_df['model'])
+    
     # Calculate error flag
     combined_df['has_error'] = combined_df['error'].notna() & (combined_df['error'] != '') & (combined_df['error'] != 'None')
     
@@ -102,8 +120,8 @@ def load_all_results(results_dir):
 def plot_heatmap_model_setting_performance(df, output_dir):
     """Create a heatmap showing average SBERT similarity for each model-setting combination."""
     # Calculate average similarity per model-setting
-    pivot_data = df.groupby(['model', 'setting_name'])['sbert_similarity'].mean().reset_index()
-    pivot_table = pivot_data.pivot(index='model', columns='setting_name', values='sbert_similarity')
+    pivot_data = df.groupby(['model_name', 'setting_name'])['sbert_similarity'].mean().reset_index()
+    pivot_table = pivot_data.pivot(index='model_name', columns='setting_name', values='sbert_similarity')
     
     # Sort columns by setting order
     setting_order = [SETTING_NAMES[s] for s in SETTING_NAMES.keys() if SETTING_NAMES[s] in pivot_table.columns]
@@ -128,9 +146,9 @@ def plot_model_comparison_boxplot(df, output_dir):
     plt.figure(figsize=(16, 8))
     
     # Sort models by median performance
-    model_order = df.groupby('model')['sbert_similarity'].median().sort_values(ascending=False).index
+    model_order = df.groupby('model_name')['sbert_similarity'].median().sort_values(ascending=False).index
     
-    sns.boxplot(data=df, x='model', y='sbert_similarity', order=model_order, palette='Set3')
+    sns.boxplot(data=df, x='model_name', y='sbert_similarity', order=model_order, palette='Set3')
     plt.axhline(y=0.75, color='red', linestyle='--', linewidth=1, alpha=0.5, label='Target: 0.75')
     plt.axhline(y=df['sbert_similarity'].mean(), color='blue', linestyle='--', linewidth=1, alpha=0.5, 
                 label=f'Overall Mean: {df["sbert_similarity"].mean():.3f}')
@@ -186,7 +204,7 @@ def plot_model_ranking_by_setting(df, output_dir):
         setting_df = df[df['setting_name'] == setting_name]
         
         # Calculate mean performance per model
-        model_perf = setting_df.groupby('model')['sbert_similarity'].mean().sort_values(ascending=False)
+        model_perf = setting_df.groupby('model_name')['sbert_similarity'].mean().sort_values(ascending=False)
         
         ax = axes[idx]
         colors = plt.cm.RdYlGn(model_perf.values)
@@ -215,7 +233,7 @@ def plot_error_rate_analysis(df, output_dir):
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
     
     # Error rate by model
-    error_by_model = df.groupby('model')['has_error'].mean() * 100
+    error_by_model = df.groupby('model_name')['has_error'].mean() * 100
     error_by_model = error_by_model.sort_values(ascending=False)
     
     colors1 = ['red' if x > 5 else 'orange' if x > 1 else 'green' for x in error_by_model.values]
@@ -254,13 +272,13 @@ def plot_error_rate_analysis(df, output_dir):
 def plot_top_bottom_models(df, output_dir):
     """Compare top 3 and bottom 3 models across settings."""
     # Get overall model performance
-    model_performance = df.groupby('model')['sbert_similarity'].mean().sort_values()
+    model_performance = df.groupby('model_name')['sbert_similarity'].mean().sort_values()
     top_3 = model_performance.tail(3).index.tolist()
     bottom_3 = model_performance.head(3).index.tolist()
     
     # Filter data
-    filtered_df = df[df['model'].isin(top_3 + bottom_3)].copy()
-    filtered_df['group'] = filtered_df['model'].apply(lambda x: 'Top 3' if x in top_3 else 'Bottom 3')
+    filtered_df = df[df['model_name'].isin(top_3 + bottom_3)].copy()
+    filtered_df['group'] = filtered_df['model_name'].apply(lambda x: 'Top 3' if x in top_3 else 'Bottom 3')
     
     plt.figure(figsize=(14, 8))
     
@@ -268,7 +286,7 @@ def plot_top_bottom_models(df, output_dir):
     setting_order = [SETTING_NAMES[s] for s in SETTING_NAMES.keys() if SETTING_NAMES[s] in filtered_df['setting_name'].unique()]
     
     # Calculate means
-    plot_data = filtered_df.groupby(['setting_name', 'model', 'group'])['sbert_similarity'].mean().reset_index()
+    plot_data = filtered_df.groupby(['setting_name', 'model_name', 'group'])['sbert_similarity'].mean().reset_index()
     
     x = np.arange(len(setting_order))
     width = 0.12
@@ -279,12 +297,12 @@ def plot_top_bottom_models(df, output_dir):
     colors_bottom = ['#e74c3c', '#c0392b', '#a93226']
     
     for i, model in enumerate(top_3):
-        model_data = plot_data[(plot_data['model'] == model) & (plot_data['setting_name'].isin(setting_order))]
+        model_data = plot_data[(plot_data['model_name'] == model) & (plot_data['setting_name'].isin(setting_order))]
         model_data = model_data.set_index('setting_name').reindex(setting_order, fill_value=0)
         ax.bar(x + i * width, model_data['sbert_similarity'], width, label=model, color=colors_top[i])
     
     for i, model in enumerate(bottom_3):
-        model_data = plot_data[(plot_data['model'] == model) & (plot_data['setting_name'].isin(setting_order))]
+        model_data = plot_data[(plot_data['model_name'] == model) & (plot_data['setting_name'].isin(setting_order))]
         model_data = model_data.set_index('setting_name').reindex(setting_order, fill_value=0)
         ax.bar(x + (i + 3) * width, model_data['sbert_similarity'], width, label=model, color=colors_bottom[i])
     
@@ -307,19 +325,19 @@ def plot_top_bottom_models(df, output_dir):
 def plot_setting_impact_on_models(df, output_dir):
     """Show how each setting impacts different models (improvement/degradation)."""
     # Use 'none' as baseline
-    baseline_setting = 'Concepts Only'
+    baseline_setting = 'S1: Systems'
     
     if baseline_setting not in df['setting_name'].unique():
         print("⚠️  Baseline setting 'none' not found, skipping setting impact analysis")
         return
     
-    baseline = df[df['setting_name'] == baseline_setting].groupby('model')['sbert_similarity'].mean()
+    baseline = df[df['setting_name'] == baseline_setting].groupby('model_name')['sbert_similarity'].mean()
     
     improvements = {}
     for setting in df['setting_name'].unique():
         if setting == baseline_setting:
             continue
-        setting_perf = df[df['setting_name'] == setting].groupby('model')['sbert_similarity'].mean()
+        setting_perf = df[df['setting_name'] == setting].groupby('model_name')['sbert_similarity'].mean()
         improvements[setting] = setting_perf - baseline
     
     if not improvements:
@@ -346,7 +364,7 @@ def plot_setting_impact_on_models(df, output_dir):
 def plot_consistency_analysis(df, output_dir):
     """Analyze consistency (variance) of model performance."""
     # Calculate standard deviation for each model across all runs
-    consistency = df.groupby('model')['sbert_similarity'].agg(['mean', 'std']).sort_values('std')
+    consistency = df.groupby('model_name')['sbert_similarity'].agg(['mean', 'std']).sort_values('std')
     
     fig, ax = plt.subplots(figsize=(12, 8))
     
@@ -389,8 +407,8 @@ def generate_summary_statistics(df, output_dir):
     }
     
     # Model statistics
-    model_stats = df.groupby('model')['sbert_similarity'].agg(['mean', 'std', 'min', 'max', 'count']).round(4)
-    model_errors = df.groupby('model')['has_error'].mean() * 100
+    model_stats = df.groupby('model_name')['sbert_similarity'].agg(['mean', 'std', 'min', 'max', 'count']).round(4)
+    model_errors = df.groupby('model_name')['has_error'].mean() * 100
     model_stats['error_rate'] = model_errors
     model_stats = model_stats.sort_values('mean', ascending=False)
     summary['model_rankings'] = model_stats.to_dict('index')
@@ -403,7 +421,7 @@ def generate_summary_statistics(df, output_dir):
     summary['setting_rankings'] = setting_stats.to_dict('index')
     
     # Best combinations
-    best_combos = df.groupby(['model', 'setting_name'])['sbert_similarity'].mean().sort_values(ascending=False).head(10)
+    best_combos = df.groupby(['model_name', 'setting_name'])['sbert_similarity'].mean().sort_values(ascending=False).head(10)
     summary['top_10_combinations'] = {f"{model} - {setting}": float(score) 
                                        for (model, setting), score in best_combos.items()}
     

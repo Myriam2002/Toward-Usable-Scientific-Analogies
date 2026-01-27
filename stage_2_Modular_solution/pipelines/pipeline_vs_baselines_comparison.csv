@@ -1,6 +1,0 @@
-method,found,total,hit_rate,mean_rank,errors
-Embedding Top 3,160,400,40.0,1.75,
-RAG + LLM Source Mapping (OURS),131,389,33.67609254498715,1.633587786259542,11.0
-LLM: Name + Props + Desc,134,400,33.5,1.5522388059701493,
-LLM: Name + Desc,130,400,32.5,1.6153846153846154,
-LLM: Name Only,129,400,32.25,1.6511627906976745,
