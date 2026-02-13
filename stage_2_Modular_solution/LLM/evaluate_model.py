@@ -12,6 +12,17 @@ import pandas as pd
 from typing import List, Dict, Optional
 from tqdm import tqdm
 
+# Load environment variables from .env file BEFORE other imports
+from dotenv import load_dotenv
+env_paths = [
+    os.path.join(os.path.dirname(__file__), '..', '..', '.env'),  # ../../.env (root)
+    os.path.join(os.path.dirname(__file__), '.env'),  # ./env (local)
+]
+for env_path in env_paths:
+    if os.path.exists(env_path):
+        load_dotenv(env_path)
+        break
+
 # Add paths
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', 'stage1_analysis', 'mapping_generation'))
 
@@ -346,21 +357,13 @@ def evaluate_model_results(
             # LLM Judge scores - stored as dictionaries
             'judge_baseline': json.dumps(judge_baseline),  # Dict with all judge scores for top1_baseline
             'judge_embedding': json.dumps(judge_embedding),  # Dict with all judge scores for top1_embedding
-            # Legacy columns for backward compatibility (using baseline scores)
-            'analogy_coherence': eval_baseline['analogy_coherence'],
-            'mapping_soundness': eval_baseline['mapping_soundness'],
-            'explanatory_power': eval_baseline['explanatory_power'],
-            'average_score': eval_baseline['average_score'],
-            'judge_reasoning': eval_baseline['judge_reasoning'],
             'status': eval_baseline['status'],
             # Exact match results
             'gold_ranks_list': json.dumps(gold_match['gold_ranks_list']),  # All exact ranks in order [1, 3, 5]
             'gold_ranks': json.dumps(gold_match['gold_ranks']),  # Dict: generated_analogy -> rank
-            'found_gold_sources': json.dumps(gold_match['found_gold_sources']),
             # Semantic match results  
             'sem_gold_ranks_list': json.dumps(gold_match['sem_gold_ranks_list']),  # All semantic ranks in order [2, 4]
             'sem_gold_ranks': json.dumps(gold_match['sem_gold_ranks']),  # Dict: generated_analogy -> semantic rank
-            'sem_gold_sources': json.dumps(gold_match['sem_gold_sources']),
             # Per-gold similarity stats
             'similarity_per_gold': json.dumps(gold_match['similarity_per_gold']),  # Dict: gold -> {scores, highest, avg}
         }
@@ -380,25 +383,39 @@ def evaluate_model_results(
     print(f"Errors: {len(results_df) - len(successful)}")
     
     if len(successful) > 0:
-        # Extract embedding judge scores from the JSON column
-        def get_embedding_avg(judge_json: str) -> float:
+        # Helper to extract scores from judge JSON
+        def get_judge_score(judge_json: str, key: str) -> float:
             try:
                 judge = json.loads(judge_json)
-                return judge.get('average', 0)
+                return judge.get(key, 0)
             except:
                 return 0
         
         successful = successful.copy()
-        successful['embedding_avg_judge'] = successful['judge_embedding'].apply(get_embedding_avg)
+        
+        # Extract baseline judge scores
+        successful['baseline_coherence'] = successful['judge_baseline'].apply(lambda x: get_judge_score(x, 'coherence'))
+        successful['baseline_mapping'] = successful['judge_baseline'].apply(lambda x: get_judge_score(x, 'mapping'))
+        successful['baseline_explanatory'] = successful['judge_baseline'].apply(lambda x: get_judge_score(x, 'explanatory'))
+        successful['baseline_avg'] = successful['judge_baseline'].apply(lambda x: get_judge_score(x, 'average'))
+        
+        # Extract embedding judge scores
+        successful['embedding_coherence'] = successful['judge_embedding'].apply(lambda x: get_judge_score(x, 'coherence'))
+        successful['embedding_mapping'] = successful['judge_embedding'].apply(lambda x: get_judge_score(x, 'mapping'))
+        successful['embedding_explanatory'] = successful['judge_embedding'].apply(lambda x: get_judge_score(x, 'explanatory'))
+        successful['embedding_avg'] = successful['judge_embedding'].apply(lambda x: get_judge_score(x, 'average'))
         
         print(f"\nLLM Judge Scores - TOP1_BASELINE (mean):")
-        print(f"  Coherence: {successful['analogy_coherence'].mean():.2f}")
-        print(f"  Mapping: {successful['mapping_soundness'].mean():.2f}")
-        print(f"  Explanatory: {successful['explanatory_power'].mean():.2f}")
-        print(f"  Average: {successful['average_score'].mean():.2f}")
+        print(f"  Coherence:   {successful['baseline_coherence'].mean():.2f}")
+        print(f"  Mapping:     {successful['baseline_mapping'].mean():.2f}")
+        print(f"  Explanatory: {successful['baseline_explanatory'].mean():.2f}")
+        print(f"  Average:     {successful['baseline_avg'].mean():.2f}")
         
         print(f"\nLLM Judge Scores - TOP1_EMBEDDING (mean):")
-        print(f"  Average: {successful['embedding_avg_judge'].mean():.2f}")
+        print(f"  Coherence:   {successful['embedding_coherence'].mean():.2f}")
+        print(f"  Mapping:     {successful['embedding_mapping'].mean():.2f}")
+        print(f"  Explanatory: {successful['embedding_explanatory'].mean():.2f}")
+        print(f"  Average:     {successful['embedding_avg'].mean():.2f}")
         
         # Helper to get best rank from ranks list
         def get_best_rank(ranks_json: str) -> int:
@@ -435,7 +452,7 @@ def evaluate_model_results(
         hit2_sem = (effective_rank.between(1, 2)).sum() / total
         hit3_sem = (effective_rank.between(1, 3)).sum() / total
         
-        print(f"\nHit@K (Semantic, threshold >= 0.7):")
+        print(f"\nHit@K (Semantic, threshold >= 0.5):")
         print(f"  Hit@1: {hit1_sem:.1%}")
         print(f"  Hit@2: {hit2_sem:.1%}")
         print(f"  Hit@3: {hit3_sem:.1%}")

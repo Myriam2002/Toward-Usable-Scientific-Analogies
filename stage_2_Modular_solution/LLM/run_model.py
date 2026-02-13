@@ -12,6 +12,19 @@ from typing import List, Dict, Optional
 from tqdm import tqdm
 import json
 
+# Load environment variables from .env file BEFORE other imports
+from dotenv import load_dotenv
+# Try multiple paths for .env file
+env_paths = [
+    os.path.join(os.path.dirname(__file__), '..', '..', '.env'),  # ../../.env (root)
+    os.path.join(os.path.dirname(__file__), '.env'),  # ./env (local)
+]
+for env_path in env_paths:
+    if os.path.exists(env_path):
+        load_dotenv(env_path)
+        print(f"Loaded environment from: {env_path}")
+        break
+
 # Add paths
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', 'stage1_analysis', 'mapping_generation'))
 
@@ -165,6 +178,55 @@ def extract_subconcepts(record: pd.Series) -> str:
         return ""
 
 
+def parse_mapped_properties(mapped_props, target_props: List[str]) -> str:
+    """
+    Robustly parse mapped_source_properties from LLM response.
+    Handles dict, JSON string, Python literal, and edge cases.
+    
+    Args:
+        mapped_props: The mapped_source_properties value from DSPy result
+                      Can be dict, JSON string, Python literal string, or None
+        target_props: List of target properties to map (maintains order)
+        
+    Returns:
+        Comma-separated string of mapped source properties in target_props order
+    """
+    if mapped_props is None:
+        return ""
+    
+    # Already a dict (best case)
+    if isinstance(mapped_props, dict):
+        ordered_values = [mapped_props.get(prop, "") for prop in target_props]
+        return ", ".join(ordered_values)
+    
+    # Try JSON parsing
+    if isinstance(mapped_props, str):
+        s = mapped_props.strip()
+        if not s or s.lower() in ['none', 'null', '']:
+            return ""
+        
+        # Try JSON
+        try:
+            obj = json.loads(s)
+            if isinstance(obj, dict):
+                ordered_values = [obj.get(prop, "") for prop in target_props]
+                return ", ".join(ordered_values)
+        except (json.JSONDecodeError, TypeError):
+            pass
+        
+        # Try Python literal
+        try:
+            obj = ast.literal_eval(s)
+            if isinstance(obj, dict):
+                ordered_values = [obj.get(prop, "") for prop in target_props]
+                return ", ".join(ordered_values)
+        except (ValueError, SyntaxError, TypeError):
+            pass
+    
+    # Fallback: empty string
+    return ""
+
+
 def extract_analogies_from_result(result, with_mappings: bool = False) -> List[str]:
     """
     Extract analogies from a DSPy result.
@@ -312,12 +374,8 @@ def generate_analogies_for_record(
                         
                         # Convert dict to comma-separated string (values in order of target props)
                         mapped_props = mapping_result.mapped_source_properties
-                        if isinstance(mapped_props, dict):
-                            # Maintain order based on target_props
-                            ordered_values = [mapped_props.get(prop, "") for prop in target_props]
-                            analogy_subconcepts.append(", ".join(ordered_values))
-                        else:
-                            analogy_subconcepts.append("")
+                        mapped_string = parse_mapped_properties(mapped_props, target_props)
+                        analogy_subconcepts.append(mapped_string)
                             
                     except Exception as mapping_error:
                         if verbose:
@@ -363,7 +421,8 @@ def run_model(
     model_name: str,
     mode: str,
     test_mode: bool = False,
-    verbose: bool = False
+    verbose: bool = False,
+    target_filter: Optional[List[str]] = None
 ):
     """
     Run analogy generation for all records using a specific model.
@@ -373,11 +432,14 @@ def run_model(
         mode: 'targetonly' or 'withsub'
         test_mode: If True, only process TEST_MODE_RECORD_LIMIT records
         verbose: Whether to print detailed output
+        target_filter: Optional list of target concepts to process (filters to only these)
     """
     print("=" * 70)
     print(f"Running Model: {model_name}")
     print(f"Mode: {mode}")
     print(f"Test Mode: {test_mode}")
+    if target_filter:
+        print(f"Target Filter: {len(target_filter)} specific targets")
     print("=" * 70)
     
     # Load SCAR dataset
@@ -387,6 +449,14 @@ def run_model(
     
     # Deduplicate targets (collect all gold sources per unique target)
     df = deduplicate_targets(df)
+    
+    # Filter to specific targets if provided
+    if target_filter:
+        df = df[df['system_a'].isin(target_filter)].copy()
+        print(f"Filtered to {len(df)} records matching target filter")
+        if len(df) == 0:
+            print("WARNING: No records match the target filter!")
+            return pd.DataFrame()
     
     # Limit records in test mode
     if test_mode:
@@ -430,9 +500,19 @@ def run_model(
         result = generate_analogies_for_record(row, generator, mode, verbose)
         results.append(result)
     
-    # Save results
+    # Save results (merge with existing if target_filter is used)
     output_path = get_output_path(model_name, mode, is_eval=False)
     results_df = pd.DataFrame(results)
+    
+    # If filtering specific targets, merge with existing results
+    if target_filter and os.path.exists(output_path):
+        existing_df = pd.read_csv(output_path)
+        # Remove old records for these targets
+        existing_df = existing_df[~existing_df['target'].isin(target_filter)]
+        # Append new results
+        results_df = pd.concat([existing_df, results_df], ignore_index=True)
+        print(f"Merged with existing results: {len(existing_df)} existing + {len(results)} new")
+    
     results_df.to_csv(output_path, index=False)
     
     print(f"\n{'='*70}")
@@ -472,14 +552,24 @@ def main():
         action="store_true",
         help="Print detailed output for each record"
     )
+    parser.add_argument(
+        "--targets",
+        type=str,
+        help="Comma-separated list of target concepts to process (filters to only these)"
+    )
     
     args = parser.parse_args()
+    
+    target_filter = None
+    if args.targets:
+        target_filter = [t.strip() for t in args.targets.split(",")]
     
     run_model(
         model_name=args.model,
         mode=args.mode,
         test_mode=args.test,
-        verbose=args.verbose
+        verbose=args.verbose,
+        target_filter=target_filter
     )
 
 

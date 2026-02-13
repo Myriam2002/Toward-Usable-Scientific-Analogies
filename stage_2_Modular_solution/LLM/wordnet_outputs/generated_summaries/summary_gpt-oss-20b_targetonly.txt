@@ -1,0 +1,51 @@
+================================================================================
+WORDNET ANALYSIS SUMMARY: GPT-OSS-20B - TARGETONLY
+================================================================================
+
+DATASET STATISTICS:
+----------------------------------------
+Generated records: 321
+Generated mappings: 6419
+SCAR system pairs: 400
+SCAR subconcept pairs: 1613
+
+WORDNET COVERAGE COMPARISON:
+----------------------------------------
+Generated mappings coverage: 71.9%
+SCAR subconcept coverage: 84.7%
+Generated system pairs coverage: 75.4%
+SCAR system pairs coverage: 78.0%
+
+SIMILARITY METRICS COMPARISON (Subconcepts):
+----------------------------------------
+Generated JCN - Mean: 14951245937161429376189699227977926120893029068522517701350692614009687605133597271819564410118263802337538510233487276630097211144990318963572522566153899382927263389473827952920531678743609371942199054632543040492559255594596120276435312752845688313862670692076255497756735140359363835269113446400.000, Median: 0.058
+SCAR JCN - Mean: 54133138258961226813729579784426593764104662857277307506069241532575044333377635519816450567187674444855291972871376344700701761680835341676637637126778143062657403752334526178549479879513915684109442109058237343288000865915647958852819078818923840253980902081957671933751540863912899117682461245440.000, Median: 0.079
+Generated Wu-Palmer - Mean: 0.389, Median: 0.333
+SCAR Wu-Palmer - Mean: 0.504, Median: 0.500
+Generated Path Length - Mean: 9.55, Median: 10.00
+SCAR Path Length - Mean: 7.26, Median: 7.00
+
+RELATION TYPES COMPARISON (Subconcepts):
+----------------------------------------
+Generated top relations:
+  none: 5516 (85.9%)
+  shared-hypernym: 703 (11.0%)
+  same-synset: 67 (1.0%)
+  is-a-reverse: 57 (0.9%)
+  co-hyponym: 47 (0.7%)
+
+SCAR top relations:
+  none: 1178 (73.0%)
+  shared-hypernym: 279 (17.3%)
+  same-synset: 73 (4.5%)
+  is-a: 31 (1.9%)
+  co-hyponym: 30 (1.9%)
+
+RELATION RICHNESS:
+----------------------------------------
+Generated avg relations per pair: 0.22
+Generated pairs with multiple relations: 104 (2.3%)
+SCAR avg relations per pair: 0.37
+SCAR pairs with multiple relations: 70 (5.1%)
+
+================================================================================

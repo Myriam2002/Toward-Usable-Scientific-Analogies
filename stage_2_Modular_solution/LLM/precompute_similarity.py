@@ -13,6 +13,17 @@ from tqdm import tqdm
 import json
 import ast
 
+# Load environment variables from .env file
+from dotenv import load_dotenv
+env_paths = [
+    os.path.join(os.path.dirname(__file__), '..', '..', '.env'),  # ../../.env (root)
+    os.path.join(os.path.dirname(__file__), '.env'),  # ./env (local)
+]
+for env_path in env_paths:
+    if os.path.exists(env_path):
+        load_dotenv(env_path)
+        break
+
 # Import config
 from config import (
     SCAR_PATH, 
@@ -89,8 +100,6 @@ class OpenAIEmbedder:
         """Lazy load the OpenAI client."""
         if OpenAIEmbedder._client is None:
             from openai import OpenAI
-            from dotenv import load_dotenv
-            load_dotenv()
             OpenAIEmbedder._client = OpenAI()
         return OpenAIEmbedder._client
     

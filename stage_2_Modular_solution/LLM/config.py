@@ -33,7 +33,7 @@ MODEL_LIST = [
 JUDGE_MODEL = "gpt-4.1-mini"
 
 # Model for sub-concept mapping (Stage 2 in withsub mode)
-MAPPING_MODEL = "llama-3.1-405b-instruct"
+MAPPING_MODEL = "meta-llama-3-1-70b-instruct"
 
 # =============================================================================
 # GENERATION CONFIGURATION

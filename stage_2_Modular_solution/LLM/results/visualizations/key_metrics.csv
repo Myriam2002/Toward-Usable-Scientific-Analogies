@@ -1,0 +1,2 @@
+Total Records,Total Models,Total Targets,Best Model (Composite),Best Model Score,Mean Judge (Baseline),Mean Judge (Embedding),Hit@1 (Exact) Overall,Hit@1 (Semantic) Overall,Targetonly Judge Avg,Withsub Judge Avg,No Exact Match Rate,No Semantic Match Rate,Low Quality Rate (< 2.0)
+7704,12,321,deepseek-r1,0.6507847871235721,2.603121754932502,2.3413564382139147,8.229491173416408,17.198857736240914,2.616347352024922,2.5898961578400828,78.06334371754933,53.97196261682243,5.20508826583593

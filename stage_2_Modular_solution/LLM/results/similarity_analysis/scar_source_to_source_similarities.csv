@@ -1,0 +1,146 @@
+target,source1,source2,similarity,num_sources_for_target
+1984,Brave New World,Animal Farm,0.27721321305580976,2
+American Presidential System,French Presidential System,German Constitutional Monarchy,0.29327513242195424,2
+American Revolutionary War,The French Revolution,American Civil War,0.3285652366206587,2
+Ancient Asia,Ancient Greece,Ancient Rome,0.7357627079820336,2
+Article,River,Recipes,0.11628132890299314,2
+Bill of Rights,Declaration of Independence,Declaration of Human Rights,0.6999443103414078,2
+British Constitutional Monarchy,American Presidential System,German Constitutional Monarchy,0.15357345189062657,2
+Buddhism,Christianity,Islam,0.713197104951464,2
+Cell Signaling,Electronic Signal Transmission,Electronic Signal Transmission,0.9999999900000002,2
+Cell division,the factory's production line,the replicator,0.2980041772129056,2
+Chemical Reaction,Friction,Urban Transportation,0.2706299421701261,4
+Chemical Reaction,Friction,Computer,0.28417463520157593,4
+Chemical Reaction,Friction,Vehicle Traffic,0.2876582884429238,4
+Chemical Reaction,Urban Transportation,Computer,0.27988289194860066,4
+Chemical Reaction,Urban Transportation,Vehicle Traffic,0.6300807907802328,4
+Chemical Reaction,Computer,Vehicle Traffic,0.1704015863782977,4
+Chemistry,Cooking,Music,0.39180808867606587,11
+Chemistry,Cooking,Leaping Over Barriers,0.02708315077162989,11
+Chemistry,Cooking,Crowd,0.21876073968760834,11
+Chemistry,Cooking,Construction Work,0.21134598341834712,11
+Chemistry,Cooking,Dance,0.3826009592896826,11
+Chemistry,Cooking,The Movie,0.22467270117872218,11
+Chemistry,Cooking,Cooking,0.9999999900000002,11
+Chemistry,Cooking,Football Game,0.20879059821192925,11
+Chemistry,Cooking,Buy and Sell,0.2826994797748552,11
+Chemistry,Cooking,A Jigsaw Puzzle,0.26786239283815266,11
+Chemistry,Music,Leaping Over Barriers,0.11633975687512325,11
+Chemistry,Music,Crowd,0.3903262212777345,11
+Chemistry,Music,Construction Work,0.24183153864308599,11
+Chemistry,Music,Dance,0.58751576551385,11
+Chemistry,Music,The Movie,0.3886894180463645,11
+Chemistry,Music,Cooking,0.39180808867606587,11
+Chemistry,Music,Football Game,0.26275995110965944,11
+Chemistry,Music,Buy and Sell,0.3322465584579012,11
+Chemistry,Music,A Jigsaw Puzzle,0.19519338979991513,11
+Chemistry,Leaping Over Barriers,Crowd,0.14930830146423132,11
+Chemistry,Leaping Over Barriers,Construction Work,0.19875305692283932,11
+Chemistry,Leaping Over Barriers,Dance,0.22468247784999226,11
+Chemistry,Leaping Over Barriers,The Movie,0.12845102589729546,11
+Chemistry,Leaping Over Barriers,Cooking,0.02708315077162989,11
+Chemistry,Leaping Over Barriers,Football Game,0.12621277444511714,11
+Chemistry,Leaping Over Barriers,Buy and Sell,0.05512835358854238,11
+Chemistry,Leaping Over Barriers,A Jigsaw Puzzle,0.137837774438407,11
+Chemistry,Crowd,Construction Work,0.2433813931076986,11
+Chemistry,Crowd,Dance,0.32423423348884317,11
+Chemistry,Crowd,The Movie,0.3086750844456603,11
+Chemistry,Crowd,Cooking,0.21876073968760834,11
+Chemistry,Crowd,Football Game,0.33952267662049673,11
+Chemistry,Crowd,Buy and Sell,0.19519706712040308,11
+Chemistry,Crowd,A Jigsaw Puzzle,0.20967339778956393,11
+Chemistry,Construction Work,Dance,0.1577257498227364,11
+Chemistry,Construction Work,The Movie,0.21580189046837933,11
+Chemistry,Construction Work,Cooking,0.21134598341834712,11
+Chemistry,Construction Work,Football Game,0.16297966078856888,11
+Chemistry,Construction Work,Buy and Sell,0.25534160211696566,11
+Chemistry,Construction Work,A Jigsaw Puzzle,0.3078862581391046,11
+Chemistry,Dance,The Movie,0.360938447736682,11
+Chemistry,Dance,Cooking,0.3826009592896826,11
+Chemistry,Dance,Football Game,0.308843490373174,11
+Chemistry,Dance,Buy and Sell,0.3380424249963949,11
+Chemistry,Dance,A Jigsaw Puzzle,0.26340378637385153,11
+Chemistry,The Movie,Cooking,0.22467270117872218,11
+Chemistry,The Movie,Football Game,0.28312535498290076,11
+Chemistry,The Movie,Buy and Sell,0.2602114663581069,11
+Chemistry,The Movie,A Jigsaw Puzzle,0.2672541433376361,11
+Chemistry,Cooking,Football Game,0.20879059821192925,11
+Chemistry,Cooking,Buy and Sell,0.2826994797748552,11
+Chemistry,Cooking,A Jigsaw Puzzle,0.26786239283815266,11
+Chemistry,Football Game,Buy and Sell,0.2077399148277605,11
+Chemistry,Football Game,A Jigsaw Puzzle,0.17395114271443984,11
+Chemistry,Buy and Sell,A Jigsaw Puzzle,0.21523244049280102,11
+China,Ancient Greece,Ancient Rome,0.7357627079820336,2
+Database,File Cabinet,Library,0.34507663769616986,2
+Declaration of Independence,Constitution of 1787,Declaration of Human Rights,0.41298051736914415,2
+Deep Learning,How the Human Brain Works,The Brain,0.636308343979926,2
+EM Algorithm,Adjust Shutter Aperture,Recovering a Corrupted Music File,0.007769744765547105,2
+Egypt,Ancient Western Asia,Ancient Greece,0.6668089561538709,5
+Egypt,Ancient Western Asia,India,0.41737353384353765,5
+Egypt,Ancient Western Asia,Ancient Rome,0.5581271592594267,5
+Egypt,Ancient Western Asia,China,0.4112616140247435,5
+Egypt,Ancient Greece,India,0.3886620959516359,5
+Egypt,Ancient Greece,Ancient Rome,0.7357627079820336,5
+Egypt,Ancient Greece,China,0.3498913312731967,5
+Egypt,India,Ancient Rome,0.3669393621944064,5
+Egypt,India,China,0.702457599767874,5
+Egypt,Ancient Rome,China,0.37362014873724825,5
+Food Chain,Supply Chain,Information Flow,0.23345325653749963,3
+Food Chain,Supply Chain,Information Flow,0.23345325653749963,3
+Food Chain,Information Flow,Information Flow,1.0000001092092885,3
+Gusia,India,China,0.702457599767874,2
+Immune System,Army,Reactor,0.2700693443274037,2
+Immune Tolerance,Deafness,Blindness,0.6120185790848923,2
+India,China,Ancient Greece,0.3498913312731967,3
+India,China,Ancient Rome,0.37362014873724825,3
+India,Ancient Greece,Ancient Rome,0.7357627079820336,3
+Lattice,Architecture,Rubik's Cube,0.15734966327550612,2
+Magnetic Resonance Imaging,Prospecting,Seismic Imaging,0.08439598651150998,2
+Mean Field Approximation,Group Behavior,The Law of Means,0.35879766582272893,2
+Nucleus,CPU,Bookshelf,0.1790126842240486,2
+One Hundred Years of Solitude,Into the Wild,Love in the Time of Cholera,0.34886493029207627,2
+Photosynthesis,Power Generation,Solar Panels,0.41663946291079657,2
+Poetry,Music,Bridge,0.3226167825385264,2
+Pride and Prejudice,The Old Man and the Sea,A Dream of Red Mansions,0.24024279175364663,2
+Reform Movement of 1898,Revolution of 1911,New Culture Movement,0.3208363024099231,2
+Respiratory system,engine,Air handling system,0.18494955622674045,3
+Respiratory system,engine,air circulation ducts,0.019621637691835947,3
+Respiratory system,Air handling system,air circulation ducts,0.4952781741298711,3
+Spectral Lines,Musical Notes,Musical Notes,1.0000000496046502,2
+The Discovery of the Cape of Good Hope,The Discovery of America,The Discovery of India,0.5747050585496719,2
+Tight-Bind Approximation,Social Circle,Taylor Expansion,0.061024061901196094,2
+Water Cycle,Circular Economy,Transportation Systems,0.3339868850672286,2
+Westernization Movement,Reform Movement of 1898,The Revolution of 1911,0.5746429847618275,3
+Westernization Movement,Reform Movement of 1898,New Culture Movement,0.4712316627605026,3
+Westernization Movement,The Revolution of 1911,New Culture Movement,0.3065846531727094,3
+battle,debate,illness,0.20700239671904785,2
+blood circulation system,Water pipe system,Water pipe system,0.9999999900000002,2
+building,theory,family,0.30826395441781823,3
+building,theory,theory,1.0000001092092885,3
+building,family,theory,0.30826395441781823,3
+cell,house,program,0.32292860423455066,3
+cell,house,factory,0.3871603271392152,3
+cell,program,factory,0.3951742609560943,3
+disease,poverty,crime,0.3955506282560971,2
+family,nation,state,0.5038680979886628,2
+food,idea,idea,0.9999999900000002,2
+game,politics,marriage,0.3645882787359068,2
+hunt,research,business,0.38812395542166267,2
+journey,education,illness,0.27845713556986545,4
+journey,education,love,0.31801198510279816,4
+journey,education,career,0.6018961966582996,4
+journey,illness,love,0.29716218991915266,4
+journey,illness,career,0.3365463185359964,4
+journey,love,career,0.33256560231475535,4
+liquid,money,knowledge,0.43103342817333884,2
+machine,mind,politics,0.33550768755144783,2
+theatre,life,politics,0.4406690851490495,2
+train,society,signal,0.30766387319841626,2
+virus,code,crime,0.3259532613317596,2
+war,argument,sport,0.3296396008382112,4
+war,argument,argument,0.9999999900000002,4
+war,argument,business,0.37372946365467313,4
+war,sport,argument,0.3296396008382112,4
+war,sport,business,0.4604054690567161,4
+war,argument,business,0.37372946365467313,4
+waves,sounds,sounds,0.9999999900000002,2

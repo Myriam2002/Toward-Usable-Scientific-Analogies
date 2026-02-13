@@ -1,0 +1,401 @@
+target,source,similarity
+biological clock,clock,0.7319785719616977
+Biosphere,Library,0.23141565576735443
+Respiratory system,engine,0.14938882734331732
+Spread of Pathogens,Spread of Fire,0.40140771464437014
+Gene editing,kirigami,0.10650349191636865
+Water Cycle,Circular Economy,0.15725485270451703
+Cell division,the factory's production line,0.16968925127571033
+Origin of Life,Chemical Reactions,0.1000462909469019
+The Genetic Code,The Writing System,0.2530603979553885
+Ecosystem,Machines,0.17582756105071487
+Nervous System,Circuits,0.2666146708750808
+Immune System,Army,0.1834584456217754
+Cell Membranes,Walls,0.2587261770125002
+Protein folding,a three-dimensional puzzle,0.11302006131639364
+Photosynthesis,Power Generation,0.27328490937652594
+Platelets,Construction Workers,0.1729263049952853
+Genome,Operating System,0.18342254475649286
+Brain,Computer Processor,0.2928937520834407
+Nucleus,CPU,0.30447764714925135
+Biological Evolution,Urban Evolution,0.5250948927997701
+DNA Replication,Printers Print Documents,0.1292851482388198
+Food Chain,Supply Chain,0.6177159854221607
+DNA Double Helix Structure,The Helix Bridge,0.5162976928579581
+Food Chain,Information Flow,0.1664717578019161
+Cell Signaling,Electronic Signal Transmission,0.20762505919732424
+Genetic Mutation,Typo,0.1392122791197333
+DNA Sequencing,The Puzzle,0.22545189930054235
+Food Chain,Information Flow,0.1664717578019161
+eye,camera,0.4369306483045727
+The Process of History,Biological Evolution,0.22169253992341656
+Gene Mutation,Program Error,0.19700993084652121
+Cell Signaling,Electronic Signal Transmission,0.20762505919732424
+Synaptic transmission between neurons,communication networks,0.287669583523669
+Cell division,the replicator,0.12589225047104272
+Nucleus,Bookshelf,0.1404415736722581
+Photosynthesis,Solar Panels,0.30269238678225385
+Water Cycle,Transportation Systems,0.12295306338816656
+Land System,Skin System,0.45072251107581324
+Earth,Human Body,0.37785868730929606
+Natural Disasters,Diseases,0.2838854930554277
+Musculoskeletal system,Robotic arm,0.38089420300667043
+Respiratory system,Air handling system,0.5688377643966906
+Microbiome,ecosystem,0.33852699060467456
+Endocrine System,Regulator,0.1012389500746085
+blood circulation system,Water pipe system,0.3957274814610449
+cell,house,0.26315515970289055
+cell,program,0.2552825186950386
+Human body,car,0.39221773854686376
+Brain system,electromagnetic emission system,0.2469801729061367
+Hematopoietic System,Factory,0.0616236136129431
+Cellular Structure,City,0.18551819946726622
+DNA replication,Printing,0.19654896658805343
+blood circulation system,Water pipe system,0.3957274814610449
+Protein,The Puzzle,0.2578885981215281
+cell,factory,0.33913242477792627
+Genes,Computer Code,0.19780884174239785
+The Evolution of Viruses,The Production Line of a Car Factory,0.08363340711406723
+Immune System,Reactor,0.1628685376372177
+Transcription and Translation,Printers,0.13930438319615143
+forest,city,0.35177784806379503
+virus,code,0.34460118068370316
+artificial selection,natural selection,0.7811261802956434
+slot machine,bacterial mutation,-0.01509703211868825
+Migraines,Circuit Malfunction,0.1303837143714828
+Sperm Motility,Robotic Movement,0.2316111143084298
+Prostate,lubrication system,0.1058979694386285
+Skeletal System,Building Structure,0.3123792378658927
+Blood sugar regulation,electronic scale automatically adjusts,0.08862533114889072
+Reproductive System,Factory System,0.4008397360795729
+immune desert,Desert,0.7366578944365506
+microRNA,sponge,0.271461335090181
+Cytokine Storm,Dust Storm,0.4844697050844956
+Alveoli,Balloons,0.1942710111979683
+Respiratory system,air circulation ducts,0.4377699972447381
+Nasal cavity,air filter,0.2433363770946819
+Digestive System,Factory,0.14310401534981312
+Macrophages,the cleaners,0.15331746484503733
+Disability of the plant,cocoon,0.09343774335154839
+Immunological Memory,Final Exam,0.13202956973783275
+Immunity and Immunity,Immunity,0.9366526510033466
+Immune Tolerance,Deafness,0.3420328353971685
+Immune Tolerance,Blindness,0.297010323771792
+deaf,blind,0.6536435213077268
+Blood Chest Barrier,Great Wall,0.18722816366223416
+Limit Modification System,Firewall,0.13291358814840318
+Rod of Asclepius,Healing,0.15183788386141242
+Healthcare,Building Repair,0.2596986267822862
+Air Pollution,Disease,0.2612311813934255
+The Periodic Table,A Tuning System for Music,0.21693710568792215
+Chemistry,Cooking,0.362084639971435
+Molecular Synthesis,Manual,0.15939036932456463
+Chemical Separation,Disassembly,0.3028007895946054
+Chemistry,Music,0.41115272693124805
+Electrochemical Reaction,Power Generation,0.1671627594205584
+Crystals,Architecture,0.22773877650547641
+Chemistry,Leaping Over Barriers,0.07145261586350254
+Chemistry,Crowd,0.30737000396441644
+Chemistry,Construction Work,0.18861678785811534
+Chemical Reaction,Friction,0.3050773295100836
+Periodic Table,Alphabet,0.2574019406327677
+Chemical Analysis,Translation,0.1773038594458823
+Chemistry,Dance,0.31520675520322156
+chemical element,human,0.26061764098856544
+Chemical reaction,object slides,0.09383601415711304
+Chemical Reaction,Urban Transportation,0.13837561697721723
+Chemistry,The Movie,0.3281111088366563
+Chemistry,Cooking,0.362084639971435
+Chemical Substances,Human Emotions,0.2745935889441276
+Chemistry,Football Game,0.1933794665811882
+Chemical Reaction,Computer,0.23229896789948348
+Chemical Reactions,Mathematical Calculations,0.25764292220918483
+Chemistry,Buy and Sell,0.23167720205372666
+Chemical Reaction,Vehicle Traffic,0.1308997260355157
+Chemistry,A Jigsaw Puzzle,0.12394533927472966
+Chiral Molecules,Human Hands,0.13383889862206325
+Amphiphile,neutral country,0.15540909249237156
+Enantiomers,Human Hands,0.1559822189696279
+Functional Group,Occupation,0.28458772521268294
+Polymer Synthesis,Cooking,0.15995348830010045
+Polymer Structure,Buildings,0.24885596079259267
+High Molecular Polymers,Families,0.09868062032012698
+Polymer Composites,Gourmet,0.22482120765931968
+Polymer Surface Modification,Makeup,0.2798770971774226
+The Swarm,A Distributed Computing System,0.30293687875125563
+The Brain,The Neural Network of Computers,0.37262602508722253
+Deep Learning,How the Human Brain Works,0.20909662091827566
+Deep Learning,The Brain,0.3033131096207335
+Computer Networks,Neural Networks,0.5594289842929477
+Computer Systems,Urban,0.16558961888539253
+Artificial Intelligence,The Nervous System,0.28679793786306923
+Computer,Factory,0.4668316198395879
+Memory,Warehouse,0.2893440694484783
+hard drive,book,0.2546559400517799
+Network,Expressway,0.3158758439350528
+programming,cooking,0.27424084865987425
+Database,File Cabinet,0.2909419680911306
+Encryption,password lock,0.3881795598896644
+Internet Security,Lock,0.299618837221402
+cache,shelf,0.3115600502067177
+Program Code,Crime Scene,0.18983825851383362
+Version Control,Time Machine,0.2594447264621928
+Cloud Computing,Rental Housing,0.11675225826574692
+Software Development,The Long Journey,0.2310695923109624
+computer,mind,0.3694932423835588
+Metaverse,The Real World,0.27087887850726045
+Feature Engineering,Miner,0.17875958375744236
+Bias-Variance Equilibrium,Archery,0.13385948510534018
+Cross Validation,Fishing,0.08103210397988969
+random forest,forest,0.6816776136941366
+Mining Association Rules,Solving Puzzles,0.2131445044594583
+PCA Dimensionality Reduction Algorithm,3D Projection,0.15280186397826465
+KNN Algorithm,Finding Nearest Neighbors,0.47333177291869394
+Bayesian Algorithms,Dictionary,0.11270366496392863
+AdaBoost Algorithm,Student,0.029059027962368974
+Neuroevolutionary Algorithms,Evolution,0.3223080602839995
+EM Algorithm,Adjust Shutter Aperture,0.041113696581260344
+GAN Algorithm,Painter and Critic,0.21692044618888104
+Ensemble Learning Algorithms,Democracy,0.1743675854869818
+Bagging Algorithms,Investors,0.14269022711759843
+EM Algorithm,Recovering a Corrupted Music File,0.0986838926937336
+Greedy algorithm,find a shortest path on the map,0.22932661717247935
+Hierarchical Clustering Algorithms,Pedigree Trees,0.2863169879891861
+Blockchain,Ledger,0.48864066112158905
+Internet of Things,Ecosystem,0.1942860017659794
+Internet,Mail,0.4162667650080935
+Database,Library,0.40344022150006326
+Monetary Policy,Drug Treatment,0.24226401504009026
+Stock Market,Horse Racing,0.2944547084005717
+Asset Pricing,Music,0.18206724342430744
+Option Pricing Model,Insurance Contract,0.310247049224152
+Portfolio,Cooking,0.22860234747212474
+Marketing,War,0.41538666759111575
+Economics,Sailing,0.2275955952296135
+Business cycle,day and night cycle,0.49406697781343883
+Earth's Plate Movement,A Puzzle,0.20031088094140836
+Earth's Atmosphere,Greenhouses,0.2795896668840828
+Volcanic Eruption,Soda,0.21025873510387172
+Atmosphere,Greenhouse,0.39778425282520824
+Glacier,Ice Cream,0.4439746395059476
+Tide,lift,0.21259388115004693
+Active faults,the skeletal system,0.13290762768398526
+Active Fault,Spring,0.04422984010214474
+Geological folds,wrinkles,0.2714573986257439
+Volcano,Car,0.24446342608030253
+Rock Metamorphosis,Baking,0.07089878547818408
+Geological Formation,Origami,0.08187340118073956
+Deposit Formation,Cookie Making,0.20235371387306933
+Empire,Tree,0.256100234808535
+American Congressional System,Democratic Centralism in China,0.21037126631002573
+British Parliamentary System,Australian Parliamentary System,0.8093901564471231
+Russian Political System,Chinese Political System,0.6462937528830708
+Spanish Political System,Mexican Political System,0.8338484680714274
+Japanese Government System,British Government System,0.5913357675546599
+Reign of the Pharaohs,Feudal Dynasties,0.5301189685571053
+Pyramids,The Great Wall,0.3693881736280498
+Napoleonic Wars,The War Against Japan,0.4936265296226585
+The British Bourgeois Revolution,The American War of Independence,0.41470226230767404
+English Bourgeois Revolution,The French Revolution,0.6957038571405567
+American Revolutionary War,The French Revolution,0.6007300913300696
+Bill of Rights,Declaration of Independence,0.44854667027551093
+The Bill of Rights,The Constitution of 1787,0.4548992767143587
+Bill of Rights,Declaration of Human Rights,0.6625001759142333
+Declaration of Independence,Constitution of 1787,0.4468649847443986
+Declaration of Independence,Declaration of Human Rights,0.6999443103414078
+1787 Constitution,Declaration of the Rights of Man,0.4047185922584934
+American Revolutionary War,American Civil War,0.6837656241088383
+Reformation in Russia in 1861,Meiji Restoration in Japan,0.20818839509845843
+Industrial Revolution,The Second Industrial Revolution,0.8771937997836651
+Renaissance,Enlightenment,0.4754571867127133
+Westernization Movement,Reform Movement of 1898,0.4280137589108184
+Westernization Movement,The Revolution of 1911,0.3322878048741318
+Westernization Movement,New Culture Movement,0.5396430760089154
+Reform Movement of 1898,Revolution of 1911,0.5819403221790157
+Reform Movement of 1898,New Culture Movement,0.4712316627605026
+Revolution of 1911,New Culture Movement,0.3208363024099231
+Egypt,Ancient Western Asia,0.4142159480158148
+Egypt,Ancient Greece,0.47535585881760845
+Ancient Asia,Ancient Greece,0.7618673367607517
+Gusia,India,0.2630550097776474
+Egypt,India,0.5319997019019879
+Egypt,Ancient Rome,0.4788042259019602
+Egypt,China,0.5632176342909194
+Gusia,China,0.28987567074552795
+Ancient Asia,Ancient Rome,0.6584966116859079
+India,China,0.702457599767874
+India,Ancient Greece,0.3886620959516359
+India,Ancient Rome,0.3669393621944064
+China,Ancient Greece,0.3498913312731967
+China,Ancient Rome,0.37362014873724825
+Ancient Greece,Ancient Rome,0.7357627079820336
+Buddhism,Christianity,0.5911105812089503
+Buddhism,Islam,0.575349205939318
+Christianity,Islam,0.713197104951464
+The Discovery of the Cape of Good Hope,The Discovery of America,0.4057695470865198
+The Discovery of the Cape of Good Hope,The Discovery of India,0.35952778453880735
+The Discovery of America,The Discovery of India,0.5747050585496719
+British Constitutional Monarchy,American Presidential System,0.22131213324487123
+British constitutional monarchy,French presidential system,0.25917060468727304
+British Constitutional Monarchy,German Constitutional Monarchy,0.6650324397341055
+American Presidential System,French Presidential System,0.754095710967746
+American Presidential System,German Constitutional Monarchy,0.15357345189062657
+French Presidential,German Constitutional Monarchy,0.24289250130947831
+Historical Research,Deciphering the Code,0.06793272427337052
+La Traviata,Sunrise,0.12547150128778073
+Pride and Prejudice,The Old Man and the Sea,0.32410820994518197
+One Hundred Years of Solitude,Into the Wild,0.32296257888173285
+1984,Brave New World,0.3029192953812227
+Dream of Red Mansions,Nie Haihua,0.20745886147689233
+One Hundred Years of Solitude,Love in the Time of Cholera,0.2720249430171687
+The Catcher in the Rye,The Great Gatsby,0.37873940558418495
+The Three-Body Problem,Foundation Series,0.11847989103807591
+Pride and Prejudice,A Dream of Red Mansions,0.2530150686234901
+Red and Black,La Traviata,0.20304810517920768
+The Old Man and the Sea,Journey to the West,0.32640900881514884
+1984,Animal Farm,0.17613683464820046
+Gone with the Wind,Peach Blossom Fan,0.28631950845021403
+Sherlock Holmes,White Night Walk,0.14373358940395745
+Thorn Birds,Fortress Besieged,0.16951355168583068
+Group Theory,Molecular Symmetry,0.3491790467856242
+Music,Math,0.4209624486788643
+Fermat's Theorem,The Maze Problem,0.05132229880761181
+Matrix Theory,Mirrors,0.20500167999305877
+war,argument,0.4089686775419187
+buying an item,accepting a belief,0.18624843090779358
+grounds for a building,reasons for a theory,0.1447505426684279
+impediments to travel,difficulties,0.2415392076657084
+money,time,0.44852539141627057
+seeds,ideas,0.21739026686715873
+machine,mind,0.3482661808473248
+object,idea,0.2853570253923557
+following,understanding,0.43521463435787566
+seeing,understanding,0.45690464259676716
+theatre,life,0.2785705300130618
+bloom,innovation,0.20781631559933472
+blossom,innovation,0.23202125496109088
+flower,innovation,0.260403809327572
+mountain,career,0.2804904850090448
+hill,career,0.2929155499253825
+slope,career,0.1474555418050924
+organism,society,0.36884053390975957
+household,government,0.38066758613599316
+disease,poverty,0.2835166425963521
+journey,education,0.29893744276294143
+food,idea,0.21885490198625568
+building,theory,0.28432172252528254
+building,family,0.35305863265792076
+battle,debate,0.38837858646159684
+weapon,money,0.405462905341412
+possession,skill,0.42464034426437974
+race,competition,0.535364443670556
+war,sport,0.4619961632782165
+liquid,money,0.37188723311470007
+liquid,knowledge,0.30474155836539574
+hunt,research,0.19755479495857986
+hunt,business,0.31162416623342876
+boat,marriage,0.29650039951538365
+war,argument,0.4089686775419187
+ship,nation,0.21471236431463023
+family,nation,0.4653738392545716
+husbandry,faith,0.26014426090449305
+beast,crime,0.24164277023684028
+virus,crime,0.3429024985654953
+battle,illness,0.2758463161925664
+journey,illness,0.26227730396698584
+building,theory,0.28432172252528254
+journey,love,0.3201439837475262
+food,idea,0.21885490198625568
+hunger,ambition,0.37342997257583255
+courtship,politics,0.24147969242849532
+commerce,love,0.2829704127011213
+train,society,0.26450373054309895
+journey,career,0.43498130810281954
+family,state,0.312185910202497
+game,politics,0.4197368233988684
+theatre,politics,0.3358304168973569
+machine,politics,0.29159789985883183
+game,marriage,0.3416510001410528
+war,business,0.46513649148342234
+disease,crime,0.33920826210371013
+bakery,laboratory,0.2666515681304509
+stationery,mind,0.2242096938123617
+jacket,wound,0.4041566808339215
+train,signal,0.366015609418915
+mind,universe,0.3507813180177606
+football,basketball,0.6790598562999166
+farm,company,0.4066656787260068
+eating breakfast,eating dinner,0.6486112378248455
+Fiction,Architecture,0.2404013389629141
+Poetry,Music,0.48113652582637584
+Article,River,0.12265596402154612
+Fiction Structure,Houses,0.3409645130491352
+plot,line,0.40945436601396334
+Article,Recipes,0.2395873939874116
+Poetry,Bridge,0.3080647258946488
+Drama,Competition,0.4112431961896921
+Writing,Drawing,0.5304215497380513
+movie,car,0.5031310569476886
+Human Society,Drama,0.3335120644596792
+Body of Knowledge,Building,0.21929709211022527
+Rational Thinking,Maps,0.15441856554218705
+Self Development,Plants,0.16960846728997755
+Emotion,River,0.21959812538359602
+Team Management,Football Game,0.35107534772749727
+Creative Design,Baking,0.22169290261304994
+Education,Planting,0.29241855402939687
+Sports,Cooking,0.33322819734177506
+solar system,atom,0.3038488000048775
+water flow,heat transfer,0.2932052459724884
+waves,sounds,0.22894242176948998
+combustion,respiration,0.38222565162770916
+sound,light,0.4842500340197281
+projectile,planet,0.2299539548950218
+billiard balls,gas molecules,0.14182600237164172
+water,heat,0.45342251205017126
+waves,sounds,0.22894242176948998
+Light Propagation,Wave Propagation,0.6414654573109991
+Principle of Conservation of Energy,Principle of Financial Balance,0.33092695143697687
+Vision System,Camera,0.5340218490604163
+Spectral Lines,Musical Notes,0.2148549791373774
+Magnetic Resonance Imaging,Prospecting,0.105756861747134
+Optical Lenses,Loudspeakers for Acoustic Systems,0.2077138403148294
+Sound Wave Propagation,Water Wave Propagation,0.6625741452820688
+Black Hole,Vortex,0.39797048754704706
+planetary motion,pendulum motion,0.43296184702879525
+Magnetic Resonance Imaging,Seismic Imaging,0.4955635319267652
+Energy Loss,Currency Loss,0.46374516999373677
+Quantum Mechanics,Financial Markets,0.20674291046346996
+Capacitor,memory,0.23493539962290405
+Hydropower,Wind Power,0.4951882610870121
+eyes,camera,0.40074082808296957
+The Second Law of Thermodynamics,Urban Entropy Increase,0.3465660179767532
+Spectral Lines,Musical Notes,0.2148549791373774
+Sound system,sound system,1.0000001092092885
+Gas Diffusion,Population Movement,0.2631021272516796
+The First Law of Thermodynamics,Financial Equilibrium,0.27154464876574375
+Tight-Bind Approximation,Social Circle,-0.002402443414743953
+Tight-Bind Approximation,Taylor Expansion,0.21732634478127957
+Two-Dimensional Electron Gas,A Pinball Game,0.03162670664910231
+Two-dimensional Electron Gas,Checkers,0.01580279026338589
+Conservation of Charge Flow,Conservation of Water Flow,0.6547098874794055
+The Theorem of Conservation of Charge Flow,Financial Balance,0.08928123027211995
+Electromagnetic resonance cavity,resonance cavity,0.9048362227100071
+Mean Field Approximation,Group Behavior,-0.013709958505621593
+Mean Field Approximation,The Law of Means,0.28759684871132707
+Lattice,Architecture,0.31331416293246117
+Lattice,Rubik's Cube,0.3077414784497634
+The Pauli Exclusion Principle,Human Relationships,0.12496914589421762
+Pseudopotential,edit,0.07600956334160039
+Fluctuation-dissipation theorem,tidal phenomena,0.08933702554397344
+Quantum Tunneling,Shooting Through Walls,0.12114075427154947
+Energy Level Degeneracy,Blankets,0.12407476325383617
+Turbine Engine,Heart,0.15931551408185482
+Nuclear Fission,Dominoes,0.14046139874663877
+Nuclear Fusion,Burning Energy,0.34054767744932063
+Activated carbon,sponge,0.13452639353016674
+MRI,Music Performance,0.1574139915954052
+Isotope Dating,Archeology,0.30748545816019185
+Radiation Protection,Sun Protection,0.6378723319162596
+Proton Accelerator,The Hunt,0.10890494923167118
+Particle Accelerator,The Ring,0.09080815224438431
