@@ -1,93 +1,143 @@
 # Toward Usable Scientific Analogies
 
-*A Modular Multi-Agent Pipeline for Generation, Explanation, Evaluation, and Visualization*
+*Master's Thesis — A Multi-Stage Empirical Study of LLM-Based Analogy Generation*
 
-## 📖 Overview
+---
 
-This project develops a **multi-agent pipeline** to improve the quality and usability of scientific analogies. It targets all stages of the analogy process—source selection, property mapping, analogy explanation, evaluation, and visualization—to create pedagogically sound analogies for science education.
+## Overview
 
-## 🎯 Objectives
+This project investigates how large language models (LLMs) can support the generation of usable scientific analogies. It proceeds in two stages: first analyzing where LLMs struggle across analogy subtasks, then building and evaluating a full pipeline for LLM-based analogy source selection with multi-model and human annotation evaluation.
 
-* **Analyze** how large language models (LLMs) perform on analogy tasks using both conceptual (SCAR) and process-based (Parallel PARC) datasets.
-* **Design** modular agents specialized for source finding, mapping generation, and explanation generation.
-* **Integrate** these agents into a unified pipeline with feedback loops and human-in-the-loop oversight.
-* **Evaluate** and **visualize** analogies to make them interpretable for educators and learners.
+**Datasets used:**
+- **SCAR** — Scientific Concept Analogy Resource: conceptual analogies across 13 scientific domains
+- **Parallel PARC** — Process analogies aligning dynamic events across domains
 
-## 🛠️ Key Tasks
+---
 
-### Stage 1: Analyze LLM Challenges 
-
-* Test whether models can **identify suitable sources** under varying information levels.
-* Conduct **closed search** within a controlled corpus.
-* Perform **source identification with/without domain knowledge**.
-* Perform **source identification with/without explicit source/target properties**.
-* Compare performance on **conceptual vs. process-based mappings**.
-* Investigate how **source search extends to open domains**.
-* Assess **mapping generation** under different property conditions.
-* Examine **explanation generation** under progressively richer input conditions.
-
-### Stage 2: Design Modular Multi-Agent Solution 
-
-* Build individual agents for **source selection**, **mapping generation**, and **explanation generation**.
-* Experiment with different prompts, tools, and LLMs to find the most effective configuration for each agent.
-
-### Stage 3: Build Full Pipeline with Feedback 
-
-* Integrate agents into a **feedback-enabled pipeline** with human-in-the-loop oversight.
-* Develop a **visualization module** to translate analogies into diagrams or schematics.
-* Train or fine-tune a lightweight model specialized for analogy tasks to improve consistency.
-
-## 📊 Datasets
-
-* **SCAR** – Conceptual analogies across 13 scientific domains.
-* **Parallel PARC** – Process analogies aligning dynamic events across domains.
-
-## 📝 Evaluation
-
-* Each module evaluated with the most relevant benchmark dataset (SCAR for concept analogies, Parallel PARC for process analogies).
-* Develop a **holistic evaluation framework** combining structural similarity metrics with qualitative dimensions (novelty, relevance, pedagogical value).
-* Integrate evaluator directly into pipeline for iterative improvement.
-
-## 🧑‍🎓 Expected Outcomes
-
-### Theoretical
-
-* A modular multi-agent framework for analogy generation, mapping, explanation, evaluation, and visualization.
-* A new holistic evaluation framework for scientific analogies.
-* Comparative analysis of LLM performance (concept vs. process, closed vs. open search, explanation quality).
-* Formalization of text-to-visual mapping.
-
-### Practical
-
-* Prototype pipeline for automatic analogy generation, evaluation, refinement, and visualization.
-* New benchmark results on SCAR and Parallel PARC.
-* Feedback-enabled evaluation module reusable across research and applications.
-
-## 📂 Repository Structure
+## Repository Structure
 
 ```
-├── stage1_analysis/             # LLM challenge analysis (Stage 1)
-│   ├── source_finding/          # Closed/open search experiments
-│   ├── mapping_generation/      # Entity & relation alignment experiments
-│   └── explanation_generation/  # Explanation quality experiments
+├── data/                            # SCAR and Parallel PARC datasets
 │
-├── stage_2_Modular_solution/    # Modular multi-agent solution (Stage 2)
-│   └── LLM/                     # LLM baselines pipeline
-│       ├── core/                # Core pipeline scripts (generation, evaluation, judging)
-│       ├── utilities/           # Post-processing (aggregation, reranking, reruns)
-│       ├── scripts/             # PowerShell launch scripts
-│       │   ├── run_models/      # Per-model generation scripts (12 models)
-│       │   └── run_judges/      # Per-judge evaluation scripts (5 judge models)
-│       ├── analysis/            # Analysis notebooks
-│       ├── notebooks/           # Supplementary notebooks (human annotation, WordNet)
-│       ├── data/                # Precomputed embeddings
-│       ├── human_annotation/    # Human annotation data and forms
-│       └── results/             # All output CSVs and visualizations
+├── stage1_analysis/                 # Stage 1: LLM challenge analysis
+│   ├── source_finding/              # Closed-corpus source retrieval experiments
+│   ├── mapping_generation/          # Property extraction and mapping experiments
+│   └── explanation_generation/      # Explanation generation under varying input conditions
 │
-├── stage2_modular_agents/       # Modular agent implementations
-│
-└── data/                        # SCAR, Parallel PARC, preprocessed data
-
+└── stage_2_Modular_solution/
+    └── LLM/                         # Stage 2: LLM baselines pipeline
+        ├── core/                    # Generation, evaluation, and judging scripts
+        ├── utilities/               # Aggregation, reranking, rerun utilities
+        ├── scripts/                 # PowerShell launch scripts
+        │   ├── run_models/          # Per-model generation scripts (12 models)
+        │   └── run_judges/          # Per-judge evaluation scripts (5 judge models)
+        ├── analysis/                # Analysis and visualization notebooks
+        ├── notebooks/               # Supplementary notebooks (human annotation, WordNet)
+        ├── data/                    # Precomputed embeddings
+        ├── human_annotation/        # Human annotation data and forms
+        └── results/                 # All output CSVs and figures
 ```
 
+---
 
+## Stage 1 — Analyzing LLM Challenges
+
+Three analogy subtasks were studied to understand where and how LLMs fail.
+
+### Source Finding (`stage1_analysis/source_finding/`)
+
+Given a target concept and a closed corpus of candidate sources, the task is to retrieve the best analogical source. Two approaches were compared:
+
+- **Embedding-based**: OpenAI embeddings + cosine similarity, across four embedding modes (name only, name + background, name + properties, name + properties + background)
+- **Tournament-style elimination**: LLM evaluates sources in configurable batches; winners advance until one remains
+
+### Mapping Generation (`stage1_analysis/mapping_generation/`)
+
+Given a source–target pair, the task is to extract and align shared structural or functional properties. Multiple LLMs were tested under varying property availability conditions. Includes `easy_llm_importer.py`, a unified client that routes calls to OpenAI, OpenRouter, or DeepInfra by model name.
+
+### Explanation Generation (`stage1_analysis/explanation_generation/`)
+
+Given a source–target pair, the task is to generate a natural language explanation of the analogy. Six input configurations were evaluated (from concept names only up to fully paired property mappings with descriptions). Evaluated using SBERT semantic similarity against expert-written golden explanations.
+
+---
+
+## Stage 2 — LLM Baselines Pipeline
+
+A complete evaluation pipeline for analogy source selection across 12 LLMs on the SCAR dataset. See [`stage_2_Modular_solution/LLM/README.md`](stage_2_Modular_solution/LLM/README.md) for full documentation.
+
+### Models Evaluated (12)
+
+```
+gpt-oss-20b, gpt-oss-120b, gpt-4.1-mini, gpt-4.1-nano,
+grok-4-fast, gemini-2.5-flash-lite, llama-3.1-405b-instruct,
+meta-llama-3-1-70b-instruct, meta-llama-3-1-8b-instruct,
+deepseek-r1, qwen3-14b, qwen3-32b
+```
+
+### Generation Modes
+
+- **targetonly** — model receives only the target concept name
+- **withsub** — model receives target + sub-concepts (key properties from SCAR)
+
+Each model generates 20 candidate source analogies per target.
+
+### Evaluation
+
+| Method | Description |
+|--------|-------------|
+| Hit@K (exact) | Exact string match of generated analogy against gold sources, K = 1–20 |
+| Hit@K (semantic) | Cosine similarity ≥ 0.5 against gold source embeddings (all-MiniLM-L6-v2) |
+| Top-1 Baseline | First generated analogy |
+| Top-1 Embedding | Analogy with highest embedding similarity to target (OpenAI embeddings) |
+| LLM-as-Judge | Scores top-1 choices on Coherence, Mapping Soundness, and Explanatory Power (1–3 scale) |
+
+### Reranking
+
+All 20 generated analogies are re-ranked by an LLM reranker (`meta-llama-3-1-70b-instruct`) using target subconcepts. The top-1 reranked choice is then re-evaluated by the judge.
+
+### Multi-Judge Evaluation
+
+To assess judge reliability, the top-1 analogies were re-evaluated by 5 judge models across 2 prompting modes:
+
+- **Judges**: `gpt-4.1-mini`, `gemini-2.5-flash-lite`, `deepseek-r1`, `claude-sonnet-4.6`, `mimo-v2-pro`
+- **Modes**: `3scale` (standard), `3scale_fewshot` (with few-shot examples)
+- Results and inter-judge agreement analysis in `results/upgraded_llm/` and `results/judge_analysis/`
+
+### Human Annotation
+
+A subset of 15 targets was evaluated by human annotators using the same 3-dimension scoring rubric. Annotator agreement and correlation with LLM judges are analyzed in `notebooks/human_annotation_analysis.ipynb` and `results/human_annotation/`.
+
+---
+
+## Setup
+
+### Requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+### API Keys
+
+Create a `.env` file in the project root:
+
+```
+OPENAI_API_KEY=your_key_here
+OPENROUTER_API_KEY=your_key_here
+DEEPINFRA_API_KEY=your_key_here
+```
+
+---
+
+## Key Results
+
+All results are in `stage_2_Modular_solution/LLM/results/`. Publication-ready figures are in `results/final_visualizations/`. Key output files:
+
+| File | Contents |
+|------|----------|
+| `results/all_results_targetonly.csv` | Aggregated results, all 12 models, targetonly mode |
+| `results/all_results_withsub.csv` | Aggregated results, all 12 models, withsub mode |
+| `results/all_results_*_rerank.csv` | Reranked results |
+| `results/upgraded_llm/` | Multi-judge evaluation outputs |
+| `results/human_annotation/` | Human vs. LLM judge comparison |
+| `results/judge_analysis/` | Inter-judge agreement analysis |
