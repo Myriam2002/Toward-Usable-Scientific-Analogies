@@ -1,0 +1,82 @@
+================================================================================
+WORDNET ANALYSIS SUMMARY: Grok-4 - TARGETONLY
+================================================================================
+
+DATASET STATISTICS:
+----------------------------------------
+Generated records: 321
+Generated mappings: 6420
+SCAR system pairs: 400
+SCAR subconcept pairs: 1613
+
+WORDNET COVERAGE COMPARISON:
+----------------------------------------
+Generated mappings coverage: 76.9%
+SCAR subconcept coverage: 84.7%
+Generated system pairs coverage: 74.1%
+SCAR system pairs coverage: 78.0%
+
+SIMILARITY METRICS COMPARISON (Subconcepts):
+----------------------------------------
+Generated JCN - Median: 0.056
+SCAR JCN - Median: 0.077
+Generated Wu-Palmer - Mean: 0.383, Median: 0.333
+SCAR Wu-Palmer - Mean: 0.486, Median: 0.471
+Generated Path Length - Mean: 9.69, Median: 10.00
+SCAR Path Length - Mean: 7.51, Median: 7.00
+
+RELATION TYPES COMPARISON (Subconcepts):
+----------------------------------------
+Generated top relations:
+  none: 5470 (85.2%)
+  shared-hypernym: 810 (12.6%)
+  co-hyponym: 70 (1.1%)
+  is-a-reverse: 51 (0.8%)
+  is-a: 7 (0.1%)
+  has-part: 6 (0.1%)
+  instance-of-reverse: 4 (0.1%)
+  part-of: 2 (0.0%)
+
+SCAR top relations:
+  none: 1214 (75.3%)
+  shared-hypernym: 289 (17.9%)
+  co-hyponym: 36 (2.2%)
+  is-a: 35 (2.2%)
+  is-a-reverse: 21 (1.3%)
+  same-synset: 14 (0.9%)
+  part-of: 2 (0.1%)
+  antonym: 1 (0.1%)
+  has-part: 1 (0.1%)
+
+RELATION RICHNESS:
+----------------------------------------
+Generated avg relations per pair: 0.22
+Generated pairs with multiple relations: 125 (2.5%)
+SCAR avg relations per pair: 0.35
+SCAR pairs with multiple relations: 80 (5.9%)
+
+SIMILARITY METRICS COMPARISON (Systems):
+----------------------------------------
+Generated System Wu-Palmer - Mean: 0.388, Median: 0.312
+SCAR System Wu-Palmer - Mean: 0.445, Median: 0.400
+Generated System Path Length - Mean: 10.01, Median: 10.00
+SCAR System Path Length - Mean: 8.88, Median: 9.00
+
+RELATION TYPES COMPARISON (Systems):
+----------------------------------------
+Generated System top relations:
+  none: 267 (83.2%)
+  shared-hypernym: 45 (14.0%)
+  co-hyponym: 4 (1.2%)
+  is-a-reverse: 4 (1.2%)
+  instance-of-reverse: 1 (0.3%)
+
+SCAR System top relations:
+  none: 310 (77.5%)
+  shared-hypernym: 72 (18.0%)
+  co-hyponym: 12 (3.0%)
+  instance-of: 2 (0.5%)
+  is-a: 2 (0.5%)
+  same-synset: 2 (0.5%)
+
+================================================================================

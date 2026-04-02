@@ -1,0 +1,46 @@
+annotator_id,target_id,target,domain,task_type,source_analogy,coherence,mapping,explanatory,rank,ranking_confidence
+ANN-H2NTMS,1,"Gas Diffusion","Chemistry",full,"perfume spreading",3,3,3,1,3
+ANN-H2NTMS,1,"Gas Diffusion","Chemistry",full,"smoke dispersion",2,2,1,2,3
+ANN-H2NTMS,1,"Gas Diffusion","Chemistry",full,"gasoline",2,2,1,3,3
+ANN-H2NTMS,2,"Encryption","CS",full,"locked box",2,2,2,1,3
+ANN-H2NTMS,2,"Encryption","CS",full,"sealed envelope",1,2,1,2,3
+ANN-H2NTMS,2,"Encryption","CS",full,"locker",1,1,1,3,3
+ANN-H2NTMS,3,"Industrial Revolution","History",full,"steam engine era",2,2,1,2,2
+ANN-H2NTMS,3,"Industrial Revolution","History",full,"automation",3,3,3,1,2
+ANN-H2NTMS,3,"Industrial Revolution","History",full,"industrialization",2,3,1,3,2
+ANN-H2NTMS,4,"GAN Algorithm","CS",full,"art forgery",3,3,3,1,3
+ANN-H2NTMS,4,"GAN Algorithm","CS",full,"artist and critic",3,3,3,2,3
+ANN-H2NTMS,4,"GAN Algorithm","CS",full,"teacher",2,2,2,3,3
+ANN-H2NTMS,5,"Bill of Rights","Law",full,"rulebook",3,3,3,1,3
+ANN-H2NTMS,5,"Bill of Rights","Law",full,"new‑car warranty",1,2,1,2,3
+ANN-H2NTMS,5,"Bill of Rights","Law",full,"school curfew",1,1,1,3,3
+ANN-H2NTMS,6,"AdaBoost Algorithm","CS",full,"teamwork",3,3,3,1,3
+ANN-H2NTMS,6,"AdaBoost Algorithm","CS",full,"iterative training",2,2,1,2,3
+ANN-H2NTMS,6,"AdaBoost Algorithm","CS",full,"gears in a machine",1,1,1,3,3
+ANN-H2NTMS,7,"Platelets","Biology",full,"tiny repair crew",3,3,3,1,3
+ANN-H2NTMS,7,"Platelets","Biology",full,"Band-Aid",1,2,1,2,3
+ANN-H2NTMS,7,"Platelets","Biology",full,"beads",1,1,1,3,3
+ANN-H2NTMS,8,"Cell","Biology",full,"factory",2,2,2,1,2
+ANN-H2NTMS,8,"Cell","Biology",full,"house",1,1,1,2,2
+ANN-H2NTMS,8,"Cell","Biology",full,"garage",1,1,1,3,2
+ANN-H2NTMS,9,"Economics","Economics",full,"marketplace",2,2,1,1,3
+ANN-H2NTMS,9,"Economics","Economics",full,"household budget",1,2,1,2,3
+ANN-H2NTMS,9,"Economics","Economics",full,"ecosystem",2,1,1,3,3
+ANN-H2NTMS,10,"Chemical Reaction","Chemistry",full,"baking soda + vinegar",3,3,3,1,3
+ANN-H2NTMS,10,"Chemical Reaction","Chemistry",full,"digestion",2,2,2,2,3
+ANN-H2NTMS,10,"Chemical Reaction","Chemistry",full,"boiling water",1,1,1,3,3
+ANN-H2NTMS,11,"Photosynthesis","Biology",full,"solar panels",3,2,2,1,3
+ANN-H2NTMS,11,"Photosynthesis","Biology",full,"greenhouse farming",1,1,1,3,3
+ANN-H2NTMS,11,"Photosynthesis","Biology",full,"fermentation process",2,2,1,2,3
+ANN-H2NTMS,12,"Random Forest","CS",full,"voting committee",3,3,3,1,3
+ANN-H2NTMS,12,"Random Forest","CS",full,"jury deliberation",2,1,1,2,3
+ANN-H2NTMS,12,"Random Forest","CS",full,"tree",1,1,1,3,3
+ANN-H2NTMS,13,"Isotope Dating","Chemistry",full,"hourglass",3,3,3,1,3
+ANN-H2NTMS,13,"Isotope Dating","Chemistry",full,"atomic clock",2,1,1,3,3
+ANN-H2NTMS,13,"Isotope Dating","Chemistry",full,"half-life",1,2,1,2,3
+ANN-H2NTMS,14,"Renaissance","History",full,"spring bloom",2,1,1,3,1
+ANN-H2NTMS,14,"Renaissance","History",full,"Ancient Rome",2,2,1,2,1
+ANN-H2NTMS,14,"Renaissance","History",full,"Enlightenment",2,2,1,1,1
+ANN-H2NTMS,15,"EM Algorithm","CS",full,"detective investigation",3,3,3,1,3
+ANN-H2NTMS,15,"EM Algorithm","CS",full,"guess‑and‑check",2,2,2,2,3
+ANN-H2NTMS,15,"EM Algorithm","CS",full,"miner",1,1,1,3,3

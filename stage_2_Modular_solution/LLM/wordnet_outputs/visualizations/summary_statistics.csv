@@ -1,3 +1,0 @@
-Model,Mode,Level,Total Pairs,Coverage,Coverage %,JCN Valid,JCN Valid %
-SCAR (baseline),baseline,system,400,312,78.0%,312,78.0%
-SCAR (baseline),baseline,subconcept,1613,1367,84.7%,1367,84.7%

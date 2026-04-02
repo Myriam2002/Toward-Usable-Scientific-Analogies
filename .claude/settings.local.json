@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c:*)",
+      "Bash(python3.13:*)",
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(\"d:\\\\My_working_area\\\\Masters\\\\Thesis\\\\code\\\\Toward-Usable-Scientific-Analogies\\\\Toward-Usable-Scientific-Analogies\\\\stage_2_Modular_solution\\\\LLM\\\\notebooks\\\\upgrading_LLM_as_a_judge.ipynb\":*)",
+      "Bash(ls \"d:\\\\My_working_area\\\\Masters\\\\Thesis\\\\code\\\\Toward-Usable-Scientific-Analogies\\\\Toward-Usable-Scientific-Analogies\\\\stage_2_Modular_solution\\\\LLM\\\\scripts\\\\run_judges\"\" && echo \"---\" && cat \"d:My_working_areaMastersThesiscodeToward-Usable-Scientific-AnalogiesToward-Usable-Scientific-Analogiesstage_2_Modular_solutionLLMscriptsrun_single_judge.ps1 \")",
+      "Bash(ls -1 *.csv)",
+      "Bash(ls -1 *.json)",
+      "Bash(cat *.csv)"
+    ]
+  }
+}

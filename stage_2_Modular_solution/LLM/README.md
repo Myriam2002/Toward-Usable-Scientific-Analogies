@@ -1,6 +1,6 @@
 # LLM Baselines Pipeline
 
-This folder contains the complete pipeline for evaluating LLM-based analogy generation across 12 different language models, including reranking and re-evaluation.
+This folder contains the complete pipeline for evaluating LLM-based analogy generation across 12 different language models, including reranking, re-evaluation with multiple judge models, and human annotation analysis.
 
 ---
 
@@ -106,6 +106,17 @@ This folder contains the complete pipeline for evaluating LLM-based analogy gene
               │    LLM reranker                       │
               │  • Re-evaluate top-1 reranked choice  │
               │  • Output: *_rerank.csv files         │
+              └───────────────────┬───────────────────┘
+                                  │
+                                  ▼
+              ┌───────────────────────────────────────┐
+              │    Step 6: MULTI-JUDGE EVALUATION     │
+              │    (Optional — Upgraded Judge)        │
+              ├───────────────────────────────────────┤
+              │  • Re-evaluate with 5 judge models    │
+              │  • Two judge modes: 3scale,           │
+              │    3scale_fewshot                     │
+              │  • Output: results/upgraded_llm/      │
               └───────────────────────────────────────┘
 ```
 
@@ -120,12 +131,12 @@ This folder contains the complete pipeline for evaluating LLM-based analogy gene
 2. **Precompute Gold Source Embeddings**:
    - Extract all unique gold sources (correct answers) from the dataset
    - Compute embeddings using **SentenceTransformer all-MiniLM-L6-v2**
-   - Save to `gold_source_embeddings.pkl`
+   - Save to `data/gold_source_embeddings.pkl`
 
 3. **Precompute Target Embeddings**:
    - Compute target-only embeddings using **OpenAI text-embedding-3-small**
    - Compute target-with-subconcepts embeddings (target + sub-concepts combined)
-   - Save to `target_embeddings.pkl` and `target_with_subconcepts_embeddings.pkl`
+   - Save to `data/target_embeddings.pkl` and `data/target_with_subconcepts_embeddings.pkl`
 
 ---
 
@@ -163,7 +174,7 @@ This folder contains the complete pipeline for evaluating LLM-based analogy gene
    - **top1_embedding**: Analogy with highest embedding similarity to target (OpenAI embeddings)
 
 10. **LLM-as-Judge Evaluation**:
-    - Judge model: **gpt-4.1-mini**
+    - Default judge model: **gpt-4.1-mini**
     - Evaluates BOTH top1_baseline and top1_embedding
     - Scoring dimensions (1-3 scale):
       - **Analogy Coherence**: Does the pairing make intuitive sense?
@@ -209,9 +220,26 @@ This folder contains the complete pipeline for evaluating LLM-based analogy gene
 16. **Output Files**:
     - `all_results_targetonly_rerank.csv`
     - `all_results_withsub_rerank.csv`
+    - `all_results_targetonly_rerank_edited_threshold.csv` (reranked with adjusted similarity threshold)
+    - `all_results_withsub_rerank_edited_threshold.csv`
     - Contains original columns plus reranking results
 
 **Note**: Reranking must be run in **separate terminals** (one per file) due to DSPy limitations.
+
+---
+
+### Step 6: Multi-Judge Evaluation (Optional)
+
+17. **Upgraded Judge Pipeline**:
+    - Re-evaluate analogies using multiple judge models for cross-judge agreement analysis
+    - **5 judge models**: `gpt-4.1-mini`, `gemini-2.5-flash-lite`, `deepseek-r1`, `claude-sonnet-4.6`, `mimo-v2-pro`
+    - **2 judge modes**: `3scale` (standard), `3scale_fewshot` (with few-shot examples)
+    - Output files in `results/upgraded_llm/`
+
+18. **Human Annotation**:
+    - A subset of 15 targets was annotated by human annotators
+    - Annotation data in `human_annotation/`
+    - Comparison with LLM judge scores in `results/human_annotation/`
 
 ---
 
@@ -219,74 +247,128 @@ This folder contains the complete pipeline for evaluating LLM-based analogy gene
 
 ```
 LLM/
-├── config.py                 # Configuration (models, prompts, paths)
-├── run_model.py              # Analogy generation script
-├── evaluate_model.py         # Evaluation script (gold matching + judge)
-├── precompute_similarity.py  # Embedding precomputation & semantic matching
-├── aggregate_results.py      # Aggregates all model results by mode
-├── rerank_aggregated_results.py  # Reranks aggregated results and re-evaluates
-├── baselines.ipynb           # Main orchestration notebook
-├── launch_all_and_aggregate.ps1  # Main script: launches all models + auto-aggregates
-├── run_single_model.ps1     # Runs one model (generation + evaluation)
-├── aggregate_results.ps1     # Manual aggregation script (if needed)
-├── scripts/                  # Individual model scripts
-│   ├── run_gpt-4.1-mini.ps1
-│   ├── run_llama-3.1-405b-instruct.ps1
-│   └── ... (12 total)
-├── gold_source_embeddings.pkl        # Precomputed gold source embeddings
-├── target_embeddings.pkl             # Precomputed target-only embeddings
-├── target_with_subconcepts_embeddings.pkl  # Precomputed target+subconcepts embeddings
-└── results/                  # Output directory for CSV results
-    ├── .markers/            # Completion markers (auto-created)
-    ├── LLM_*_targetonly.csv      # Generation results
-    ├── LLM_*_targetonly_eval.csv # Evaluation results
+├── core/                         # Core pipeline scripts
+│   ├── config.py                 # Configuration (models, prompts, paths)
+│   ├── run_model.py              # Analogy generation script
+│   ├── evaluate_model.py         # Evaluation (gold matching + judge)
+│   ├── precompute_similarity.py  # Embedding precomputation & semantic matching
+│   └── run_judge.py              # Multi-judge evaluation script
+│
+├── utilities/                    # Post-processing utilities
+│   ├── aggregate_results.py      # Aggregates all model results by mode
+│   ├── rerank_aggregated_results.py  # Reranks aggregated results
+│   ├── rerun_problematic_records.py  # Re-runs failed/problematic records
+│   └── rerun_withsub_failed.py   # Re-runs failed withsub records
+│
+├── scripts/                      # PowerShell launch scripts
+│   ├── launch_all_and_aggregate.ps1  # Main: launches all models + auto-aggregates
+│   ├── run_single_model.ps1      # Runs one model (generation + evaluation)
+│   ├── run_single_judge.ps1      # Runs one judge model
+│   ├── run_all_judges.ps1        # Launches all judge models in parallel
+│   ├── aggregate_results.ps1     # Manual aggregation script
+│   ├── run_withsub_only.ps1      # Runs withsub mode only
+│   ├── rerun_model_mode_records.ps1
+│   ├── rerun_single_model_targets.ps1
+│   ├── rerun_problematic_records.ps1
+│   ├── rerun_withsub_failed.ps1
+│   ├── rerun_judge_errors.ps1
+│   ├── run_models/               # Individual model scripts (12 total)
+│   │   ├── run_gpt-4.1-mini.ps1
+│   │   ├── run_llama-3.1-405b-instruct.ps1
+│   │   └── ... (12 total)
+│   └── run_judges/               # Individual judge scripts (5 total)
+│       ├── run_judge_gpt-4.1-mini.ps1
+│       ├── run_judge_deepseek-r1.ps1
+│       ├── run_judge_gemini-2.5-flash-lite.ps1
+│       ├── run_judge_claude-sonnet-4.6.ps1
+│       └── run_judge_mimo-v2-pro.ps1
+│
+├── analysis/                     # Analysis notebooks
+│   ├── baselines.ipynb           # Main results analysis & visualization
+│   ├── results_visualization.ipynb
+│   ├── similarity_analysis_v2.ipynb
+│   ├── judge_comparison_heatmap.ipynb
+│   ├── judge_agreement_analysis.ipynb
+│   ├── model_mode_similarity_comparison.ipynb
+│   ├── scar_wrong_distribution_comparison.ipynb
+│   └── LLM_semi_closed_visualizations.ipynb
+│
+├── notebooks/                    # Supplementary notebooks
+│   ├── human_annotation_analysis.ipynb
+│   ├── upgrading_LLM_as_a_judge.ipynb
+│   ├── wordnet_distribution_improve.ipynb
+│   ├── build_notebook.py
+│   └── wordnet_outputs/
+│
+├── data/                         # Precomputed embeddings & supporting data
+│   ├── gold_source_embeddings.pkl        # Gold source embeddings (all-MiniLM-L6-v2)
+│   ├── target_embeddings.pkl             # Target-only embeddings (OpenAI)
+│   ├── target_with_subconcepts_embeddings.pkl  # Target+subconcepts embeddings
+│   └── position_similarity_comparison.csv
+│
+├── human_annotation/             # Human annotation data
+│   ├── 15_targets_full_data.xlsx
+│   ├── 15_targets_full_data_with_reasoning.xlsx
+│   ├── annotation_form.html
+│   ├── annotation_form_updated.html
+│   └── human_results/
+│
+└── results/                      # Output directory for all results
+    ├── .markers/                 # Completion markers (auto-created)
+    ├── LLM_*_targetonly.csv          # Generation results per model
+    ├── LLM_*_targetonly_eval.csv     # Evaluation results per model
     ├── LLM_*_withsub.csv
     ├── LLM_*_withsub_eval.csv
-    ├── all_results_targetonly.csv  # Aggregated results (all models)
-    ├── all_results_withsub.csv     # Aggregated results (all models)
-    ├── all_results_targetonly_rerank.csv  # Reranked results (targetonly)
-    └── all_results_withsub_rerank.csv     # Reranked results (withsub)
+    ├── all_results_targetonly.csv    # Aggregated (all models, targetonly)
+    ├── all_results_withsub.csv       # Aggregated (all models, withsub)
+    ├── all_results_targetonly_rerank.csv
+    ├── all_results_withsub_rerank.csv
+    ├── all_results_targetonly_rerank_edited_threshold.csv
+    ├── all_results_withsub_rerank_edited_threshold.csv
+    ├── final_visualizations/     # Publication-ready plots
+    ├── judge_analysis/           # Cross-judge agreement plots
+    ├── human_annotation/         # Human vs. LLM comparison plots
+    ├── upgraded_llm/             # Multi-judge evaluation outputs
+    │   ├── upgraded_judge_3scale_{model}.csv
+    │   └── upgraded_judge_3scale_fewshot_{model}.csv
+    └── similarity_analysis/      # Similarity distribution plots
 ```
 
 ---
 
 ## Quick Start
 
-### 1. Precompute Embeddings (Run Once - REQUIRED)
+### 1. Precompute Embeddings (Run Once — REQUIRED)
 
 **IMPORTANT**: Embeddings must be precomputed before running models.
 
 ```bash
-python precompute_similarity.py --mode both
+python core/precompute_similarity.py --mode both
 ```
 
-Or run Cell 2 in `baselines.ipynb`.
-
-This creates:
+This creates in `data/`:
 - `gold_source_embeddings.pkl` (for semantic matching)
 - `target_embeddings.pkl` (for top-1-embedding selection)
 - `target_with_subconcepts_embeddings.pkl` (for withsub mode)
 
 **Note**: If these files already exist, precomputation is skipped automatically.
 
-### 2. Run All Models (Recommended - Auto-Aggregates)
+### 2. Run All Models (Recommended — Auto-Aggregates)
 
 ```powershell
 # Full run (all 321 records per model)
-.\launch_all_and_aggregate.ps1
+.\scripts\launch_all_and_aggregate.ps1
 
 # Test mode (5 records per model - for quick testing)
-.\launch_all_and_aggregate.ps1 -Test
+.\scripts\launch_all_and_aggregate.ps1 -Test
 ```
 
 **What this does**:
 1. Launches 12 PowerShell terminals (one per model)
-2. Each terminal runs:
-   - Generation (targetonly + withsub)
-   - Evaluation (LLM Judge + Semantic Matching)
+2. Each terminal runs generation (targetonly + withsub) + evaluation (LLM Judge + Semantic Matching)
 3. Monitors completion using marker files
 4. **Automatically runs aggregation** when all models finish
-5. Creates `all_results_targetonly.csv` and `all_results_withsub.csv`
+5. Creates `results/all_results_targetonly.csv` and `results/all_results_withsub.csv`
 
 **Output**: The main terminal shows progress: `[5/12] completed | Elapsed: 00:15:30`
 
@@ -294,37 +376,35 @@ This creates:
 
 ```powershell
 # Full run
-.\run_single_model.ps1 -Model "gpt-4.1-mini"
+.\scripts\run_single_model.ps1 -Model "gpt-4.1-mini"
 
 # Test mode (5 records)
-.\run_single_model.ps1 -Model "gpt-4.1-mini" -Test
+.\scripts\run_single_model.ps1 -Model "gpt-4.1-mini" -Test
 ```
 
 Or using Python directly:
 
 ```bash
 # targetonly mode
-python run_model.py --model gpt-4.1-mini --mode targetonly
+python core/run_model.py --model gpt-4.1-mini --mode targetonly
 
 # withsub mode
-python run_model.py --model gpt-4.1-mini --mode withsub
+python core/run_model.py --model gpt-4.1-mini --mode withsub
 
 # Test mode (5 records)
-python run_model.py --model gpt-4.1-mini --mode targetonly --test
+python core/run_model.py --model gpt-4.1-mini --mode targetonly --test
 ```
 
 ### 4. Manual Aggregation (If Needed)
 
-If you need to re-aggregate results manually:
-
 ```powershell
-.\aggregate_results.ps1
+.\scripts\aggregate_results.ps1
 ```
 
 Or:
 
 ```bash
-python aggregate_results.py
+python utilities/aggregate_results.py
 ```
 
 ### 5. Rerank Aggregated Results (Optional)
@@ -333,14 +413,12 @@ python aggregate_results.py
 
 **Terminal A (targetonly)**:
 ```bash
-cd Toward-Usable-Scientific-Analogies/stage_2_Modular_solution/LLM
-python rerank_aggregated_results.py --input results/all_results_targetonly.csv --verbose
+python utilities/rerank_aggregated_results.py --input results/all_results_targetonly.csv --verbose
 ```
 
 **Terminal B (withsub)**:
 ```bash
-cd Toward-Usable-Scientific-Analogies/stage_2_Modular_solution/LLM
-python rerank_aggregated_results.py --input results/all_results_withsub.csv --verbose
+python utilities/rerank_aggregated_results.py --input results/all_results_withsub.csv --verbose
 ```
 
 **Command-Line Options**:
@@ -355,37 +433,52 @@ python rerank_aggregated_results.py --input results/all_results_withsub.csv --ve
 - **Subconcept generation**: For `targetonly`, automatically generates `target_subconcepts` and `sec_generated_subconcepts` from SCAR dataset
 - **Subconcept extraction**: For both modes, always extracts `target_subconcepts` from SCAR dataset
 
-**Example - Test mode**:
-```bash
-python rerank_aggregated_results.py --input results/all_results_targetonly.csv --test 5 --verbose
+### 6. Multi-Judge Evaluation (Optional)
+
+Run all 5 judge models in parallel:
+
+```powershell
+.\scripts\run_all_judges.ps1
 ```
 
-**Example - Resume interrupted run**:
-```bash
-# Just restart the same command - it auto-detects existing file
-python rerank_aggregated_results.py --input results/all_results_targetonly.csv --verbose
+Or run a single judge:
+
+```powershell
+.\scripts\run_single_judge.ps1 -Model "deepseek-r1" -Mode "3scale_fewshot"
 ```
 
-### 6. Analyze Results
+Or using Python directly:
 
-Run the analysis cells in `baselines.ipynb` to:
-- Compute summary metrics
-- Generate visualizations
+```bash
+python core/run_judge.py --model gpt-4.1-mini --mode 3scale_fewshot
+python core/run_judge.py --model deepseek-r1  --mode 3scale --test
+```
+
+**Judge models**: `gpt-4.1-mini`, `gemini-2.5-flash-lite`, `deepseek-r1`, `claude-sonnet-4.6`, `mimo-v2-pro`
+**Judge modes**: `3scale` (standard), `3scale_fewshot` (with few-shot examples)
+
+Output files saved to `results/upgraded_llm/`.
+
+### 7. Analyze Results
+
+Open notebooks in `analysis/` to:
+- Compute summary metrics (`baselines.ipynb`)
+- Generate visualizations (`results_visualization.ipynb`)
 - Compare models and modes
-- Compare baseline vs reranked results
+- Analyze judge agreement (`judge_agreement_analysis.ipynb`, `judge_comparison_heatmap.ipynb`)
+- Compare with human annotations (`notebooks/human_annotation_analysis.ipynb`)
 
 ---
 
-## Key Configuration (config.py)
+## Key Configuration (`core/config.py`)
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
 | `NUM_ANALOGIES` | 20 | Number of analogies generated per target |
 | `SIMILARITY_THRESHOLD` | 0.5 | Semantic match threshold |
 | `EMBEDDING_MODEL` | all-MiniLM-L6-v2 | For gold source matching |
-| `JUDGE_MODEL` | gpt-4.1-mini | LLM-as-judge model |
+| `JUDGE_MODEL` | gpt-4.1-mini | Default LLM-as-judge model |
 | `MAPPING_MODEL` | meta-llama-3-1-70b-instruct | Sub-concept extraction model |
-| `RERANKER_MODEL` | meta-llama-3-1-70b-instruct | LLM reranker model |
 | `TEST_MODE_RECORD_LIMIT` | 3 | Number of records in test mode |
 
 ## Environment Setup
@@ -415,12 +508,12 @@ The scripts automatically load environment variables from `.env` file.
 | `top1_baseline` | First generated analogy |
 | `top1_embedding` | Best analogy by embedding similarity to target |
 | `top1_embedding_score` | Similarity score for top1_embedding |
-| `gold_ranks_list` | JSON list of all exact-match ranks (e.g., `[1, 3, 5]`) — used for Hit@K (exact) |
-| `gold_ranks` | JSON dict mapping **generated analogy** → exact rank |
-| `sem_gold_ranks_list` | JSON list of all semantic-match ranks (e.g., `[2, 4]`) — used for Hit@K (semantic) |
-| `sem_gold_ranks` | JSON dict mapping **generated analogy** → semantic rank |
+| `gold_ranks_list` | JSON list of all exact-match ranks — used for Hit@K (exact) |
+| `gold_ranks` | JSON dict mapping generated analogy → exact rank |
+| `sem_gold_ranks_list` | JSON list of all semantic-match ranks — used for Hit@K (semantic) |
+| `sem_gold_ranks` | JSON dict mapping generated analogy → semantic rank |
 | `similarity_per_gold` | JSON dict with per-gold similarity stats (debug/analysis) |
-| `embedding_all_scores` | JSON dict mapping **generated analogy** → target similarity score (OpenAI embeddings) |
+| `embedding_all_scores` | JSON dict mapping generated analogy → target similarity score |
 | `judge_baseline` | JSON dict with judge scores for `top1_baseline` |
 | `judge_embedding` | JSON dict with judge scores for `top1_embedding` |
 | `generated_subconcepts` | Sub-concepts used (withsub mode only) |
@@ -435,7 +528,7 @@ The scripts automatically load environment variables from `.env` file.
 | `llm_rerank_order_indices` | JSON list of original positions (1-20) mapping reranked items back to original list |
 | `top1_rerank` | The reranker's top choice |
 | `rerank_reasoning` | Reranker's explanation for the ranking |
-| `judge_rerank` | LLM-as-judge evaluation of `top1_rerank` (same format as `judge_baseline`/`judge_embedding`) |
+| `judge_rerank` | LLM-as-judge evaluation of `top1_rerank` |
 | `sec_generated_subconcepts` | Generated per-analogy subconcepts (targetonly mode only, JSON list) |
 | `target_subconcepts` | Always filled from SCAR dataset (for both modes) |
 
@@ -455,19 +548,6 @@ Both `judge_baseline`, `judge_embedding`, and `judge_rerank` have this structure
 }
 ```
 
-### Removed Redundant Columns
-
-To avoid repetition, the evaluation CSV **does not** include these legacy columns anymore:
-- `analogy_coherence`
-- `mapping_soundness`
-- `explanatory_power`
-- `average_score`
-- `judge_reasoning`
-- `found_gold_sources`
-- `sem_gold_sources`
-
-All information is preserved inside `judge_baseline` / `judge_embedding` / `judge_rerank` and the rank fields above.
-
 ---
 
 ## Workflow Summary
@@ -476,30 +556,29 @@ All information is preserved inside `judge_baseline` / `judge_embedding` / `judg
 
 1. **Precompute embeddings** (once):
    ```bash
-   python precompute_similarity.py --mode both
+   python core/precompute_similarity.py --mode both
    ```
 
 2. **Run all models with auto-aggregation**:
    ```powershell
-   .\launch_all_and_aggregate.ps1
+   .\scripts\launch_all_and_aggregate.ps1
    ```
-   
-   This will:
-   - Launch 12 terminals (one per model)
-   - Each runs generation + evaluation for both modes
-   - Automatically aggregate when all complete
-   - Output: `all_results_targetonly.csv` and `all_results_withsub.csv`
 
 3. **Rerank aggregated results** (optional):
    ```bash
    # Terminal A
-   python rerank_aggregated_results.py --input results/all_results_targetonly.csv --verbose
-   
+   python utilities/rerank_aggregated_results.py --input results/all_results_targetonly.csv --verbose
+
    # Terminal B
-   python rerank_aggregated_results.py --input results/all_results_withsub.csv --verbose
+   python utilities/rerank_aggregated_results.py --input results/all_results_withsub.csv --verbose
    ```
 
-4. **Analyze results** in `baselines.ipynb`
+4. **Run multi-judge evaluation** (optional):
+   ```powershell
+   .\scripts\run_all_judges.ps1
+   ```
+
+5. **Analyze results** in `analysis/baselines.ipynb` and other notebooks
 
 ### Test Mode
 
@@ -507,31 +586,29 @@ For quick testing with limited records:
 
 ```powershell
 # Generation and evaluation
-.\launch_all_and_aggregate.ps1 -Test
+.\scripts\launch_all_and_aggregate.ps1 -Test
 
 # Reranking
-python rerank_aggregated_results.py --input results/all_results_targetonly.csv --test 5 --verbose
+python utilities/rerank_aggregated_results.py --input results/all_results_targetonly.csv --test 5 --verbose
 ```
 
 ### Individual Model Run
 
-To run a single model:
-
 ```powershell
-.\run_single_model.ps1 -Model "gpt-4.1-mini"
+.\scripts\run_single_model.ps1 -Model "gpt-4.1-mini"
 ```
 
 ---
 
 ## Notes
 
-- **Embeddings are precomputed once** and shared across all models
+- **Embeddings are precomputed once** and stored in `data/`, shared across all models
 - **Each model runs in a separate terminal** to avoid DSPy configuration conflicts
 - **Completion markers** (`results/.markers/`) track which models have finished
 - **Aggregation happens automatically** when all 12 models complete
 - **Test mode** uses 3-5 records for quick validation
 - **Reranking saves incrementally** after each record to prevent data loss
-- **Reranking auto-resumes** if interrupted - just restart the same command
+- **Reranking auto-resumes** if interrupted — just restart the same command
 - **Subconcepts are always extracted from SCAR** for both modes in reranked files
 
 ---
@@ -551,5 +628,6 @@ To run a single model:
 ### General Issues
 
 - **DSPy configuration conflicts**: Each model must run in a separate terminal/process
-- **Missing embeddings**: Run `precompute_similarity.py` first
+- **Missing embeddings**: Run `core/precompute_similarity.py` first
 - **Environment variables**: Ensure `.env` file is in the project root with required API keys
+- **Script paths**: All PowerShell scripts are now under `scripts/`; Python scripts are under `core/` or `utilities/`

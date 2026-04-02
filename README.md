@@ -15,7 +15,7 @@ This project develops a **multi-agent pipeline** to improve the quality and usab
 
 ## 🛠️ Key Tasks
 
-### Stage 1: Analyze LLM Challenges (Sept 26–Oct 30)
+### Stage 1: Analyze LLM Challenges 
 
 * Test whether models can **identify suitable sources** under varying information levels.
 * Conduct **closed search** within a controlled corpus.
@@ -26,12 +26,12 @@ This project develops a **multi-agent pipeline** to improve the quality and usab
 * Assess **mapping generation** under different property conditions.
 * Examine **explanation generation** under progressively richer input conditions.
 
-### Stage 2: Design Modular Multi-Agent Solution (Nov 1–Jan 4)
+### Stage 2: Design Modular Multi-Agent Solution 
 
 * Build individual agents for **source selection**, **mapping generation**, and **explanation generation**.
 * Experiment with different prompts, tools, and LLMs to find the most effective configuration for each agent.
 
-### Stage 3: Build Full Pipeline with Feedback & Visualization (Jan 4–Feb 28)
+### Stage 3: Build Full Pipeline with Feedback 
 
 * Integrate agents into a **feedback-enabled pipeline** with human-in-the-loop oversight.
 * Develop a **visualization module** to translate analogies into diagrams or schematics.
@@ -63,28 +63,30 @@ This project develops a **multi-agent pipeline** to improve the quality and usab
 * New benchmark results on SCAR and Parallel PARC.
 * Feedback-enabled evaluation module reusable across research and applications.
 
-## 📂 Repository Structure (suggested)
+## 📂 Repository Structure
 
 ```
-├── stage1_analysis/             # All code/notebooks for analyzing LLM challenges
+├── stage1_analysis/             # LLM challenge analysis (Stage 1)
 │   ├── source_finding/          # Closed/open search experiments
 │   ├── mapping_generation/      # Entity & relation alignment experiments
 │   └── explanation_generation/  # Explanation quality experiments
 │
-├── stage2_modular_agents/       # Design & implementation of specialized agents
-│   ├── source_agent/
-│   ├── mapping_agent/
-│   └── explanation_agent/
+├── stage_2_Modular_solution/    # Modular multi-agent solution (Stage 2)
+│   └── LLM/                     # LLM baselines pipeline
+│       ├── core/                # Core pipeline scripts (generation, evaluation, judging)
+│       ├── utilities/           # Post-processing (aggregation, reranking, reruns)
+│       ├── scripts/             # PowerShell launch scripts
+│       │   ├── run_models/      # Per-model generation scripts (12 models)
+│       │   └── run_judges/      # Per-judge evaluation scripts (5 judge models)
+│       ├── analysis/            # Analysis notebooks
+│       ├── notebooks/           # Supplementary notebooks (human annotation, WordNet)
+│       ├── data/                # Precomputed embeddings
+│       ├── human_annotation/    # Human annotation data and forms
+│       └── results/             # All output CSVs and visualizations
 │
-├── stage3_pipeline/             # Integrated pipeline with feedback loop
-│   ├── integration/             # Scripts to link agents
-│   ├── evaluation/              # Holistic evaluator code & metrics
-│   └── visualization/           # Diagram generation module
+├── stage2_modular_agents/       # Modular agent implementations
 │
-├── data/                        # SCAR, Parallel PARC, any preprocessed data
-├── docs/                        # Methodology notes, paper drafts, diagrams
-├── results/                     # Benchmark results, figures, analysis outputs
-└── README.md
+└── data/                        # SCAR, Parallel PARC, preprocessed data
 
 ```
 

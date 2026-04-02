@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analogy Quality Annotation Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --steel: #4682B4; --steel-dark: #3a6d96; --steel-light: #6a9dc9;
+  --steel-bg: #eaf1f8; --steel-bg2: #d5e4f0;
+  --coral: #E8734A; --coral-dark: #c9603d; --coral-light: #f09070;
+  --coral-bg: #fdf0eb; --coral-bg2: #fad9cc;
+  --bg: #f8f9fb; --surface: #ffffff; --surface-alt: #f2f4f7;
+  --border: #dde1e8; --border-focus: var(--steel);
+  --text: #1e2a3a; --text-muted: #5a6a7e; --text-light: #8e9bac;
+  --green: #2e8b57; --green-bg: #e6f4ec;
+  --amber: #d4880f; --amber-bg: #fef6e4;
+  --red: #c0392b; --red-bg: #fce8e6;
+  --shadow-sm: 0 1px 3px rgba(30,42,58,0.07);
+  --shadow-md: 0 4px 16px rgba(30,42,58,0.10);
+  --shadow-lg: 0 8px 32px rgba(30,42,58,0.14);
+  --radius: 8px; --radius-lg: 12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh;}
+.progress-bar{position:fixed;top:0;left:0;right:0;z-index:200;height:5px;background:var(--border);}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--steel),var(--coral));transition:width 0.4s ease;}
+.header{position:fixed;top:5px;left:0;right:0;z-index:150;background:rgba(248,249,251,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:10px 28px;display:flex;justify-content:space-between;align-items:center;}
+.header-title{font-family:'Libre Baskerville',serif;font-size:14px;font-weight:700;color:var(--steel-dark);}
+.header-right{display:flex;align-items:center;gap:14px;}
+.header-step{font-size:12px;color:var(--text-muted);font-family:'IBM Plex Mono',monospace;}
+.ref-btn{padding:6px 14px;border-radius:20px;background:var(--coral-bg);color:var(--coral-dark);border:1px solid var(--coral-bg2);font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:6px;}
+.ref-btn:hover{background:var(--coral-bg2);}
+.ref-overlay{position:fixed;inset:0;z-index:300;background:rgba(30,42,58,0.3);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity 0.25s;}
+.ref-overlay.open{opacity:1;pointer-events:all;}
+.ref-panel{position:fixed;top:0;right:-560px;bottom:0;z-index:301;width:540px;max-width:94vw;background:var(--surface);box-shadow:var(--shadow-lg);overflow-y:auto;transition:right 0.3s cubic-bezier(0.4,0,0.2,1);padding:28px;}
+.ref-panel.open{right:0;}
+.ref-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--surface-alt);border:1px solid var(--border);cursor:pointer;font-size:16px;color:var(--text-muted);display:flex;align-items:center;justify-content:center;}
+.ref-close:hover{background:var(--border);}
+.ref-tabs{display:flex;gap:0;margin:14px 0 16px;border-bottom:2px solid var(--border);}
+.ref-tab{padding:8px 16px;font-size:13px;font-weight:600;color:var(--text-muted);cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;margin-bottom:-2px;font-family:'Outfit',sans-serif;transition:all 0.15s;}
+.ref-tab:hover{color:var(--text);}
+.ref-tab.active{color:var(--steel-dark);border-bottom-color:var(--steel);}
+.ref-tab-content{display:none;}
+.ref-tab-content.active{display:block;}
+.container{max-width:800px;margin:0 auto;padding:80px 24px 120px;}
+.page{display:none;animation:fadeUp 0.3s ease;}
+.page.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+h1{font-family:'Libre Baskerville',serif;font-size:30px;font-weight:700;line-height:1.3;margin-bottom:12px;}
+h2{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;margin-bottom:10px;}
+h3{font-size:13px;font-weight:700;margin-bottom:8px;color:var(--steel);text-transform:uppercase;letter-spacing:0.7px;}
+p{margin-bottom:12px;}
+.subtitle{font-size:16px;color:var(--text-muted);margin-bottom:24px;font-weight:300;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:18px;box-shadow:var(--shadow-sm);}
+.def-box{border-left:4px solid var(--steel);padding:14px 18px;background:var(--steel-bg);border-radius:0 var(--radius) var(--radius) 0;margin-bottom:14px;}
+.def-box.coral{border-left-color:var(--coral);background:var(--coral-bg);}
+.def-box.amber{border-left-color:var(--amber);background:var(--amber-bg);}
+.def-label{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:4px;}
+.def-box .def-label{color:var(--steel-dark);}
+.def-box.coral .def-label{color:var(--coral-dark);}
+.def-box.amber .def-label{color:var(--amber);}
+.ex-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;}
+.ex-table th{text-align:left;padding:8px 10px;background:var(--surface-alt);border-bottom:2px solid var(--border);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);}
+.ex-table td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;}
+.score-pill{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;font-weight:700;font-size:12px;font-family:'IBM Plex Mono',monospace;}
+.score-pill.s3{background:var(--green-bg);color:var(--green);}
+.score-pill.s2{background:var(--amber-bg);color:var(--amber);}
+.score-pill.s1{background:var(--red-bg);color:var(--red);}
+.target-header{background:linear-gradient(135deg,var(--steel) 0%,var(--steel-dark) 100%);color:white;border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:18px;box-shadow:var(--shadow-md);}
+.target-header h2{color:white;margin-bottom:4px;}
+.target-domain{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;opacity:0.7;margin-bottom:6px;font-weight:600;}
+.target-desc{font-size:14px;opacity:0.92;line-height:1.55;font-weight:300;}
+.source-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 24px;margin-bottom:14px;transition:border-color 0.2s,box-shadow 0.2s;}
+.source-card:hover{border-color:var(--steel-light);box-shadow:var(--shadow-sm);}
+.source-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--coral);margin-bottom:2px;}
+.source-name{font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;margin-bottom:6px;}
+.source-desc{font-size:13px;color:var(--text-muted);margin-bottom:14px;line-height:1.55;}
+.rating-row{display:flex;align-items:center;padding:9px 0;border-bottom:1px solid var(--surface-alt);}
+.rating-row:last-child{border-bottom:none;}
+.rating-label{width:150px;font-weight:600;font-size:13px;flex-shrink:0;}
+.dim-hint{font-size:10px;color:var(--text-light);font-weight:400;margin-top:1px;}
+.rating-options{display:flex;gap:6px;flex:1;}
+.rating-btn{flex:1;padding:9px 6px;border:2px solid var(--border);border-radius:var(--radius);background:var(--surface);cursor:pointer;text-align:center;font-size:12px;font-family:'Outfit',sans-serif;font-weight:500;transition:all 0.12s ease;color:var(--text-muted);}
+.rating-btn:hover{border-color:var(--steel-light);background:var(--steel-bg);}
+.rating-btn.sel-1{border-color:var(--red);background:var(--red-bg);color:var(--red);font-weight:700;}
+.rating-btn.sel-2{border-color:var(--amber);background:var(--amber-bg);color:var(--amber);font-weight:700;}
+.rating-btn.sel-3{border-color:var(--green);background:var(--green-bg);color:var(--green);font-weight:700;}
+.ranking-section{background:var(--surface);border:2px solid var(--border);border-radius:var(--radius-lg);padding:22px 24px;margin-top:20px;}
+.ranking-section.needs-touch{border-color:var(--coral);border-style:dashed;}
+.ranking-section.touched{border-color:var(--green);border-style:solid;}
+.ranking-title{font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;margin-bottom:2px;}
+.ranking-subtitle{font-size:12px;color:var(--text-muted);margin-bottom:14px;}
+.rank-required{font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;display:inline-block;margin-bottom:10px;}
+.rank-required.pending{background:var(--coral-bg);color:var(--coral-dark);}
+.rank-required.done{background:var(--green-bg);color:var(--green);}
+.rank-list{list-style:none;}
+.rank-item{display:flex;align-items:center;gap:12px;padding:11px 14px;margin-bottom:6px;background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius);cursor:grab;user-select:none;transition:box-shadow 0.15s,transform 0.15s,border-color 0.15s;}
+.rank-item:active{cursor:grabbing;box-shadow:var(--shadow-md);transform:scale(1.01);}
+.rank-item.dragging{opacity:0.4;}
+.rank-item.drag-over{border-color:var(--coral);border-width:2px;background:var(--coral-bg);}
+.rank-number{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;font-family:'IBM Plex Mono',monospace;font-size:13px;flex-shrink:0;}
+.rank-number.r1{background:var(--steel-bg);color:var(--steel-dark);}
+.rank-number.r2{background:var(--surface-alt);color:var(--text-muted);border:1px solid var(--border);}
+.rank-number.r3{background:var(--coral-bg);color:var(--coral-dark);}
+.rank-item-name{font-weight:600;font-size:14px;}
+.rank-handle{margin-left:auto;color:var(--text-light);font-size:16px;cursor:grab;letter-spacing:-2px;}
+.btn-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;gap:12px;}
+.btn{padding:11px 24px;border-radius:var(--radius);font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all 0.15s;}
+.btn-primary{background:var(--steel);color:white;}
+.btn-primary:hover{background:var(--steel-dark);}
+.btn-secondary{background:transparent;color:var(--text-muted);border:1px solid var(--border);}
+.btn-secondary:hover{background:var(--surface-alt);}
+.btn-export{background:linear-gradient(135deg,var(--steel),var(--coral));color:white;padding:14px 28px;font-size:15px;border-radius:var(--radius-lg);}
+.btn-export:hover{filter:brightness(1.05);}
+.btn:disabled{opacity:0.35;cursor:not-allowed;}
+.warning{background:var(--red-bg);border:1px solid #e57373;color:var(--red);padding:10px 14px;border-radius:var(--radius);font-size:13px;margin-bottom:14px;display:none;font-weight:500;}
+.warning.show{display:block;animation:shake 0.3s ease;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.note-box{background:var(--steel-bg);border-left:4px solid var(--steel);padding:12px 16px;border-radius:0 var(--radius) var(--radius) 0;font-size:13px;margin:14px 0;}
+.task-badge{display:inline-block;padding:5px 12px;border-radius:16px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:10px;}
+.task-badge.full{background:var(--steel-bg);color:var(--steel-dark);}
+.task-badge.rank-only{background:var(--coral-bg);color:var(--coral-dark);}
+.completion-icon{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--steel-bg),var(--green-bg));display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:36px;color:var(--green);box-shadow:var(--shadow-md);}
+.anon-id-box{background:var(--surface-alt);border:1px dashed var(--border);border-radius:var(--radius);padding:14px 18px;text-align:center;}
+.anon-id{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:var(--steel-dark);letter-spacing:2px;}
+.ref-panel h2{font-size:18px;margin-bottom:14px;}
+.ref-panel .ex-card{border-left:3px solid var(--border);padding:10px 14px;margin-bottom:10px;background:var(--surface-alt);border-radius:0 var(--radius) var(--radius) 0;}
+.ref-panel .ex-card.good{border-left-color:var(--green);background:var(--green-bg);}
+.ref-panel .ex-card.mid{border-left-color:var(--amber);background:var(--amber-bg);}
+.ref-panel .ex-card.bad{border-left-color:var(--red);background:var(--red-bg);}
+.ref-panel .ex-card h4{font-size:13px;font-weight:700;margin-bottom:3px;}
+.ref-panel .ex-card.good h4{color:var(--green);}
+.ref-panel .ex-card.mid h4{color:var(--amber);}
+.ref-panel .ex-card.bad h4{color:var(--red);}
+.ref-panel .scale-ref{display:grid;grid-template-columns:30px 50px 1fr;gap:4px 8px;font-size:12px;align-items:center;margin:10px 0;}
+.ref-target-label{font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:6px;padding-top:4px;}
+.worked-ex-container{border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:14px;}
+.worked-ex-tabs{display:flex;background:var(--surface-alt);border-bottom:1px solid var(--border);}
+.worked-ex-tab{flex:1;padding:10px 14px;font-size:13px;font-weight:600;color:var(--text-muted);cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;margin-bottom:-1px;font-family:'Outfit',sans-serif;transition:all 0.15s;text-align:center;}
+.worked-ex-tab:hover{color:var(--text);background:var(--surface);}
+.worked-ex-tab.active{color:var(--steel-dark);border-bottom-color:var(--steel);background:var(--surface);}
+.worked-ex-content{display:none;padding:20px 24px;background:var(--surface);}
+.worked-ex-content.active{display:block;}
+@media(max-width:640px){.container{padding:75px 14px 100px;}h1{font-size:24px;}.rating-row{flex-direction:column;align-items:flex-start;gap:6px;}.rating-label{width:100%;}.header{padding:10px 14px;}.ref-panel{width:100%;right:-100%;}.worked-ex-tab{font-size:11px;padding:8px 6px;}}
+hr.div{border:none;border-top:1px solid var(--border);margin:20px 0;}
+</style>
+</head>
+<body>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<div class="header">
+  <div class="header-title">Analogy Annotation Study</div>
+  <div class="header-right">
+    <div class="header-step" id="headerStep"></div>
+    <button class="ref-btn" id="refToggle" style="display:none;"><span>📖</span> Reference Guide</button>
+  </div>
+</div>
+<div class="ref-overlay" id="refOverlay"></div>
+<div class="ref-panel" id="refPanel">
+  <button class="ref-close" id="refClose">✕</button>
+  <h3 style="color:var(--coral);margin-bottom:2px;">Quick Reference</h3>
+  <h2>Dimensions & Scale</h2>
+  <div class="def-box" style="padding:10px 14px;margin-bottom:8px;"><div class="def-label" style="color:var(--steel-dark);">Coherence</div><p style="margin:0;font-size:13px;">Does "Target is like Source" click intuitively?</p></div>
+  <div class="def-box coral" style="padding:10px 14px;margin-bottom:8px;"><div class="def-label">Mapping</div><p style="margin:0;font-size:13px;">Do the key parts of the target have clear counterparts in the source?</p></div>
+  <div class="def-box amber" style="padding:10px 14px;margin-bottom:12px;"><div class="def-label">Explanatory Power</div><p style="margin:0;font-size:13px;">Would a learner gain real understanding from this analogy?</p></div>
+  <div class="scale-ref">
+    <span class="score-pill s3" style="width:24px;height:24px;font-size:11px;">3</span><strong>High</strong><span style="color:var(--text-muted);">Strong, clear, effective</span>
+    <span class="score-pill s2" style="width:24px;height:24px;font-size:11px;">2</span><strong>Med</strong><span style="color:var(--text-muted);">Partial, has gaps</span>
+    <span class="score-pill s1" style="width:24px;height:24px;font-size:11px;">1</span><strong>Low</strong><span style="color:var(--text-muted);">Weak or broken</span>
+  </div>
+  <hr class="div" style="margin:14px 0;">
+  <h3 style="color:var(--coral);margin-bottom:4px;">Worked Examples</h3>
+  <div class="ref-tabs" id="refExTabs">
+    <button class="ref-tab active" data-reftab="0">⚛ Atom</button>
+    <button class="ref-tab" data-reftab="1">🧬 DNA</button>
+    <button class="ref-tab" data-reftab="2">⚡ Electricity</button>
+  </div>
+  <div class="ref-tab-content active" data-reftab="0">
+    <div class="ref-target-label">TARGET: Atom — The fundamental unit of matter: a dense nucleus (protons + neutrons) orbited by electrons in shells, held by electromagnetic forces.</div>
+    <div class="ex-card good"><h4>"Solar System" → Coh 3 · Map 3 · Exp 3</h4><p style="font-size:11px;margin:0;color:var(--text-muted);"><b>Coh 3:</b> Central mass with orbiting bodies — instantly mirrors nucleus-electron layout.<br><b>Map 3:</b> Sun→nucleus; planets→electrons; gravity→electromagnetic force; orbital paths→shells.<br><b>Exp 3:</b> Learner grasps spatial layout, governing forces, and relative scale.</p></div>
+    <div class="ex-card mid"><h4>"Marble in a Stadium" → Coh 2 · Map 2 · Exp 2</h4><p style="font-size:11px;margin:0;color:var(--text-muted);"><b>Coh 2:</b> Conveys emptiness/scale but overall atomic structure isn't immediate.<br><b>Map 2:</b> Marble→nucleus works for scale, but nothing represents electrons, shells, or forces.<br><b>Exp 2:</b> Teaches one property (emptiness) well but misses the dynamic electron-nucleus relationship.</p></div>
+    <div class="ex-card bad"><h4>"Lego Brick" → Coh 1 · Map 1 · Exp 1</h4><p style="font-size:11px;margin:0;color:var(--text-muted);"><b>Coh 1:</b> Solid uniform block — misrepresents internal structure entirely.<br><b>Map 1:</b> No nucleus, electrons, or forces to map onto.<br><b>Exp 1:</b> Could mislead learners into thinking atoms are solid. Zero insight.</p></div>
+    <div style="background:var(--steel-bg);padding:8px 12px;border-radius:var(--radius);margin-top:8px;"><p style="font-size:11px;margin:0;color:var(--steel-dark);"><b>Ranking:</b> 1st Solar System · 2nd Marble in a Stadium · 3rd Lego Brick</p></div>
+  </div>
+  <div class="ref-tab-content" data-reftab="1">
+    <div class="ref-target-label">TARGET: DNA — A double-helix molecule storing genetic info via four bases (A,T,C,G) with complementary pairing, able to unzip for replication.</div>
+    <div class="ex-card good"><h4>"Twisted Zipper" → Coh 3 · Map 3 · Exp 3</h4><p style="font-size:11px;margin:0;color:var(--text-muted);"><b>Coh 3:</b> Two interlocking sides wound together — immediately resonates with double helix.<br><b>Map 3:</b> Teeth→base pairs; fabric strips→backbone strands; zipping/unzipping→replication.<br><b>Exp 3:</b> Learner visualizes strand separation and rejoining, grasping structure and function.</p></div>
+    <div class="ex-card mid"><h4>"Spiral Staircase" → Coh 3 · Map 2 · Exp 2</h4><p style="font-size:11px;margin:0;color:var(--text-muted);"><b>Coh 3:</b> Spiral shape maps onto helix — clicks at first glance.<br><b>Map 2:</b> Steps→base pairs works, but one railing ≠ two strands. No analog for separation.<br><b>Exp 2:</b> Captures shape well but doesn't convey encoding or replication. Partial learning.</p></div>
+    <div class="ex-card bad"><h4>"Recipe Book" → Coh 2 · Map 1 · Exp 1</h4><p style="font-size:11px;margin:0;color:var(--text-muted);"><b>Coh 2:</b> "Stores instructions" connects loosely.<br><b>Map 1:</b> Flat book has no parallel for double helix, base pairing, or strand separation.<br><b>Exp 1:</b> "DNA is instructions" is too vague to build real understanding.</p></div>
+    <div style="background:var(--steel-bg);padding:8px 12px;border-radius:var(--radius);margin-top:8px;"><p style="font-size:11px;margin:0;color:var(--steel-dark);"><b>Ranking:</b> 1st Twisted Zipper · 2nd Spiral Staircase · 3rd Recipe Book</p></div>
+  </div>
+  <div class="ref-tab-content" data-reftab="2">
+    <div class="ref-target-label">TARGET: Electricity — Flow of electric charge (electrons) through a conductor, driven by voltage and resisted by material properties (V=IR).</div>
+    <div class="ex-card good"><h4>"Water in Pipes" → Coh 3 · Map 3 · Exp 3</h4><p style="font-size:11px;margin:0;color:var(--text-muted);"><b>Coh 3:</b> One of science's most natural analogies — "flow" maps seamlessly.<br><b>Map 3:</b> Water→electrons; pipe diameter→resistance; pressure→voltage; flow rate→current.<br><b>Exp 3:</b> Narrow the pipe = more resistance, increase pressure = more current. Powerful predictive tool.</p></div>
+    <div class="ex-card mid"><h4>"Highway Traffic" → Coh 2 · Map 2 · Exp 2</h4><p style="font-size:11px;margin:0;color:var(--text-muted);"><b>Coh 2:</b> Cars moving captures flow, but autonomous agents ≠ field-driven electrons.<br><b>Map 2:</b> Cars→electrons works, but no voltage counterpart. Jams ≠ resistance.<br><b>Exp 2:</b> Basic "things in a channel" sense but could mislead on mechanism.</p></div>
+    <div class="ex-card bad"><h4>"Lightning Bolt" → Coh 2 · Map 1 · Exp 1</h4><p style="font-size:11px;margin:0;color:var(--text-muted);"><b>Coh 2:</b> Lightning is electricity — related but a dramatic instance, not a separate concept.<br><b>Map 1:</b> Sudden discharge has no mapping to steady current, resistance, or voltage.<br><b>Exp 1:</b> Reinforces "electricity is scary" rather than circuit understanding.</p></div>
+    <div style="background:var(--steel-bg);padding:8px 12px;border-radius:var(--radius);margin-top:8px;"><p style="font-size:11px;margin:0;color:var(--steel-dark);"><b>Ranking:</b> 1st Water in Pipes · 2nd Highway Traffic · 3rd Lightning Bolt</p></div>
+  </div>
+</div>
+<div class="container" id="app"></div>
+<script>
+// ═══ DATA — standalone source descriptions, no target comparison ═══
+const TARGETS=[
+{id:1,target:"Gas Diffusion",domain:"Chemistry",desc:"The process by which gas molecules spread from regions of high concentration to low concentration through random molecular motion (Brownian motion) in a medium such as air, until equilibrium is reached.",sources:[
+{analogy:"Perfume spreading",desc:"When perfume is sprayed, scent molecules leave the nozzle as a concentrated burst and then gradually disperse in all directions through the surrounding air. Over time the scent reaches every corner of a room, becoming fainter near the source as molecules spread outward through random collisions with air particles."},
+{analogy:"Smoke dispersion",desc:"Smoke released from a fire or cigarette starts as a dense, visible plume and gradually thins out as the particles spread through the surrounding air. The movement is influenced by air currents, convection, and gravity — larger particles may settle downward while finer ones drift more freely."},
+{analogy:"Gasoline",desc:"Gasoline is a volatile liquid fuel refined from petroleum, composed of a mixture of hydrocarbons. It is used primarily in internal combustion engines, where it vaporizes and mixes with air before being ignited by a spark plug to produce mechanical energy."}]},
+{id:2,target:"Encryption",domain:"CS",desc:"The process of converting readable data (plaintext) into an encoded format (ciphertext) using an algorithm and a key, so that only authorized parties holding the correct decryption key can recover the original information.",sources:[
+{analogy:"locked box",desc:"A physical container with a hinged lid secured by a lock mechanism. To use it, you place an item inside, close the lid, and engage the lock — after which only someone with the matching key can open it and access the contents. The item inside remains unchanged, just inaccessible."},
+{analogy:"Sealed envelope",desc:"A paper enclosure used to contain a letter or document for delivery. Once the letter is placed inside and the flap is sealed, the contents are hidden from view during transit. The recipient tears open or peels the seal to read the letter inside."},
+{analogy:"Locker",desc:"A metal storage compartment found in schools, gyms, and workplaces. Users place belongings inside and secure it with a combination dial or key-operated padlock. Lockers are typically shared facilities — many lockers in a row, each accessible only by the person who knows its code."}]},
+{id:3,target:"Industrial Revolution",domain:"History",desc:"A transformative period (roughly 1760–1840, starting in Britain) that shifted economies from agrarian hand-production to machine-based manufacturing. Key features include the steam engine, factory systems, railway expansion, and rapid urbanization.",sources:[
+{analogy:"Steam engine era",desc:"The period in the late 18th and 19th centuries defined by the invention and widespread adoption of steam-powered machinery. James Watt's improved steam engine (1769) powered factories, locomotives, and ships, fundamentally changing transportation, manufacturing, and daily life."},
+{analogy:"Automation",desc:"The use of machines, control systems, and technology to perform tasks with minimal human intervention. Modern examples include robotic assembly lines in car manufacturing, self-checkout kiosks, and AI-driven processes that replace or augment repetitive human labor."},
+{analogy:"Industrialization",desc:"The broad economic and social process by which a predominantly agricultural society transitions to one based on manufacturing and industry. It encompasses the growth of factories, urbanization as workers move to cities, and the restructuring of labor and social classes."}]},
+{id:4,target:"GAN Algorithm",domain:"CS",desc:"A machine learning architecture where two neural networks — a generator (which creates synthetic data) and a discriminator (which evaluates whether data is real or fake) — compete in an adversarial loop. The generator improves until its outputs are indistinguishable from real data.",sources:[
+{analogy:"Art forgery",desc:"A practice where a forger creates counterfeit artworks intended to pass as authentic originals by master artists. An art authenticator or expert then examines the works, looking for telltale signs of imitation. Skilled forgers study the expert's methods and improve their technique to avoid detection."},
+{analogy:"Artist and Critic",desc:"A creative dynamic where one party produces original work — paintings, music, writing — and another party evaluates it, offering judgment on quality, technique, and originality. The artist may revise their work based on the critic's feedback, creating an iterative cycle of creation and evaluation."},
+{analogy:"Teacher",desc:"An educator who instructs students by explaining concepts, demonstrating techniques, assigning practice tasks, and assessing student performance. The teacher holds domain expertise and guides the student's learning journey through feedback, correction, and encouragement."}]},
+{id:5,target:"Bill of Rights",domain:"Law",desc:"A foundational legal document (1689) enacted by the English Parliament after the Glorious Revolution. It limited monarchical power, established parliamentary sovereignty, guaranteed certain civil liberties (free speech, petition rights), and laid the groundwork for constitutional monarchy.",sources:[
+{analogy:"Rulebook",desc:"A document outlining the official rules and regulations governing an activity, sport, or organization. It specifies what participants can and cannot do, establishes penalties for violations, and defines the authority structure responsible for enforcement — creating a shared framework of expectations."},
+{analogy:"New\u2011car warranty",desc:"A manufacturer's written guarantee provided at the time of purchase, specifying what defects and repairs are covered for a defined period. It details the obligations of the manufacturer, the rights of the buyer, conditions that void coverage, and the process for making claims."},
+{analogy:"School curfew",desc:"A rule set by a school administration requiring students to be in their dormitories or designated areas by a specific time each evening. It is enforced by authority figures (teachers, staff) and typically includes consequences for non-compliance such as detention or loss of privileges."}]},
+{id:6,target:"AdaBoost Algorithm",domain:"CS",desc:"An ensemble learning method that trains a sequence of weak classifiers (models only slightly better than random guessing). After each round, misclassified examples receive higher weights so the next classifier focuses on the hardest cases. The final prediction is a weighted vote of all classifiers.",sources:[
+{analogy:"Teamwork",desc:"A collaborative approach where a group of individuals, each with their own skills and limitations, work together toward a shared goal. No single team member may be able to solve the whole problem alone, but by combining their individual strengths and compensating for each other's weaknesses, the group achieves a stronger result."},
+{analogy:"iterative training",desc:"A process of repeated practice cycles aimed at progressively improving performance — like an athlete doing drills. After each cycle, the practitioner identifies what went wrong, focuses extra attention on weak areas in the next round, and gradually builds competence through targeted repetition."},
+{analogy:"Gears in a machine",desc:"Interlocking toothed wheels that transmit and transform rotational motion and force within a mechanical system. Each gear meshes with its neighbors, and their combined arrangement determines the machine's speed, torque, and direction of movement. All gears operate simultaneously as a fixed mechanism."}]},
+{id:7,target:"Platelets",domain:"Biology",desc:"Small cell fragments produced in bone marrow that circulate in the bloodstream. When tissue is damaged, platelets rapidly aggregate at the injury site, release chemical signals, and trigger the coagulation cascade to form a clot that seals the wound and stops bleeding.",sources:[
+{analogy:"Tiny repair crew",desc:"A small team of specialized emergency workers who are on standby and dispatched immediately when structural damage is detected. They rush to the site, assess the damage, bring repair materials (plaster, sealant), and work together to patch the breach before further damage occurs."},
+{analogy:"Band-Aid",desc:"An adhesive bandage consisting of a small absorbent pad attached to a strip of medical tape. It is applied externally over a cut or scrape to cover the wound, protect it from dirt and bacteria, and keep it clean while the body's natural healing processes work underneath."},
+{analogy:"Beads",desc:"Small, round decorative objects made from glass, wood, plastic, or stone, typically with a hole through the center for stringing. They are used in jewelry-making, crafts, and ornamentation, and come in various sizes, colors, and materials."}]},
+{id:8,target:"cell",domain:"Biology",desc:"The basic structural and functional unit of all living organisms. A cell contains specialized organelles — a membrane controls what enters and exits, mitochondria produce energy, ribosomes build proteins, and transport systems move molecules like glucose (facilitated by insulin and glucose transporters).",sources:[
+{analogy:"factory",desc:"A large facility organized into specialized departments where raw materials are received at loading docks, processed through sequential production stages by dedicated workers and machines, quality-checked, and shipped out as finished products. The factory has walls and gates controlling access, a power plant supplying energy, and management coordinating operations."},
+{analogy:"House",desc:"A residential structure divided into distinct rooms, each serving a different function — a kitchen for food preparation, bedrooms for rest, a living room for gathering. Walls and doors separate spaces, plumbing and electrical systems deliver utilities, and the exterior walls and roof create a boundary between inside and outside environments."},
+{analogy:"Garage",desc:"An enclosed structure attached to or near a house, primarily used for parking and storing vehicles. It typically has a large door for vehicle access, some shelving or storage space along the walls, and may contain basic tools. It serves a single primary storage function within a simple open-plan layout."}]},
+{id:9,target:"Economics",domain:"Economics",desc:"The social science studying how societies allocate scarce resources — how goods and services are produced, distributed, and consumed. Core concepts include markets (where buyers and sellers interact), currency (the medium of exchange), and policy (government intervention to shape economic outcomes).",sources:[
+{analogy:"Marketplace",desc:"A physical or virtual venue where multiple buyers and sellers come together to exchange goods and services. Prices emerge from negotiation or competition, supply meets demand, and participants make decisions about what to buy or sell based on their needs, preferences, and available resources."},
+{analogy:"Household Budget",desc:"A financial plan that a family uses to manage its income, expenses, and savings over a period of time. It involves prioritizing needs versus wants, making trade-offs when money is limited, setting aside reserves for emergencies, and deciding how to allocate finite resources across competing demands."},
+{analogy:"Ecosystem",desc:"A biological community of living organisms (plants, animals, microbes) interacting with each other and their physical environment (water, soil, climate). Energy flows through food chains, nutrients cycle between organisms and their surroundings, and the system maintains a dynamic balance through interdependent relationships."}]},
+{id:10,target:"Chemical Reaction",domain:"Chemistry",desc:"A process in which one or more substances (reactants) interact at the molecular level — breaking existing chemical bonds and forming new ones — to produce different substances (products). Reactions often involve energy changes, such as releasing or absorbing heat.",sources:[
+{analogy:"Baking soda + vinegar",desc:"When sodium bicarbonate (a white powder) is mixed with acetic acid (the active component of vinegar), they react vigorously — producing visible fizzing and bubbling as carbon dioxide gas is released, along with water and sodium acetate. The original substances are consumed and transformed into entirely new ones."},
+{analogy:"Digestion",desc:"The biological process by which the body breaks down food into smaller molecules that can be absorbed into the bloodstream. Enzymes in the mouth, stomach, and intestines act as catalysts to split complex carbohydrates, proteins, and fats into simpler nutrients through a series of biochemical transformations."},
+{analogy:"Boiling water",desc:"The process of heating water to 100°C (at sea level) until it transitions from a liquid state to gaseous steam. Bubbles form throughout the liquid as water molecules gain enough kinetic energy to escape into the gas phase. The water itself remains H₂O throughout — its chemical identity does not change."}]},
+{id:11,target:"Photosynthesis",domain:"Biology",desc:"The process by which plants and some organisms convert light energy (captured by chlorophyll pigments in leaves) along with water and CO₂ into glucose (chemical energy) and oxygen. It is the primary way energy enters most ecosystems.",sources:[
+{analogy:"Solar panels",desc:"Flat devices typically mounted on rooftops or in open fields that capture sunlight using photovoltaic cells made of semiconductor materials. The cells absorb photons and convert their energy into electrical current, which can then be stored in batteries or fed into the power grid for later use."},
+{analogy:"Greenhouse farming",desc:"A method of agriculture where plants are grown inside a transparent glass or plastic enclosure. The structure traps heat and allows sunlight in while protecting crops from harsh weather, pests, and temperature extremes — creating a controlled environment that optimizes growing conditions year-round."},
+{analogy:"Fermentation Process",desc:"A metabolic process carried out by microorganisms such as yeast and certain bacteria, in which sugars (like glucose) are broken down in the absence of oxygen to produce byproducts such as ethanol and carbon dioxide (in alcoholic fermentation) or lactic acid (in lactic fermentation). It is used in making bread, beer, wine, and yogurt."}]},
+{id:12,target:"random forest",domain:"CS",desc:"An ensemble learning method that constructs many decision trees during training — each built on a random subset of features and data samples. For a new prediction, every tree votes independently and the majority vote determines the final output, improving accuracy and reducing overfitting.",sources:[
+{analogy:"Voting committee",desc:"A group of independent committee members, each with their own expertise and perspective, who evaluate a proposal or candidate separately. Each member casts their own vote based on their individual judgment, and the final decision is determined by majority rule — the option with the most votes wins."},
+{analogy:"Jury deliberation",desc:"A legal process in which a group of jurors, selected from the general public, independently review the evidence presented during a trial. Each juror forms their own assessment of the facts, and the group then discusses and deliberates together, aiming to reach a unanimous or majority verdict."},
+{analogy:"Tree",desc:"A large perennial plant with a woody trunk that supports branches and a canopy of leaves. Trees grow by extending roots into the soil for water and nutrients, and their leaves capture sunlight. They are found in forests, parks, and landscapes worldwide, ranging from small ornamental species to massive redwoods."}]},
+{id:13,target:"Isotope Dating",domain:"Chemistry",desc:"A technique for determining the age of geological or archaeological materials by measuring the ratio of a radioactive parent isotope to its stable decay product. Because radioactive decay proceeds at a known, constant rate (half-life), the ratio reveals how much time has passed since the material formed.",sources:[
+{analogy:"Hourglass",desc:"A timekeeping device consisting of two glass bulbs connected by a narrow neck. Fine sand flows at a constant, predictable rate from the upper bulb to the lower one. By observing how much sand has accumulated in the bottom (and how much remains on top), you can determine how much time has elapsed since the hourglass was flipped."},
+{analogy:"Atomic Clock",desc:"The most precise timekeeping instrument available, which uses the fixed oscillation frequency of atoms (typically cesium-133, vibrating 9,192,631,770 times per second) as its reference standard. Atomic clocks lose less than one second over millions of years and serve as the basis for international time standards (UTC)."},
+{analogy:"Half-Life",desc:"A quantitative measure defined as the time required for exactly half of a given amount of a radioactive substance to undergo decay into a different element or isotope. For example, Carbon-14 has a half-life of about 5,730 years, meaning that after that period, half of the original C-14 atoms will have decayed into Nitrogen-14."}]},
+{id:14,target:"Renaissance",domain:"History",desc:"A cultural and intellectual movement (14th–17th century) originating in Italian city-states, marked by renewed interest in classical Greek and Roman learning, the rise of humanism, groundbreaking art (Leonardo, Michelangelo), literature (Dante, Petrarch), and a shift away from the medieval feudal-theocratic order.",sources:[
+{analogy:"spring bloom",desc:"The seasonal phenomenon occurring after winter dormancy, when warming temperatures and longer daylight trigger a burst of new plant growth, flowering, and color across landscapes. Dormant trees leaf out, flowers emerge from the soil, and ecosystems shift from a period of stillness and barrenness into one of vibrant, abundant life."},
+{analogy:"Ancient Rome",desc:"The classical civilization spanning from the founding of the Roman Republic (509 BC) through the fall of the Western Roman Empire (476 AD). It produced lasting contributions in governance (the Senate, republican law), engineering (aqueducts, roads, the Colosseum), literature (Virgil, Ovid), and philosophy (Stoicism, Cicero)."},
+{analogy:"Enlightenment",desc:"An 18th-century European intellectual movement centered on the primacy of reason, empirical science, and individual rights over tradition, superstition, and absolute authority. Key figures include Voltaire, Locke, Kant, and Rousseau. It produced foundational ideas about democracy, religious tolerance, and the scientific method."}]},
+{id:15,target:"EM Algorithm",domain:"CS",desc:"An iterative optimization method for finding maximum likelihood estimates when data is incomplete or has hidden (latent) variables. It alternates between an E-step (estimating the hidden variables given current parameters) and an M-step (updating parameters to maximize likelihood given those estimates), converging toward an optimal solution.",sources:[
+{analogy:"Detective investigation",desc:"A systematic process in which a detective collects observable evidence (fingerprints, witness statements, physical traces), forms hypotheses about unobserved events (who did it, how, why), tests those hypotheses against new evidence, and iteratively refines the theory of the case — cycling between gathering clues and updating the working theory until the case is solved."},
+{analogy:"guess\u2011and\u2011check",desc:"A general-purpose problem-solving strategy where you start with an initial estimate or guess, test it against the known constraints or data, observe how far off the result is, adjust the guess accordingly, and repeat the cycle. It is commonly taught in mathematics as a way to approach equations or optimization problems when a direct formula isn't available."},
+{analogy:"Miner",desc:"A person who extracts valuable minerals, metals, or other geological materials from deposits in the earth. Mining involves exploring for resource locations, digging shafts or open pits, breaking rock with tools or explosives, and processing raw ore to separate the desired material from surrounding waste rock."}]}
+];
+const FULL_TARGETS=TARGETS.slice(0,10),RANK_ONLY=TARGETS.slice(10,15),TOTAL_PAGES=1+1+1+FULL_TARGETS.length+RANK_ONLY.length+1;
+function generateAnonId(){const c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let id='ANN-';for(let i=0;i<6;i++)id+=c[Math.floor(Math.random()*c.length)];return id;}
+const ANON_ID=generateAnonId(),SHUFFLE_SEED=Math.floor(Math.random()*100000);
+function seededShuffle(a,seed){const r=[...a];let s=seed;for(let i=r.length-1;i>0;i--){s=(s*1103515245+12345)&0x7fffffff;const j=s%(i+1);[r[i],r[j]]=[r[j],r[i]];}return r;}
+const shuffledSources={};TARGETS.forEach((t,i)=>{shuffledSources[t.id]=seededShuffle([0,1,2],SHUFFLE_SEED+i);});
+let currentPage=0,annotations={},rankingTouched={};
+TARGETS.forEach(t=>{const o=shuffledSources[t.id];annotations[t.id]={sources:{},ranking:o.map(i=>t.sources[i].analogy)};t.sources.forEach(s=>{annotations[t.id].sources[s.analogy]={coh:null,map:null,exp:null};});rankingTouched[t.id]=false;});
+function getPageMeta(idx){if(idx===0)return{type:'welcome',label:'Welcome'};if(idx===1)return{type:'definitions',label:'Definitions & Examples'};if(idx===2)return{type:'ready',label:'Ready to Start'};const a=idx-3;if(a<FULL_TARGETS.length){const t=FULL_TARGETS[a];return{type:'full',target:t,label:`${a+1}/15 · Rate & Rank`};}const r=a-FULL_TARGETS.length;if(r<RANK_ONLY.length){const t=RANK_ONLY[r];return{type:'rankonly',target:t,label:`${FULL_TARGETS.length+r+1}/15 · Rank Only`};}return{type:'submit',label:'Complete'};}
+
+// ═══ RENDER — only called on page navigation ═══
+function render(){
+  const app=document.getElementById('app'),meta=getPageMeta(currentPage);
+  document.getElementById('headerStep').textContent=meta.label;
+  document.getElementById('progressFill').style.width=((currentPage)/(TOTAL_PAGES-1)*100)+'%';
+  const showRef=meta.type==='full'||meta.type==='rankonly';
+  document.getElementById('refToggle').style.display=showRef?'flex':'none';
+  let html='<div class="page active">';
+  switch(meta.type){
+    case'welcome':html+=renderWelcome();break;case'definitions':html+=renderDefinitions();break;
+    case'ready':html+=renderReady();break;case'full':html+=renderFull(meta.target);break;
+    case'rankonly':html+=renderRankOnly(meta.target);break;case'submit':html+=renderSubmit();break;
+  }
+  html+=renderNav(meta);html+='</div>';
+  app.innerHTML=html;attachListeners(meta);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function renderWelcome(){return `<h1>Welcome to the Analogy Quality<br>Annotation Study</h1><p class="subtitle">Your expert judgment helps us validate how well automated systems evaluate analogies for education.</p><div class="card"><h3>Background</h3><p>We are building a system that generates <strong>analogies</strong> to help learners understand complex concepts through familiar comparisons. Large Language Models (LLMs) serve as automated judges to rate analogy quality — but we need <strong>human evaluation</strong> to verify their reliability.</p></div><div class="card"><h3>Your Task</h3><p>You will see <strong>15 target concepts</strong>, each paired with <strong>3 candidate source analogies</strong>.</p><div style="display:flex;gap:12px;margin:14px 0;"><div style="flex:1;background:var(--steel-bg);padding:14px;border-radius:var(--radius);border-left:3px solid var(--steel);"><strong style="color:var(--steel-dark);font-size:13px;">Targets 1–10</strong><p style="font-size:13px;margin:4px 0 0;">Rate each analogy on 3 quality dimensions (1–3 scale), then rank the 3 analogies by learning usefulness.</p></div><div style="flex:1;background:var(--coral-bg);padding:14px;border-radius:var(--radius);border-left:3px solid var(--coral);"><strong style="color:var(--coral-dark);font-size:13px;">Targets 11–15</strong><p style="font-size:13px;margin:4px 0 0;">Only rank the 3 analogies — no individual dimension ratings needed.</p></div></div><p style="font-size:13px;color:var(--text-muted);">Estimated time: <strong>60–90 minutes</strong>. Take breaks if needed. A floating reference guide will be available throughout.</p></div>`;}
+function renderDefinitions(){return `<h1>Key Definitions & Rating Scale</h1><p class="subtitle">Read these carefully — they define exactly what you're evaluating.</p><div class="card"><h3>What is an analogy?</h3><p>An <strong>analogy</strong> maps a <em>target concept</em> (the unfamiliar topic being learned) onto a <em>source concept</em> (something more familiar). A good analogy preserves structural and functional relationships, helping learners transfer understanding from the known to the unknown.</p><p style="font-size:13px;color:var(--text-muted);">Example: <em>"A <strong>cell</strong> is like a <strong>factory</strong>"</em> — Cell is the target, Factory is the source.</p></div><div class="card"><h3>The Three Dimensions</h3><div class="def-box"><div class="def-label">1. Coherence</div><p style="margin:0;font-size:14px;"><strong>Does the pairing make intuitive sense?</strong> When you hear "Target is like Source," does the connection feel natural and immediately understandable?</p></div><div class="def-box coral"><div class="def-label">2. Mapping</div><p style="margin:0;font-size:14px;"><strong>Do the key parts of the target correspond to parts of the source?</strong> Can you identify clear counterparts for the important components, processes, or relationships?</p></div><div class="def-box amber"><div class="def-label">3. Explanatory Power</div><p style="margin:0;font-size:14px;"><strong>Would this analogy actually help someone learn the target concept?</strong> Does it make the abstract concrete, reveal causal relationships, or enable the learner to reason about how the target works?</p></div></div><div class="card"><h3>Rating Scale</h3><table class="ex-table"><thead><tr><th>Score</th><th>Level</th><th>Guideline</th></tr></thead><tbody><tr><td><span class="score-pill s3">3</span></td><td><strong>High</strong></td><td>Strong and effective. Little to no weakness on this dimension.</td></tr><tr><td><span class="score-pill s2">2</span></td><td><strong>Medium</strong></td><td>Partial or acceptable. Some elements work but with notable gaps.</td></tr><tr><td><span class="score-pill s1">1</span></td><td><strong>Low</strong></td><td>Weak or broken. The analogy fails on this dimension.</td></tr></tbody></table></div><div class="card"><h3>Worked Examples (not part of your annotation)</h3><p style="font-size:13px;color:var(--text-muted);margin-bottom:6px;">Three examples showing how to rate analogies. Click each tab to study a different target.</p><div class="worked-ex-container"><div class="worked-ex-tabs" id="workedExTabs"><button class="worked-ex-tab active" data-wextab="0">⚛️ Atom</button><button class="worked-ex-tab" data-wextab="1">🧬 DNA</button><button class="worked-ex-tab" data-wextab="2">⚡ Electricity</button></div><div class="worked-ex-content active" data-wextab="0"><p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;"><strong>Target: Atom</strong> (Physics) — The fundamental unit of matter, consisting of a dense central nucleus (protons and neutrons) surrounded by electrons in orbital shells, held together by electromagnetic forces.</p><div style="border-left:3px solid var(--green);padding:10px 14px;background:var(--green-bg);border-radius:0 var(--radius) var(--radius) 0;margin-bottom:10px;"><strong style="color:var(--green);font-size:13px;">"Solar System" → Coh 3 · Map 3 · Exp 3</strong><p style="font-size:12px;margin:4px 0 0;color:var(--text-muted);"><b>Coh 3:</b> Central mass with orbiting bodies — instantly mirrors nucleus-electron layout.<br><b>Map 3:</b> Sun→nucleus; planets→electrons; gravity→electromagnetic force; orbital paths→shells.<br><b>Exp 3:</b> Learner grasps spatial layout, governing forces, and relative scale.</p></div><div style="border-left:3px solid var(--amber);padding:10px 14px;background:var(--amber-bg);border-radius:0 var(--radius) var(--radius) 0;margin-bottom:10px;"><strong style="color:var(--amber);font-size:13px;">"Marble in a Stadium" → Coh 2 · Map 2 · Exp 2</strong><p style="font-size:12px;margin:4px 0 0;color:var(--text-muted);"><b>Coh 2:</b> Conveys emptiness/scale but atomic structure isn't immediate.<br><b>Map 2:</b> Marble→nucleus works for scale, but nothing for electrons, shells, or forces.<br><b>Exp 2:</b> Teaches one property (emptiness) well but misses the dynamic relationship.</p></div><div style="border-left:3px solid var(--red);padding:10px 14px;background:var(--red-bg);border-radius:0 var(--radius) var(--radius) 0;margin-bottom:10px;"><strong style="color:var(--red);font-size:13px;">"Lego Brick" → Coh 1 · Map 1 · Exp 1</strong><p style="font-size:12px;margin:4px 0 0;color:var(--text-muted);"><b>Coh 1:</b> Solid uniform block — misrepresents internal structure entirely.<br><b>Map 1:</b> No nucleus, electrons, or forces to map.<br><b>Exp 1:</b> Could mislead learners. Zero insight into atomic behavior.</p></div><div style="background:var(--steel-bg);padding:8px 12px;border-radius:var(--radius);"><p style="font-size:12px;margin:0;color:var(--steel-dark);"><b>Ranking:</b> 1st Solar System · 2nd Marble in a Stadium · 3rd Lego Brick</p></div></div><div class="worked-ex-content" data-wextab="1"><p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;"><strong>Target: DNA</strong> (Biology) — A double-helix molecule storing genetic info via four bases (A, T, C, G) with complementary pairing, able to unzip for replication and transcription.</p><div style="border-left:3px solid var(--green);padding:10px 14px;background:var(--green-bg);border-radius:0 var(--radius) var(--radius) 0;margin-bottom:10px;"><strong style="color:var(--green);font-size:13px;">"Twisted Zipper" → Coh 3 · Map 3 · Exp 3</strong><p style="font-size:12px;margin:4px 0 0;color:var(--text-muted);"><b>Coh 3:</b> Two interlocking sides wound together — immediately resonates with double helix.<br><b>Map 3:</b> Teeth→base pairs; fabric strips→backbone strands; zipping/unzipping→replication.<br><b>Exp 3:</b> Learner visualizes strand separation and rejoining, grasping structure and function.</p></div><div style="border-left:3px solid var(--amber);padding:10px 14px;background:var(--amber-bg);border-radius:0 var(--radius) var(--radius) 0;margin-bottom:10px;"><strong style="color:var(--amber);font-size:13px;">"Spiral Staircase" → Coh 3 · Map 2 · Exp 2</strong><p style="font-size:12px;margin:4px 0 0;color:var(--text-muted);"><b>Coh 3:</b> Spiral shape maps onto helix — clicks at first glance.<br><b>Map 2:</b> Steps→base pairs works, but one railing ≠ two strands. No analog for separation.<br><b>Exp 2:</b> Captures shape well but doesn't convey encoding or replication. Partial learning.</p></div><div style="border-left:3px solid var(--red);padding:10px 14px;background:var(--red-bg);border-radius:0 var(--radius) var(--radius) 0;margin-bottom:10px;"><strong style="color:var(--red);font-size:13px;">"Recipe Book" → Coh 2 · Map 1 · Exp 1</strong><p style="font-size:12px;margin:4px 0 0;color:var(--text-muted);"><b>Coh 2:</b> "Stores instructions" connects loosely.<br><b>Map 1:</b> Flat book has no parallel for double helix, base pairing, or strand separation.<br><b>Exp 1:</b> "DNA is instructions" is too vague to build real understanding.</p></div><div style="background:var(--steel-bg);padding:8px 12px;border-radius:var(--radius);"><p style="font-size:12px;margin:0;color:var(--steel-dark);"><b>Ranking:</b> 1st Twisted Zipper · 2nd Spiral Staircase · 3rd Recipe Book</p></div></div><div class="worked-ex-content" data-wextab="2"><p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;"><strong>Target: Electricity</strong> (Physics) — The flow of electric charge (electrons) through a conductor, driven by voltage and resisted by material properties. Described by Ohm's law: V = IR.</p><div style="border-left:3px solid var(--green);padding:10px 14px;background:var(--green-bg);border-radius:0 var(--radius) var(--radius) 0;margin-bottom:10px;"><strong style="color:var(--green);font-size:13px;">"Water Flowing Through Pipes" → Coh 3 · Map 3 · Exp 3</strong><p style="font-size:12px;margin:4px 0 0;color:var(--text-muted);"><b>Coh 3:</b> One of science's most natural analogies — "flow" maps seamlessly.<br><b>Map 3:</b> Water→electrons; pipe diameter→resistance; pressure→voltage; flow rate→current.<br><b>Exp 3:</b> Narrow the pipe = more resistance, increase pressure = more current. Powerful predictive tool.</p></div><div style="border-left:3px solid var(--amber);padding:10px 14px;background:var(--amber-bg);border-radius:0 var(--radius) var(--radius) 0;margin-bottom:10px;"><strong style="color:var(--amber);font-size:13px;">"Highway Traffic" → Coh 2 · Map 2 · Exp 2</strong><p style="font-size:12px;margin:4px 0 0;color:var(--text-muted);"><b>Coh 2:</b> Cars moving captures flow, but autonomous agents ≠ field-driven electrons.<br><b>Map 2:</b> Cars→electrons works, but no voltage counterpart. Jams ≠ resistance.<br><b>Exp 2:</b> Basic "things in a channel" sense but could mislead on mechanism.</p></div><div style="border-left:3px solid var(--red);padding:10px 14px;background:var(--red-bg);border-radius:0 var(--radius) var(--radius) 0;margin-bottom:10px;"><strong style="color:var(--red);font-size:13px;">"Lightning Bolt" → Coh 2 · Map 1 · Exp 1</strong><p style="font-size:12px;margin:4px 0 0;color:var(--text-muted);"><b>Coh 2:</b> Lightning is electricity — related but a dramatic instance, not a separate concept.<br><b>Map 1:</b> Sudden discharge has no mapping to steady current, resistance, or voltage.<br><b>Exp 1:</b> Reinforces "electricity is scary" rather than circuit understanding.</p></div><div style="background:var(--steel-bg);padding:8px 12px;border-radius:var(--radius);"><p style="font-size:12px;margin:0;color:var(--steel-dark);"><b>Ranking:</b> 1st Water in Pipes · 2nd Highway Traffic · 3rd Lightning Bolt</p></div></div></div></div>`;}
+function renderReady(){return `<h1>You're All Set</h1><p class="subtitle">Here's your anonymous session identifier and a few final notes.</p><div class="card"><h3>Your Anonymous ID</h3><p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;">This auto-generated code identifies your session. It is not linked to any personal information — it simply lets us distinguish different annotators' results.</p><div class="anon-id-box"><div class="anon-id">${ANON_ID}</div></div></div><div class="note-box"><strong>Tip:</strong> The <span style="color:var(--coral);font-weight:600;">📖 Reference Guide</span> button in the top-right corner will be available on every annotation page. Use it anytime to revisit the dimension definitions, rating scale, or worked examples.</div><div class="card"><h3>Reminders</h3><p style="font-size:14px;">• For each target, you'll see the concept name, domain, and a description explaining what it is.</p><p style="font-size:14px;">• Each source analogy also includes a description explaining what it is.</p><p style="font-size:14px;">• You <strong>must drag</strong> the ranking to confirm your preferred order — even if you agree with the default arrangement.</p><p style="font-size:14px;">• Source order is randomized. There are no trick questions. Take your time.</p></div>`;}
+function renderFull(target){const ann=annotations[target.id],order=shuffledSources[target.id],sources=order.map(i=>target.sources[i]),touched=rankingTouched[target.id];let html=`<div class="task-badge full">Rate & Rank · Target ${target.id} of 15</div><div class="target-header"><div class="target-domain">${target.domain}</div><h2>${target.target}</h2><div class="target-desc">${target.desc}</div></div><div id="warningBox" class="warning">Please complete all ratings for every source and confirm your ranking (by dragging) before continuing.</div>`;sources.forEach((s,si)=>{const sa=ann.sources[s.analogy];html+=`<div class="source-card"><div class="source-label">Source Analogy ${si+1}</div><div class="source-name">"${target.target} is like <em>${s.analogy}</em>"</div><div class="source-desc">${s.desc}</div>${renderRatingRows(target.id,s.analogy,sa)}</div>`;});html+=renderRankingSection(target,touched);return html;}
+function renderRankOnly(target){const order=shuffledSources[target.id],sources=order.map(i=>target.sources[i]),touched=rankingTouched[target.id];let html=`<div class="task-badge rank-only">Rank Only · Target ${target.id} of 15</div><div class="target-header"><div class="target-domain">${target.domain}</div><h2>${target.target}</h2><div class="target-desc">${target.desc}</div></div><div id="warningBox" class="warning">Please drag to confirm your ranking before continuing.</div><p style="font-size:14px;color:var(--text-muted);margin-bottom:14px;">Read the three source analogies, then rank them below.</p>`;sources.forEach((s,si)=>{html+=`<div class="source-card" style="padding:16px 20px;"><div class="source-label">Source Analogy ${si+1}</div><div class="source-name" style="font-size:18px;">"${target.target} is like <em>${s.analogy}</em>"</div><div class="source-desc">${s.desc}</div></div>`;});html+=renderRankingSection(target,touched);return html;}
+function renderRatingRows(tid,analogy,sa){const dims=[{key:'coh',label:'Coherence',hint:'Does the pairing click?'},{key:'map',label:'Mapping',hint:'Do key parts correspond?'},{key:'exp',label:'Explanatory Power',hint:'Helps someone learn?'}];return dims.map(d=>`<div class="rating-row"><div class="rating-label">${d.label}<div class="dim-hint">${d.hint}</div></div><div class="rating-options">${[1,2,3].map(v=>`<button class="rating-btn ${sa[d.key]===v?'sel-'+v:''}" data-tid="${tid}" data-src="${analogy}" data-dim="${d.key}" data-val="${v}">${v===1?'1 · Low':v===2?'2 · Med':'3 · High'}</button>`).join('')}</div></div>`).join('');}
+function renderRankingSection(target,touched){const ranking=annotations[target.id].ranking;return `<div class="ranking-section ${touched?'touched':'needs-touch'}"><span class="rank-required ${touched?'done':'pending'}">${touched?'✓ Ranking confirmed':'⚠ Drag to confirm'}</span><div class="ranking-title">Which analogy is most useful for learning?</div><div class="ranking-subtitle">Drag to reorder. #1 = most useful for a learner encountering this concept.</div><ul class="rank-list" id="rankList-${target.id}">${ranking.map((name,i)=>`<li class="rank-item" draggable="true" data-tid="${target.id}" data-name="${name}"><div class="rank-number r${i+1}">${i+1}</div><div class="rank-item-name">${name}</div><div class="rank-handle">⋮⋮</div></li>`).join('')}</ul></div>`;}
+function renderSubmit(){return `<div style="text-align:center;padding:32px 0;"><div class="completion-icon">✓</div><h1>All Done!</h1><p class="subtitle">Thank you for your careful work.</p></div><div class="card"><h3>Your Session</h3><div class="anon-id-box" style="margin-bottom:14px;"><div class="anon-id">${ANON_ID}</div></div><p style="font-size:14px;">You rated <strong>10 targets</strong> on 3 dimensions + ranking, and ranked <strong>5 additional targets</strong>.</p><p style="font-size:14px;">Download your results below and send the file to the study coordinator.</p><div style="text-align:center;margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;"><button class="btn btn-export" id="exportJsonBtn">Download JSON</button><button class="btn btn-primary" id="exportCsvBtn" style="background:var(--coral);">Download CSV</button></div></div>`;}
+function renderNav(meta){const isFirst=currentPage===0,isLast=meta.type==='submit';return `<div class="btn-row"><button class="btn btn-secondary" id="prevBtn" ${isFirst?'disabled':''}>← Back</button>${!isLast?`<button class="btn btn-primary" id="nextBtn">Continue →</button>`:''}</div>`;}
+
+// ═══ LISTENERS — rating clicks update DOM in-place, NO re-render ═══
+function attachListeners(meta){
+  document.getElementById('prevBtn')?.addEventListener('click',()=>{currentPage--;render();});
+  document.getElementById('nextBtn')?.addEventListener('click',()=>handleNext(meta));
+
+  // Rating buttons: update state + toggle classes in-place (no render)
+  document.querySelectorAll('.rating-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const tid=parseInt(btn.dataset.tid), src=btn.dataset.src, dim=btn.dataset.dim, val=parseInt(btn.dataset.val);
+      annotations[tid].sources[src][dim]=val;
+      // Update just the sibling buttons in this row
+      const row=btn.closest('.rating-options');
+      row.querySelectorAll('.rating-btn').forEach(b=>{
+        b.className='rating-btn';
+        const bv=parseInt(b.dataset.val);
+        if(b.dataset.dim===dim && b.dataset.src===src && bv===val) b.classList.add('sel-'+val);
+      });
+    });
+  });
+
+  // Drag-and-drop
+  TARGETS.forEach(t=>{const list=document.getElementById(`rankList-${t.id}`);if(list)setupDragDrop(list,t.id);});
+
+  // Ref panel
+  document.getElementById('refToggle')?.addEventListener('click',openRef);
+  document.getElementById('refClose')?.addEventListener('click',closeRef);
+  document.getElementById('refOverlay')?.addEventListener('click',closeRef);
+  // Ref tabs
+  document.querySelectorAll('#refExTabs .ref-tab').forEach(tab=>{tab.addEventListener('click',()=>{const idx=tab.dataset.reftab;document.querySelectorAll('#refExTabs .ref-tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');document.querySelectorAll('#refPanel .ref-tab-content').forEach(c=>c.classList.remove('active'));document.querySelector(`#refPanel .ref-tab-content[data-reftab="${idx}"]`).classList.add('active');});});
+  // Worked example tabs
+  document.querySelectorAll('#workedExTabs .worked-ex-tab').forEach(tab=>{tab.addEventListener('click',()=>{const idx=tab.dataset.wextab;document.querySelectorAll('#workedExTabs .worked-ex-tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');document.querySelectorAll('.worked-ex-content').forEach(c=>c.classList.remove('active'));document.querySelector(`.worked-ex-content[data-wextab="${idx}"]`).classList.add('active');});});
+  // Export
+  document.getElementById('exportJsonBtn')?.addEventListener('click',exportJSON);
+  document.getElementById('exportCsvBtn')?.addEventListener('click',exportCSV);
+}
+
+function handleNext(meta){if(meta.type==='full'){const t=meta.target;let allRated=true;t.sources.forEach(s=>{const sa=annotations[t.id].sources[s.analogy];if(sa.coh===null||sa.map===null||sa.exp===null)allRated=false;});if(!allRated||!rankingTouched[t.id]){document.getElementById('warningBox')?.classList.add('show');if(!rankingTouched[t.id])document.querySelector('.ranking-section')?.scrollIntoView({behavior:'smooth',block:'center'});return;}}if(meta.type==='rankonly'&&!rankingTouched[meta.target.id]){document.getElementById('warningBox')?.classList.add('show');document.querySelector('.ranking-section')?.scrollIntoView({behavior:'smooth',block:'center'});return;}currentPage++;render();}
+function openRef(){document.getElementById('refOverlay').classList.add('open');document.getElementById('refPanel').classList.add('open');}
+function closeRef(){document.getElementById('refOverlay').classList.remove('open');document.getElementById('refPanel').classList.remove('open');}
+
+// ═══ DRAG & DROP — updates DOM in-place, NO re-render ═══
+function setupDragDrop(list,tid){
+  let dragItem=null;
+  function commitOrder(){
+    const items=[...list.querySelectorAll('.rank-item')];
+    annotations[tid].ranking=items.map(i=>i.dataset.name);
+    rankingTouched[tid]=true;
+    // Update rank numbers and styles in-place
+    items.forEach((item,i)=>{
+      const numEl=item.querySelector('.rank-number');
+      numEl.textContent=i+1;
+      numEl.className='rank-number r'+(i+1);
+    });
+    // Update section styling
+    const section=list.closest('.ranking-section');
+    section.classList.remove('needs-touch');section.classList.add('touched');
+    const badge=section.querySelector('.rank-required');
+    badge.className='rank-required done';badge.textContent='✓ Ranking confirmed';
+  }
+  list.querySelectorAll('.rank-item').forEach(item=>{
+    item.addEventListener('dragstart',()=>{dragItem=item;setTimeout(()=>item.classList.add('dragging'),0);});
+    item.addEventListener('dragend',()=>{item.classList.remove('dragging');list.querySelectorAll('.rank-item').forEach(i=>i.classList.remove('drag-over'));commitOrder();});
+    item.addEventListener('dragover',(e)=>{e.preventDefault();if(item!==dragItem)item.classList.add('drag-over');});
+    item.addEventListener('dragleave',()=>item.classList.remove('drag-over'));
+    item.addEventListener('drop',(e)=>{e.preventDefault();if(item!==dragItem&&dragItem){const all=[...list.querySelectorAll('.rank-item')];if(all.indexOf(dragItem)<all.indexOf(item))item.after(dragItem);else item.before(dragItem);}});
+    item.addEventListener('touchstart',()=>{dragItem=item;item.style.opacity='0.5';},{passive:true});
+    item.addEventListener('touchmove',(e)=>{e.preventDefault();const touch=e.touches[0];const over=document.elementFromPoint(touch.clientX,touch.clientY)?.closest?.('.rank-item');list.querySelectorAll('.rank-item').forEach(i=>i.classList.remove('drag-over'));if(over&&over!==dragItem)over.classList.add('drag-over');},{passive:false});
+    item.addEventListener('touchend',(e)=>{item.style.opacity='1';const touch=e.changedTouches[0];const over=document.elementFromPoint(touch.clientX,touch.clientY)?.closest?.('.rank-item');if(over&&over!==dragItem){const all=[...list.querySelectorAll('.rank-item')];if(all.indexOf(dragItem)<all.indexOf(over))over.after(dragItem);else over.before(dragItem);}list.querySelectorAll('.rank-item').forEach(i=>i.classList.remove('drag-over'));commitOrder();});
+  });
+}
+
+// ═══ EXPORT ═══
+function exportJSON(){const output={annotator_id:ANON_ID,shuffle_seed:SHUFFLE_SEED,timestamp:new Date().toISOString(),annotations:TARGETS.map(t=>({target_id:t.id,target:t.target,domain:t.domain,task_type:t.id<=10?'full_rate_and_rank':'rank_only',source_presentation_order:shuffledSources[t.id].map(i=>t.sources[i].analogy),sources:t.sources.map(s=>({analogy:s.analogy,...(t.id<=10?annotations[t.id].sources[s.analogy]:{}),rank:annotations[t.id].ranking.indexOf(s.analogy)+1}))}))};download(JSON.stringify(output,null,2),`analogy_annotations_${ANON_ID}.json`,'application/json');}
+function exportCSV(){let rows=['annotator_id,target_id,target,domain,task_type,source_analogy,coherence,mapping,explanatory,rank'];TARGETS.forEach(t=>{const type=t.id<=10?'full':'rank_only';t.sources.forEach(s=>{const sa=annotations[t.id].sources[s.analogy];const rank=annotations[t.id].ranking.indexOf(s.analogy)+1;rows.push([ANON_ID,t.id,`"${t.target}"`,`"${t.domain}"`,type,`"${s.analogy}"`,t.id<=10?sa.coh:'',t.id<=10?sa.map:'',t.id<=10?sa.exp:'',rank].join(','));});});download(rows.join('\n'),`analogy_annotations_${ANON_ID}.csv`,'text/csv');}
+function download(content,filename,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;document.body.appendChild(a);a.click();document.body.removeChild(a);}
+render();
+</script>
+</body>
+</html>

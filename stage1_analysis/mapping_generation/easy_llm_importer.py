@@ -54,6 +54,12 @@ class ModelRegistry:
         # Qwen models
         "qwen3-14b": ModelConfig("qwen3-14b", Provider.DEEPINFRA, "Qwen/Qwen3-14B"),
         "qwen3-32b": ModelConfig("qwen3-32b", Provider.DEEPINFRA, "Qwen/Qwen3-32B"),
+
+        # Claude / Anthropic (via OpenRouter) — judge-only models
+        "claude-sonnet-4.6": ModelConfig("claude-sonnet-4.6", Provider.OPENROUTER, "anthropic/claude-sonnet-4-6"),
+
+        # Xiaomi MiMo (via OpenRouter) — judge-only models
+        "mimo-v2-pro": ModelConfig("mimo-v2-pro", Provider.OPENROUTER, "xiaomi/mimo-v2-pro"),
     }
     
     @classmethod

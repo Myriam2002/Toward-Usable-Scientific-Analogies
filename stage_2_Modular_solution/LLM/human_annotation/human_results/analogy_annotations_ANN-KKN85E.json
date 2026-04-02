@@ -1,0 +1,532 @@
+{
+  "annotator_id": "ANN-KKN85E",
+  "shuffle_seed": 30007,
+  "timestamp": "2026-03-24T14:40:52.747Z",
+  "annotations": [
+    {
+      "target_id": 1,
+      "target": "Gas Diffusion",
+      "domain": "Chemistry",
+      "task_type": "full_rate_and_rank",
+      "source_presentation_order": [
+        "smoke dispersion",
+        "perfume spreading",
+        "gasoline"
+      ],
+      "ranking_confidence": 3,
+      "sources": [
+        {
+          "analogy": "perfume spreading",
+          "coh": 2,
+          "map": 2,
+          "exp": 2,
+          "rank": 2
+        },
+        {
+          "analogy": "smoke dispersion",
+          "coh": 3,
+          "map": 3,
+          "exp": 3,
+          "rank": 1
+        },
+        {
+          "analogy": "gasoline",
+          "coh": 1,
+          "map": 1,
+          "exp": 1,
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "target_id": 2,
+      "target": "Encryption",
+      "domain": "CS",
+      "task_type": "full_rate_and_rank",
+      "source_presentation_order": [
+        "sealed envelope",
+        "locker",
+        "locked box"
+      ],
+      "ranking_confidence": 3,
+      "sources": [
+        {
+          "analogy": "locked box",
+          "coh": 3,
+          "map": 3,
+          "exp": 3,
+          "rank": 1
+        },
+        {
+          "analogy": "sealed envelope",
+          "coh": 1,
+          "map": 2,
+          "exp": 1,
+          "rank": 3
+        },
+        {
+          "analogy": "locker",
+          "coh": 2,
+          "map": 2,
+          "exp": 2,
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "target_id": 3,
+      "target": "Industrial Revolution",
+      "domain": "History",
+      "task_type": "full_rate_and_rank",
+      "source_presentation_order": [
+        "automation",
+        "industrialization",
+        "steam engine era"
+      ],
+      "ranking_confidence": 2,
+      "sources": [
+        {
+          "analogy": "steam engine era",
+          "coh": 3,
+          "map": 2,
+          "exp": 2,
+          "rank": 3
+        },
+        {
+          "analogy": "automation",
+          "coh": 3,
+          "map": 3,
+          "exp": 2,
+          "rank": 2
+        },
+        {
+          "analogy": "industrialization",
+          "coh": 3,
+          "map": 3,
+          "exp": 3,
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "target_id": 4,
+      "target": "GAN Algorithm",
+      "domain": "CS",
+      "task_type": "full_rate_and_rank",
+      "source_presentation_order": [
+        "teacher",
+        "art forgery",
+        "artist and critic"
+      ],
+      "ranking_confidence": 3,
+      "sources": [
+        {
+          "analogy": "art forgery",
+          "coh": 2,
+          "map": 2,
+          "exp": 2,
+          "rank": 2
+        },
+        {
+          "analogy": "artist and critic",
+          "coh": 3,
+          "map": 3,
+          "exp": 3,
+          "rank": 1
+        },
+        {
+          "analogy": "teacher",
+          "coh": 1,
+          "map": 1,
+          "exp": 1,
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "target_id": 5,
+      "target": "Bill of Rights",
+      "domain": "Law",
+      "task_type": "full_rate_and_rank",
+      "source_presentation_order": [
+        "school curfew",
+        "rulebook",
+        "new‑car warranty"
+      ],
+      "ranking_confidence": 3,
+      "sources": [
+        {
+          "analogy": "rulebook",
+          "coh": 3,
+          "map": 3,
+          "exp": 3,
+          "rank": 1
+        },
+        {
+          "analogy": "new‑car warranty",
+          "coh": 1,
+          "map": 1,
+          "exp": 1,
+          "rank": 3
+        },
+        {
+          "analogy": "school curfew",
+          "coh": 1,
+          "map": 2,
+          "exp": 2,
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "target_id": 6,
+      "target": "AdaBoost Algorithm",
+      "domain": "CS",
+      "task_type": "full_rate_and_rank",
+      "source_presentation_order": [
+        "iterative training",
+        "teamwork",
+        "gears in a machine"
+      ],
+      "ranking_confidence": 3,
+      "sources": [
+        {
+          "analogy": "teamwork",
+          "coh": 2,
+          "map": 2,
+          "exp": 3,
+          "rank": 2
+        },
+        {
+          "analogy": "iterative training",
+          "coh": 3,
+          "map": 3,
+          "exp": 3,
+          "rank": 1
+        },
+        {
+          "analogy": "gears in a machine",
+          "coh": 1,
+          "map": 1,
+          "exp": 1,
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "target_id": 7,
+      "target": "Platelets",
+      "domain": "Biology",
+      "task_type": "full_rate_and_rank",
+      "source_presentation_order": [
+        "Band-Aid",
+        "tiny repair crew",
+        "beads"
+      ],
+      "ranking_confidence": 3,
+      "sources": [
+        {
+          "analogy": "tiny repair crew",
+          "coh": 3,
+          "map": 3,
+          "exp": 3,
+          "rank": 1
+        },
+        {
+          "analogy": "Band-Aid",
+          "coh": 2,
+          "map": 2,
+          "exp": 1,
+          "rank": 2
+        },
+        {
+          "analogy": "beads",
+          "coh": 1,
+          "map": 1,
+          "exp": 1,
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "target_id": 8,
+      "target": "Cell",
+      "domain": "Biology",
+      "task_type": "full_rate_and_rank",
+      "source_presentation_order": [
+        "house",
+        "garage",
+        "factory"
+      ],
+      "ranking_confidence": 3,
+      "sources": [
+        {
+          "analogy": "factory",
+          "coh": 3,
+          "map": 3,
+          "exp": 3,
+          "rank": 1
+        },
+        {
+          "analogy": "house",
+          "coh": 2,
+          "map": 2,
+          "exp": 3,
+          "rank": 2
+        },
+        {
+          "analogy": "garage",
+          "coh": 1,
+          "map": 1,
+          "exp": 1,
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "target_id": 9,
+      "target": "Economics",
+      "domain": "Economics",
+      "task_type": "full_rate_and_rank",
+      "source_presentation_order": [
+        "household budget",
+        "ecosystem",
+        "marketplace"
+      ],
+      "ranking_confidence": 3,
+      "sources": [
+        {
+          "analogy": "marketplace",
+          "coh": 3,
+          "map": 2,
+          "exp": 2,
+          "rank": 2
+        },
+        {
+          "analogy": "household budget",
+          "coh": 1,
+          "map": 1,
+          "exp": 2,
+          "rank": 3
+        },
+        {
+          "analogy": "ecosystem",
+          "coh": 3,
+          "map": 3,
+          "exp": 3,
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "target_id": 10,
+      "target": "Chemical Reaction",
+      "domain": "Chemistry",
+      "task_type": "full_rate_and_rank",
+      "source_presentation_order": [
+        "boiling water",
+        "baking soda + vinegar",
+        "digestion"
+      ],
+      "ranking_confidence": 3,
+      "sources": [
+        {
+          "analogy": "baking soda + vinegar",
+          "coh": 3,
+          "map": 3,
+          "exp": 3,
+          "rank": 1
+        },
+        {
+          "analogy": "digestion",
+          "coh": 2,
+          "map": 2,
+          "exp": 2,
+          "rank": 2
+        },
+        {
+          "analogy": "boiling water",
+          "coh": 1,
+          "map": 1,
+          "exp": 2,
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "target_id": 11,
+      "target": "Photosynthesis",
+      "domain": "Biology",
+      "task_type": "full_rate_and_rank",
+      "source_presentation_order": [
+        "fermentation process",
+        "solar panels",
+        "greenhouse farming"
+      ],
+      "ranking_confidence": 2,
+      "sources": [
+        {
+          "analogy": "solar panels",
+          "coh": 3,
+          "map": 3,
+          "exp": 3,
+          "rank": 1
+        },
+        {
+          "analogy": "greenhouse farming",
+          "coh": 1,
+          "map": 2,
+          "exp": 2,
+          "rank": 2
+        },
+        {
+          "analogy": "fermentation process",
+          "coh": 2,
+          "map": 2,
+          "exp": 1,
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "target_id": 12,
+      "target": "Random Forest",
+      "domain": "CS",
+      "task_type": "full_rate_and_rank",
+      "source_presentation_order": [
+        "jury deliberation",
+        "voting committee",
+        "tree"
+      ],
+      "ranking_confidence": 3,
+      "sources": [
+        {
+          "analogy": "voting committee",
+          "coh": 3,
+          "map": 3,
+          "exp": 3,
+          "rank": 1
+        },
+        {
+          "analogy": "jury deliberation",
+          "coh": 3,
+          "map": 2,
+          "exp": 3,
+          "rank": 2
+        },
+        {
+          "analogy": "tree",
+          "coh": 1,
+          "map": 1,
+          "exp": 1,
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "target_id": 13,
+      "target": "Isotope Dating",
+      "domain": "Chemistry",
+      "task_type": "full_rate_and_rank",
+      "source_presentation_order": [
+        "atomic clock",
+        "hourglass",
+        "half-life"
+      ],
+      "ranking_confidence": 3,
+      "sources": [
+        {
+          "analogy": "hourglass",
+          "coh": 3,
+          "map": 3,
+          "exp": 3,
+          "rank": 1
+        },
+        {
+          "analogy": "atomic clock",
+          "coh": 1,
+          "map": 2,
+          "exp": 2,
+          "rank": 3
+        },
+        {
+          "analogy": "half-life",
+          "coh": 3,
+          "map": 2,
+          "exp": 1,
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "target_id": 14,
+      "target": "Renaissance",
+      "domain": "History",
+      "task_type": "full_rate_and_rank",
+      "source_presentation_order": [
+        "Ancient Rome",
+        "Enlightenment",
+        "spring bloom"
+      ],
+      "ranking_confidence": 3,
+      "sources": [
+        {
+          "analogy": "spring bloom",
+          "coh": 3,
+          "map": 3,
+          "exp": 3,
+          "rank": 1
+        },
+        {
+          "analogy": "Ancient Rome",
+          "coh": 2,
+          "map": 1,
+          "exp": 2,
+          "rank": 2
+        },
+        {
+          "analogy": "Enlightenment",
+          "coh": 1,
+          "map": 1,
+          "exp": 1,
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "target_id": 15,
+      "target": "EM Algorithm",
+      "domain": "CS",
+      "task_type": "full_rate_and_rank",
+      "source_presentation_order": [
+        "guess‑and‑check",
+        "miner",
+        "detective investigation"
+      ],
+      "ranking_confidence": 2,
+      "sources": [
+        {
+          "analogy": "detective investigation",
+          "coh": 3,
+          "map": 3,
+          "exp": 3,
+          "rank": 1
+        },
+        {
+          "analogy": "guess‑and‑check",
+          "coh": 2,
+          "map": 2,
+          "exp": 2,
+          "rank": 2
+        },
+        {
+          "analogy": "miner",
+          "coh": 2,
+          "map": 2,
+          "exp": 1,
+          "rank": 3
+        }
+      ]
+    }
+  ]
+}

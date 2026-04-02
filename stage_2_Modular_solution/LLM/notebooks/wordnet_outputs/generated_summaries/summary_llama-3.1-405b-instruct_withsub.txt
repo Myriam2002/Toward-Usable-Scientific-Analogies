@@ -1,0 +1,85 @@
+================================================================================
+WORDNET ANALYSIS SUMMARY: Llama-405B - WITHSUB
+================================================================================
+
+DATASET STATISTICS:
+----------------------------------------
+Generated records: 321
+Generated mappings: 25474
+SCAR system pairs: 400
+SCAR subconcept pairs: 1613
+
+WORDNET COVERAGE COMPARISON:
+----------------------------------------
+Generated mappings coverage: 84.5%
+SCAR subconcept coverage: 84.7%
+Generated system pairs coverage: 73.2%
+SCAR system pairs coverage: 78.0%
+
+SIMILARITY METRICS COMPARISON (Subconcepts):
+----------------------------------------
+Generated JCN - Median: 0.074
+SCAR JCN - Median: 0.077
+Generated Wu-Palmer - Mean: 0.509, Median: 0.500
+SCAR Wu-Palmer - Mean: 0.486, Median: 0.471
+Generated Path Length - Mean: 7.03, Median: 7.00
+SCAR Path Length - Mean: 7.51, Median: 7.00
+
+RELATION TYPES COMPARISON (Subconcepts):
+----------------------------------------
+Generated top relations:
+  none: 17956 (70.5%)
+  shared-hypernym: 4711 (18.5%)
+  is-a-reverse: 1055 (4.1%)
+  co-hyponym: 880 (3.5%)
+  is-a: 703 (2.8%)
+  same-synset: 69 (0.3%)
+  part-of: 46 (0.2%)
+  has-part: 34 (0.1%)
+  instance-of: 9 (0.0%)
+  antonym: 5 (0.0%)
+
+SCAR top relations:
+  none: 1214 (75.3%)
+  shared-hypernym: 289 (17.9%)
+  co-hyponym: 36 (2.2%)
+  is-a: 35 (2.2%)
+  is-a-reverse: 21 (1.3%)
+  same-synset: 14 (0.9%)
+  part-of: 2 (0.1%)
+  antonym: 1 (0.1%)
+  has-part: 1 (0.1%)
+
+RELATION RICHNESS:
+----------------------------------------
+Generated avg relations per pair: 0.45
+Generated pairs with multiple relations: 2140 (9.9%)
+SCAR avg relations per pair: 0.35
+SCAR pairs with multiple relations: 80 (5.9%)
+
+SIMILARITY METRICS COMPARISON (Systems):
+----------------------------------------
+Generated System Wu-Palmer - Mean: 0.433, Median: 0.400
+SCAR System Wu-Palmer - Mean: 0.445, Median: 0.400
+Generated System Path Length - Mean: 9.14, Median: 10.00
+SCAR System Path Length - Mean: 8.88, Median: 9.00
+
+RELATION TYPES COMPARISON (Systems):
+----------------------------------------
+Generated System top relations:
+  none: 257 (80.1%)
+  shared-hypernym: 45 (14.0%)
+  co-hyponym: 8 (2.5%)
+  is-a-reverse: 7 (2.2%)
+  is-a: 3 (0.9%)
+  instance-of-reverse: 1 (0.3%)
+
+SCAR System top relations:
+  none: 310 (77.5%)
+  shared-hypernym: 72 (18.0%)
+  co-hyponym: 12 (3.0%)
+  instance-of: 2 (0.5%)
+  is-a: 2 (0.5%)
+  same-synset: 2 (0.5%)
+
+================================================================================
