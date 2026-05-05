@@ -1,6 +1,4 @@
-# Toward Usable Scientific Analogies
-
-*Master's Thesis — A Multi-Stage Empirical Study of LLM-Based Analogy Generation*
+# Teaching Through Analogies: A Modular Pipeline for Educational Analogy Generation
 
 ---
 
