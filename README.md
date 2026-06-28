@@ -141,7 +141,7 @@ All results are in `stage_2_Modular_solution/LLM/results/`. Publication-ready fi
 | `results/judge_analysis/` | Inter-judge agreement analysis |
 
 ## Citation
-
+```bibtex
 @misc{barakat2026educationalanalogies,
       title={Teaching Through Analogies: A Modular Pipeline for Educational Analogy Generation}, 
       author={Mariam Barakat and Ekaterina Kochmar},
@@ -151,3 +151,6 @@ All results are in `stage_2_Modular_solution/LLM/results/`. Publication-ready fi
       primaryClass={cs.CL},
       url={https://arxiv.org/abs/2605.24211}, 
 }
+```
+```
+
